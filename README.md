@@ -1,4 +1,4 @@
-# FolioView — Live Demo
+# FolioView - Live Demo
 
 A complete portfolio tracker in a single HTML file. ASX, US stocks & crypto.
 No account. No subscription. No cloud. Your data never leaves your device.
