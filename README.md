@@ -12,6 +12,6 @@ No account. No subscription. No cloud. Your data never leaves your device.
 - Australian CGT calculator & tax summary
 - News & Sentiment terminal with your own API keys
 - Crypto wallet scanner (BTC, ETH, SOL, BNB, POL)
-- 12 months of free updates · full source code · works offline
+- Free updates for the life of v1 · v2+ is a A$10 upgrade for existing owners · full source code · works offline
 
 This repo hosts the evaluation demo only. See LICENSE.
