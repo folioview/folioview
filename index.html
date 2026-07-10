@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -2036,7 +2036,7 @@ tr.tx-detail-row>td{padding:0 !important;}
           <span style="font-family:var(--font-mono);font-size:10px;color:var(--muted);">Current: v1.0</span>
         </div>
         <div style="font-size:12px;color:var(--muted);margin-bottom:14px;">
-          You have 12 months of free updates from your purchase date. New versions are released periodically with new features and fixes.
+          Your purchase includes free updates for the life of v1 — every v1.x release with fixes and new features. Major versions (v2 onwards) are a separate A$10 upgrade for existing owners.
         </div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;">
           <a href="https://folioview.gumroad.com/l/FolioView" target="_blank" rel="noopener" class="btn" style="text-decoration:none;font-size:11px;">🔔 Check for New Version</a>
@@ -2077,7 +2077,7 @@ tr.tx-detail-row>td{padding:0 !important;}
           For best results, serve this file from a local web server rather than opening it directly as a file in your browser. Opening via <code style="font-family:var(--font-mono);background:var(--surface2);padding:1px 5px;border-radius:3px;">file://</code> can trigger CORS restrictions that block API calls. A simple local server (e.g. Python's <code style="font-family:var(--font-mono);background:var(--surface2);padding:1px 5px;border-radius:3px;">http.server</code>, Node's <code style="font-family:var(--font-mono);background:var(--surface2);padding:1px 5px;border-radius:3px;">serve</code>, or Termux on Android) resolves this. All data stays on your device regardless.<br>
           <br>
           <strong style="color:var(--text);">Updates &amp; support</strong><br>
-          v1.0 includes 12 months of free updates; later versions are A$10 each, and your current version never expires. Questions or feedback: <a href="mailto:folioview@outlook.com" style="color:var(--accent);text-decoration:none;">folioview@outlook.com</a>.
+          Your purchase includes free updates for the life of v1 (every v1.x release). Major versions (v2 onwards) are a separate A$10 upgrade for existing owners, and your current version never expires. Questions or feedback: <a href="mailto:folioview@outlook.com" style="color:var(--accent);text-decoration:none;">folioview@outlook.com</a>.
         </div>
       </div>
     </div>
@@ -10472,7 +10472,7 @@ function saveSectorEdit() {
     + '<div style="font-size:12px;color:var(--muted);margin-bottom:14px;">This is the free live demo. Buy once — own it forever. No subscription, no account, no cloud.</div>'
     + locked.map(l=>'<div style="display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--border);"><span style="flex-shrink:0;">'+l[0]+'</span><div><div style="font-size:12px;font-weight:700;color:var(--text);">'+l[1]+'</div><div style="font-size:11px;color:var(--muted);">'+l[2]+'</div></div></div>').join('')
     + '<a href="'+BUY_URL+'" target="_blank" rel="noopener" style="display:block;text-align:center;margin-top:16px;background:var(--accent);color:#0a0c10;font-family:var(--font-head);font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:1px;padding:12px;border-radius:10px;text-decoration:none;">Get the full version — A$49 once</a>'
-    + '<div style="text-align:center;font-size:10px;color:var(--muted);margin-top:8px;">12 months of free updates · full source code · works offline</div></div>';
+    + '<div style="text-align:center;font-size:10px;color:var(--muted);margin-top:8px;">Free updates for the life of v1 · full source code · works offline</div></div>';
   document.body.appendChild(ov);
   window.demoBuy = function(){ ov.style.display='flex'; };
   ov.addEventListener('click', e=>{ if(e.target===ov) ov.style.display='none'; });
