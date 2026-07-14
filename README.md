@@ -3,8 +3,8 @@
 A complete portfolio tracker in a single HTML file. ASX, US stocks & crypto.
 No account. No subscription. No cloud. Your data never leaves your device.
 
-**▶ [Try the live demo](https://Folionaire.github.io/folionaire/)**
-**💰 [Get the full version — A$49 once](https://folioview.gumroad.com/l/folionaire)**
+**▶ [Try the live demo](https://Folionaire.github.io/Folionaire/)**
+**💰 [Get the full version — A$49 once](https://folionaire.gumroad.com/l/folionaire)**
 
 ## What's in the full version
 - Unlimited portfolios, transactions, watchlists & calendar
