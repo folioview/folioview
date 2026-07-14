@@ -3,8 +3,10 @@
 <head>
 <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FolioView v1.0 — Live Demo</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23f0b429'/><path d='M6 22.5 12 16l5 3.5L25 9' stroke='%230a0c10' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' fill='none'/><path d='M20 9h5v5' stroke='%230a0c10' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>">
+<title>Folionaire v1.0 — Live Demo</title>
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4096 4096"><circle cx="2048" cy="2048" r="2048" fill="%23f0b429"/><defs><mask id="fnhat" maskUnits="userSpaceOnUse" x="0" y="0" width="4096" height="4096"><ellipse cx="2048" cy="2225" rx="1170" ry="335" fill="white"/><ellipse cx="2048" cy="2050" rx="1080" ry="280" fill="black"/><path d="M2778 1070 L2772 1101 L2766 1133 L2760 1164 L2754 1195 L2748 1227 L2742 1258 L2736 1289 L2731 1321 L2726 1352 L2721 1383 L2716 1415 L2711 1446 L2707 1477 L2703 1509 L2699 1540 L2695 1571 L2692 1603 L2689 1634 L2686 1665 L2684 1697 L2682 1728 L2679 1759 L2678 1791 L2676 1822 L2674 1853 L2673 1885 L2672 1916 L2670 1947 L2669 1979 L2668 2010 L1428 2010 L1428 2010 L1427 1979 L1426 1947 L1424 1916 L1423 1885 L1422 1853 L1420 1822 L1418 1791 L1417 1759 L1414 1728 L1412 1697 L1410 1665 L1407 1634 L1404 1603 L1401 1571 L1397 1540 L1393 1509 L1389 1477 L1385 1446 L1380 1415 L1375 1383 L1370 1352 L1365 1321 L1360 1289 L1354 1258 L1348 1227 L1342 1195 L1336 1164 L1330 1133 L1324 1101 L1318 1070 Z" fill="white"/><ellipse cx="2048" cy="1080" rx="730" ry="120" fill="white"/><rect x="1368" y="1950" width="1360" height="165" fill="black"/></mask></defs><g transform="matrix(1.15176 -0.16187 0.16187 1.15176 -671.4 351.9)"><rect x="0" y="0" width="4096" height="4096" fill="%230a0c10" mask="url(%23fnhat)"/></g></svg>'>
+
+
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
@@ -29,8 +31,8 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-mono);min-hei
 /* HEADER */
 .header{background:var(--surface);border-bottom:1px solid var(--border);padding:14px 28px;display:flex;align-items:center;justify-content:space-between;overflow:visible;position:relative;z-index:100;;position:sticky;top:0;z-index:100;}
 .logo-wrap{display:flex;align-items:center;gap:10px;}
-.logo{font-family:var(--font-head);font-size:27px;font-weight:800;letter-spacing:-0.5px;color:var(--accent);}
-.logo span{color:var(--text);}
+.logo{font-family:var(--font-head);font-size:27px;font-weight:800;letter-spacing:-0.5px;color:var(--text);}
+.logo span{color:var(--accent);}
 .header-stats{display:flex;gap:24px;align-items:center;}
 .stat-pill .label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;}
 .stat-pill .value{font-size:15px;font-weight:500;margin-top:2px;}
@@ -818,7 +820,7 @@ body.privacy-on canvas{filter:blur(7px);opacity:.9;}
     padding:10px 14px;gap:0;position:sticky;top:0;z-index:100;
   }
   #mob-menu-btn{display:flex !important;align-items:center;justify-content:center;}
-  .logo-wrap{position:static;transform:none;gap:8px;min-width:0;overflow:hidden;margin-right:auto;padding-left:6px;}
+  .logo-wrap{position:static;transform:none;gap:8px;min-width:0;overflow:visible;margin-right:auto;padding-left:6px;}
   .mob-header-actions{position:static;transform:none;display:flex;gap:8px;align-items:center;flex-shrink:0;margin-left:8px;}
   .dash-navbar{justify-content:center;}
   /* Mobile logo sizing for Top Movers + Investment Overview (reduced 25%) */
@@ -1113,8 +1115,8 @@ tr.tx-detail-row>td{padding:0 !important;}
   <div class="sidebar-logo">
     <a onclick="switchTab('dashboard',document.querySelector('.sidebar-tab[data-tab=dashboard]'))" style="cursor:pointer;text-decoration:none;">
       <div style="display:flex;align-items:center;gap:8px;">
-        <svg class="folio-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#f0b429"/><path d="M6 22.5 12 16l5 3.5L25 9" stroke="#0a0c10" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 9h5v5" stroke="#0a0c10" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <div class="logo" style="font-size:22px;">FOLIO<span>VIEW</span><span data-privacy-skip="1" style="font-size:9px;color:var(--muted);font-weight:400;letter-spacing:0;font-family:var(--font-mono);margin-left:5px;vertical-align:middle;">v1.0</span></div>
+        <svg class="folio-mark" viewBox="0 0 4096 4096" fill="none" aria-hidden="true"><circle cx="2048" cy="2048" r="2048" fill="#f0b429"/><defs><mask id="fnhat1" maskUnits="userSpaceOnUse" x="0" y="0" width="4096" height="4096"><ellipse cx="2048" cy="2225" rx="1170" ry="335" fill="white"/><ellipse cx="2048" cy="2050" rx="1080" ry="280" fill="black"/><path d="M2778 1070 L2772 1101 L2766 1133 L2760 1164 L2754 1195 L2748 1227 L2742 1258 L2736 1289 L2731 1321 L2726 1352 L2721 1383 L2716 1415 L2711 1446 L2707 1477 L2703 1509 L2699 1540 L2695 1571 L2692 1603 L2689 1634 L2686 1665 L2684 1697 L2682 1728 L2679 1759 L2678 1791 L2676 1822 L2674 1853 L2673 1885 L2672 1916 L2670 1947 L2669 1979 L2668 2010 L1428 2010 L1428 2010 L1427 1979 L1426 1947 L1424 1916 L1423 1885 L1422 1853 L1420 1822 L1418 1791 L1417 1759 L1414 1728 L1412 1697 L1410 1665 L1407 1634 L1404 1603 L1401 1571 L1397 1540 L1393 1509 L1389 1477 L1385 1446 L1380 1415 L1375 1383 L1370 1352 L1365 1321 L1360 1289 L1354 1258 L1348 1227 L1342 1195 L1336 1164 L1330 1133 L1324 1101 L1318 1070 Z" fill="white"/><ellipse cx="2048" cy="1080" rx="730" ry="120" fill="white"/><rect x="1368" y="1950" width="1360" height="165" fill="black"/></mask></defs><g transform="matrix(1.15176 -0.16187 0.16187 1.15176 -671.4 351.9)"><rect x="0" y="0" width="4096" height="4096" fill="#0a0c10" mask="url(#fnhat1)"/></g></svg>
+        <div class="logo" style="font-size:22px;">FOLIO<span>NAIRE</span><span data-privacy-skip="1" style="font-size:9px;color:var(--muted);font-weight:400;letter-spacing:0;font-family:var(--font-mono);margin-left:5px;vertical-align:middle;">v1.0</span></div>
       </div>
       <div class="sidebar-quick-actions">
         <button id="desktop-theme-cycle" onclick="event.stopPropagation();cycleThemeDesktop()" title="Cycle theme" aria-label="Cycle theme" style="border:1px solid var(--border2);background:var(--surface2);border-radius:4px;cursor:pointer;padding:4px 9px;font-size:14px;color:var(--text);transition:all .15s;min-width:34px;display:inline-flex;align-items:center;justify-content:center;"></button>
@@ -1197,7 +1199,7 @@ tr.tx-detail-row>td{padding:0 !important;}
   </div>
 
   <footer style="text-align:center;padding:14px 10px 16px;font-size:10px;color:var(--muted);font-family:var(--font-mono);border-top:1px solid var(--border);flex-shrink:0;">
-    <a href="https://folioview.gumroad.com/l/FolioView" target="_blank" rel="noopener" style="color:var(--muted);text-decoration:none;">© <span id="footer-year"></span> FolioView v1.0</a>
+    <a href="https://folionaire.gumroad.com/l/folionaire" target="_blank" rel="noopener" style="color:var(--muted);text-decoration:none;">© <span id="footer-year"></span> Folionaire v1.0</a>
   </footer>
 
 </div>
@@ -1205,8 +1207,8 @@ tr.tx-detail-row>td{padding:0 !important;}
 <div class="header">
   <button id="mob-menu-btn" onclick="toggleMobMenu()" style="display:none;background:none;border:none;cursor:pointer;padding:4px;color:var(--text);flex-shrink:0;" aria-label="Menu"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect y="3" width="22" height="2.5" rx="1.2" fill="currentColor"/><rect y="10" width="22" height="2.5" rx="1.2" fill="currentColor"/><rect y="17" width="22" height="2.5" rx="1.2" fill="currentColor"/></svg></button>
   <div class="logo-wrap">
-    <svg width="34" height="34" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#f0b429"/><path d="M6 22.5 12 16l5 3.5L25 9" stroke="#0a0c10" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 9h5v5" stroke="#0a0c10" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    <div class="logo" style="white-space:nowrap;">FOLIO<span>VIEW</span><span data-privacy-skip="1" style="font-size:9px;color:var(--muted);font-weight:400;letter-spacing:0;font-family:var(--font-mono);margin-left:4px;vertical-align:middle;">v1.0</span></div>
+    <svg width="34" height="34" viewBox="0 0 4096 4096" fill="none" aria-hidden="true"><circle cx="2048" cy="2048" r="2048" fill="#f0b429"/><defs><mask id="fnhat2" maskUnits="userSpaceOnUse" x="0" y="0" width="4096" height="4096"><ellipse cx="2048" cy="2225" rx="1170" ry="335" fill="white"/><ellipse cx="2048" cy="2050" rx="1080" ry="280" fill="black"/><path d="M2778 1070 L2772 1101 L2766 1133 L2760 1164 L2754 1195 L2748 1227 L2742 1258 L2736 1289 L2731 1321 L2726 1352 L2721 1383 L2716 1415 L2711 1446 L2707 1477 L2703 1509 L2699 1540 L2695 1571 L2692 1603 L2689 1634 L2686 1665 L2684 1697 L2682 1728 L2679 1759 L2678 1791 L2676 1822 L2674 1853 L2673 1885 L2672 1916 L2670 1947 L2669 1979 L2668 2010 L1428 2010 L1428 2010 L1427 1979 L1426 1947 L1424 1916 L1423 1885 L1422 1853 L1420 1822 L1418 1791 L1417 1759 L1414 1728 L1412 1697 L1410 1665 L1407 1634 L1404 1603 L1401 1571 L1397 1540 L1393 1509 L1389 1477 L1385 1446 L1380 1415 L1375 1383 L1370 1352 L1365 1321 L1360 1289 L1354 1258 L1348 1227 L1342 1195 L1336 1164 L1330 1133 L1324 1101 L1318 1070 Z" fill="white"/><ellipse cx="2048" cy="1080" rx="730" ry="120" fill="white"/><rect x="1368" y="1950" width="1360" height="165" fill="black"/></mask></defs><g transform="matrix(1.15176 -0.16187 0.16187 1.15176 -671.4 351.9)"><rect x="0" y="0" width="4096" height="4096" fill="#0a0c10" mask="url(#fnhat2)"/></g></svg>
+    <div class="logo" style="white-space:nowrap;">FOLIO<span>NAIRE</span><span data-privacy-skip="1" style="font-size:9px;color:var(--muted);font-weight:400;letter-spacing:0;font-family:var(--font-mono);margin-left:4px;vertical-align:middle;">v1.0</span></div>
   </div>
   <div class="mob-header-actions" aria-label="Mobile header actions">
     <button id="mob-header-theme-btn" onclick="cycleThemeDesktop()" title="Cycle theme" aria-label="Cycle theme"></button>
@@ -1267,8 +1269,8 @@ tr.tx-detail-row>td{padding:0 !important;}
   <div id="mob-drawer-panel">
     <div class="mob-drawer-logo" style="display:flex;align-items:center;justify-content:space-between;">
       <div style="display:flex;align-items:center;gap:10px;">
-        <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#f0b429"/><path d="M6 22.5 12 16l5 3.5L25 9" stroke="#0a0c10" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 9h5v5" stroke="#0a0c10" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="logo" style="font-size:24px;">FOLIO<span>VIEW</span><span data-privacy-skip="1" style="font-size:9px;color:var(--muted);font-weight:400;letter-spacing:0;font-family:var(--font-mono);margin-left:5px;vertical-align:middle;">v1.0</span></span>
+        <svg width="28" height="28" viewBox="0 0 4096 4096" fill="none" aria-hidden="true"><circle cx="2048" cy="2048" r="2048" fill="#f0b429"/><defs><mask id="fnhat3" maskUnits="userSpaceOnUse" x="0" y="0" width="4096" height="4096"><ellipse cx="2048" cy="2225" rx="1170" ry="335" fill="white"/><ellipse cx="2048" cy="2050" rx="1080" ry="280" fill="black"/><path d="M2778 1070 L2772 1101 L2766 1133 L2760 1164 L2754 1195 L2748 1227 L2742 1258 L2736 1289 L2731 1321 L2726 1352 L2721 1383 L2716 1415 L2711 1446 L2707 1477 L2703 1509 L2699 1540 L2695 1571 L2692 1603 L2689 1634 L2686 1665 L2684 1697 L2682 1728 L2679 1759 L2678 1791 L2676 1822 L2674 1853 L2673 1885 L2672 1916 L2670 1947 L2669 1979 L2668 2010 L1428 2010 L1428 2010 L1427 1979 L1426 1947 L1424 1916 L1423 1885 L1422 1853 L1420 1822 L1418 1791 L1417 1759 L1414 1728 L1412 1697 L1410 1665 L1407 1634 L1404 1603 L1401 1571 L1397 1540 L1393 1509 L1389 1477 L1385 1446 L1380 1415 L1375 1383 L1370 1352 L1365 1321 L1360 1289 L1354 1258 L1348 1227 L1342 1195 L1336 1164 L1330 1133 L1324 1101 L1318 1070 Z" fill="white"/><ellipse cx="2048" cy="1080" rx="730" ry="120" fill="white"/><rect x="1368" y="1950" width="1360" height="165" fill="black"/></mask></defs><g transform="matrix(1.15176 -0.16187 0.16187 1.15176 -671.4 351.9)"><rect x="0" y="0" width="4096" height="4096" fill="#0a0c10" mask="url(#fnhat3)"/></g></svg>
+        <span class="logo" style="font-size:24px;">FOLIO<span>NAIRE</span><span data-privacy-skip="1" style="font-size:9px;color:var(--muted);font-weight:400;letter-spacing:0;font-family:var(--font-mono);margin-left:5px;vertical-align:middle;">v1.0</span></span>
       </div>
       <button onclick="toggleMobMenu()" style="background:none;border:none;cursor:pointer;color:var(--text);padding:6px;font-size:20px;line-height:1;" aria-label="Close">✕</button>
     </div>
@@ -1989,7 +1991,7 @@ tr.tx-detail-row>td{padding:0 !important;}
       </div>
       <div class="dash-card" style="padding:20px;">
         <div style="font-weight:700;font-size:13px;margin-bottom:6px;">Theme</div>
-        <div style="font-size:12px;color:var(--muted);margin-bottom:14px;">Choose how FolioView looks.</div>
+        <div style="font-size:12px;color:var(--muted);margin-bottom:14px;">Choose how Folionaire looks.</div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;">
           <button id="theme-btn-dark"  onclick="setTheme('dark')"  class="mob-spark-btn" style="font-size:12px;padding:8px 18px;"><span class="theme-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="#fbbf24" aria-hidden="true" style="vertical-align:-2px;"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></span>NightView</button>
           <button id="theme-btn-light" onclick="setTheme('light')" class="mob-spark-btn" style="font-size:12px;padding:8px 18px;"><span class="theme-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2.2" stroke-linecap="round" aria-hidden="true" style="vertical-align:-2px;"><circle cx="12" cy="12" r="4.5" fill="#f59e0b" stroke="none"/><path d="M12 3v2M12 19v2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M3 12h2M19 12h2M5.6 18.4l1.4-1.4M17 7l1.4-1.4"/></svg></span>DayView</button>
@@ -2039,8 +2041,8 @@ tr.tx-detail-row>td{padding:0 !important;}
           Your purchase includes free updates for the life of v1 — every v1.x release with fixes and new features. Major versions (v2 onwards) are a separate A$10 upgrade for existing owners.
         </div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;">
-          <a href="https://folioview.gumroad.com/l/FolioView" target="_blank" rel="noopener" class="btn" style="text-decoration:none;font-size:11px;">🔔 Check for New Version</a>
-          <a href="mailto:folioview@outlook.com" class="btn-ghost" style="text-decoration:none;font-size:11px;">✉ Contact Support</a>
+          <a href="https://folionaire.gumroad.com/l/folionaire" target="_blank" rel="noopener" class="btn" style="text-decoration:none;font-size:11px;">🔔 Check for New Version</a>
+          <a href="mailto:folionaire@outlook.com" class="btn-ghost" style="text-decoration:none;font-size:11px;">✉ Contact Support</a>
         </div>
         <div style="margin-top:12px;font-size:11px;color:var(--muted);">
           Checking for updates opens your Gumroad purchase page — if a newer version is available it will show there. Your current version never stops working.
@@ -2062,22 +2064,22 @@ tr.tx-detail-row>td{padding:0 !important;}
       <div class="dash-card" style="padding:20px;">
         <div style="font-weight:700;font-size:13px;margin-bottom:6px;">About</div>
         <div style="font-size:12px;color:var(--muted);line-height:1.8;">
-          <a href="https://folioview.gumroad.com/l/FolioView" target="_blank" rel="noopener" style="color:var(--accent);font-weight:700;text-decoration:none;">FolioView v1.0</a> — Personal portfolio tracker<br>
+          <a href="https://folionaire.gumroad.com/l/folionaire" target="_blank" rel="noopener" style="color:var(--accent);font-weight:700;text-decoration:none;">Folionaire v1.0</a> — Personal portfolio tracker<br>
           <br>
           <strong style="color:var(--text);">Not financial or tax advice</strong><br>
-          FolioView is a personal tracking and information tool only — it is not financial, investment, or tax advice. The CGT and tax figures are estimates based on general Australian rules and may not reflect your circumstances. Always verify with a registered tax agent or licensed financial adviser before making decisions or lodging a return.<br>
+          Folionaire is a personal tracking and information tool only — it is not financial, investment, or tax advice. The CGT and tax figures are estimates based on general Australian rules and may not reflect your circumstances. Always verify with a registered tax agent or licensed financial adviser before making decisions or lodging a return.<br>
           <br>
           <strong style="color:var(--text);">Your data stays with you</strong><br>
           Everything is saved locally in your browser — your holdings are never uploaded to a server or cloud account, and no account is required. Export to JSON any time to back up your data or move it to another device.<br>
           <br>
           <strong style="color:var(--text);">API dependency</strong><br>
-          Live prices are powered by CoinGecko and Yahoo Finance. News &amp; Sentiment uses Google News RSS with a Yahoo Finance RSS fallback, fetched through a chain of free CORS proxies (or your own Marketaux, Finnhub, or Alpha Vantage key if you add one). If these services change, go down, or become unavailable, any feature that relies on them — price fetching, Investment Overview, Terminal data, News &amp; Sentiment — will stop working. If that happens, a future update will look at replacing them with alternative free APIs. In the meantime, FolioView still works fully as a transaction ledger, CGT calculator, and portfolio tracker using your last known prices or manual entries.<br>
+          Live prices are powered by CoinGecko and Yahoo Finance. News &amp; Sentiment uses Google News RSS with a Yahoo Finance RSS fallback, fetched through a chain of free CORS proxies (or your own Marketaux, Finnhub, or Alpha Vantage key if you add one). If these services change, go down, or become unavailable, any feature that relies on them — price fetching, Investment Overview, Terminal data, News &amp; Sentiment — will stop working. If that happens, a future update will look at replacing them with alternative free APIs. In the meantime, Folionaire still works fully as a transaction ledger, CGT calculator, and portfolio tracker using your last known prices or manual entries.<br>
           <br>
           <strong style="color:var(--text);">Running locally</strong><br>
           For best results, serve this file from a local web server rather than opening it directly as a file in your browser. Opening via <code style="font-family:var(--font-mono);background:var(--surface2);padding:1px 5px;border-radius:3px;">file://</code> can trigger CORS restrictions that block API calls. A simple local server (e.g. Python's <code style="font-family:var(--font-mono);background:var(--surface2);padding:1px 5px;border-radius:3px;">http.server</code>, Node's <code style="font-family:var(--font-mono);background:var(--surface2);padding:1px 5px;border-radius:3px;">serve</code>, or Termux on Android) resolves this. All data stays on your device regardless.<br>
           <br>
           <strong style="color:var(--text);">Updates &amp; support</strong><br>
-          Your purchase includes free updates for the life of v1 (every v1.x release). Major versions (v2 onwards) are a separate A$10 upgrade for existing owners, and your current version never expires. Questions or feedback: <a href="mailto:folioview@outlook.com" style="color:var(--accent);text-decoration:none;">folioview@outlook.com</a>.
+          Your purchase includes free updates for the life of v1 (every v1.x release). Major versions (v2 onwards) are a separate A$10 upgrade for existing owners, and your current version never expires. Questions or feedback: <a href="mailto:folionaire@outlook.com" style="color:var(--accent);text-decoration:none;">folionaire@outlook.com</a>.
         </div>
       </div>
     </div>
@@ -2666,10 +2668,10 @@ function importGenericCsv(text, platform){
   const iPrice = find('price','unit price','price per coin','executed price','avg price','purchase price','price (usd)');
   const iTotal = find('total','value','subtotal','cost','proceeds','total value','total (usd)','amount (usd)');
   if(iSym<0 || iAmt<0){
-    // Not a recognisable per-coin transaction CSV — try the FolioView / exchange
-    // parser (handles FolioView exports and Crypto.com-style files) before giving up.
+    // Not a recognisable per-coin transaction CSV — try the Folionaire / exchange
+    // parser (handles Folionaire exports and Crypto.com-style files) before giving up.
     if (typeof loadFromCSV === 'function') { loadFromCSV(text); return; }
-    alert('Couldn\'t find coin/amount columns in this CSV.\n\nMake sure it is a transaction export (with columns for the coin/ticker and an amount/quantity), or use the "Load JSON or CSV" option for a FolioView file.');
+    alert('Couldn\'t find coin/amount columns in this CSV.\n\nMake sure it is a transaction export (with columns for the coin/ticker and an amount/quantity), or use the "Load JSON or CSV" option for a Folionaire file.');
     return;
   }
   const num = s => { const v=parseFloat(String(s==null?'':s).replace(/[^0-9.\-]/g,'')); return isNaN(v)?0:v; };
@@ -2762,7 +2764,7 @@ function loadFromFile(e) {
         _unsavedEdits = 0; _updateSaveBadge();
         notify('📂 Portfolio loaded from JSON');
       }
-    } catch(err) { console.error(err); alert('Could not read file. Check it is a valid FolioView JSON or CSV.'); }
+    } catch(err) { console.error(err); alert('Could not read file. Check it is a valid Folionaire JSON or CSV.'); }
     e.target.value = '';
   };
   r.readAsText(file);
@@ -2778,14 +2780,14 @@ function loadFromCSV(text) {
     loadCryptoCsv(text); return;
   }
 
-  // Standard FolioView CSV: Date,Type,AssetType,Currency,Ticker,Units,Price,Total,Portfolio,Notes,Fees,Emotion,Reason
+  // Standard Folionaire CSV: Date,Type,AssetType,Currency,Ticker,Units,Price,Total,Portfolio,Notes,Fees,Emotion,Reason
   const hdr = lines[0].toLowerCase().split(',').map(h => h.trim().replace(/"/g,''));
   const col = name => hdr.indexOf(name);
   const iDate=col('date'), iType=col('type'), iAsset=col('assettype'), iCurr=col('currency'),
         iTicker=col('ticker'), iUnits=col('units'), iPrice=col('price'), iTotal=col('total'),
         iPort=col('portfolio'), iNotes=col('notes'), iFees=col('fees'), iEmotion=col('emotion'), iReason=col('reason');
   if (iDate<0||iType<0||iTicker<0||iUnits<0) {
-    alert('CSV missing required columns (Date, Type, Ticker, Units).\nMake sure you exported from FolioView.'); return;
+    alert('CSV missing required columns (Date, Type, Ticker, Units).\nMake sure you exported from Folionaire.'); return;
   }
   const txs = [];
   for (let i=1; i<lines.length; i++) {
@@ -5151,15 +5153,20 @@ async function _fetchAllOriginsJson(url, timeoutMs=14000) {
       lastErr = e?.name === 'TimeoutError' ? 'Direct fetch timed out.' : `Direct fetch blocked or failed: ${e?.message || 'network/CORS error'}`;
     }
 
-    // 2. Proxy chain with exponential backoff per proxy
+    // 2. Proxy chain with exponential backoff per proxy.
+    // Robustness: the last proxy that worked is tried first on later calls,
+    // and a proxy that fails 3+ times in a row this session is skipped.
     const proxies = [
       { name:'allorigins', build:u => `https://api.allorigins.win/get?url=${encodeURIComponent(u)}` },
       { name:'corsproxy', build:u => `https://corsproxy.io/?${encodeURIComponent(u)}` },
       { name:'codetabs', build:u => `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(u)}` },
-      { name:'thingproxy', build:u => `https://thingproxy.freeboard.io/fetch/${u}` },
+      { name:'allorigins-raw', build:u => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}` },
     ];
+    window._fvProxyFails = window._fvProxyFails || {};
+    if (window._fvProxyGood) proxies.sort((a,b)=>(b.name===window._fvProxyGood)-(a.name===window._fvProxyGood));
     for (let pi = 0; pi < proxies.length; pi++) {
       const proxy = proxies[pi];
+      if ((window._fvProxyFails[proxy.name]||0) >= 3) continue; // circuit breaker: proxy is down this session
       const proxyUrl = proxy.build(url);
       let delay = 1000;
       for (let attempt = 0; attempt < 2; attempt++) {
@@ -5168,19 +5175,25 @@ async function _fetchAllOriginsJson(url, timeoutMs=14000) {
           if (!res.ok) {
             lastErr = `${proxy.name} proxy failed (${res.status})`;
             if (res.status === 429) { await new Promise(r=>setTimeout(r, delay)); delay*=2; continue; }
+            window._fvProxyFails[proxy.name] = (window._fvProxyFails[proxy.name]||0)+1;
             break;
           }
           const text = await res.text();
           const data = _parseProxyResponse(text);
           _fetchCache.set(url, { data, ts: Date.now() });
+          window._fvProxyGood = proxy.name;
+          window._fvProxyFails[proxy.name] = 0;
           return data;
         } catch(e) {
           lastErr = `${proxy.name} proxy ${e?.name === 'TimeoutError' ? 'timed out' : 'failed'}${e?.message ? ': ' + e.message : ''}`;
+          window._fvProxyFails[proxy.name] = (window._fvProxyFails[proxy.name]||0)+1;
           await new Promise(r=>setTimeout(r, delay));
           delay*=2;
         }
       }
     }
+    // If everything is circuit-broken, reset so the next call retries fresh.
+    if (proxies.every(p => (window._fvProxyFails[p.name]||0) >= 3)) window._fvProxyFails = {};
     throw new Error(lastErr || ('All proxies failed for: '+url.slice(0,60)));
   } finally {
     _fetchRelease();
@@ -5480,7 +5493,6 @@ async function loadStockNews(force=false) {
     { name:'corsproxy',      build:u => 'https://corsproxy.io/?' + encodeURIComponent(u),              json:false },
     { name:'codetabs',       build:u => 'https://api.codetabs.com/v1/proxy?quest=' + encodeURIComponent(u), json:false },
     { name:'allorigins-get', build:u => 'https://api.allorigins.win/get?url=' + encodeURIComponent(u), json:true  },
-    { name:'thingproxy',     build:u => 'https://thingproxy.freeboard.io/fetch/' + u,                   json:false },
   ];
   const fetchRss = async (url, label) => {
     let lastErr = '';
@@ -9131,7 +9143,7 @@ function loadFileSettings(input) {
         _unsavedEdits = 0; _updateSaveBadge();
       notify('✓ Portfolio loaded');
       }
-    } catch(e) { console.error(e); alert('Could not read file. Check it is a valid FolioView JSON or CSV.'); }
+    } catch(e) { console.error(e); alert('Could not read file. Check it is a valid Folionaire JSON or CSV.'); }
     input.value = '';
   };
   r.readAsText(file);
@@ -10345,9 +10357,9 @@ function saveSectorEdit() {
       <button onclick="closeLoadModal()" style="background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;line-height:1;padding:0 2px;">✕</button>
     </div>
 
-    <div style="font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);font-family:var(--font-head);font-weight:700;margin-bottom:8px;">Your FolioView file</div>
+    <div style="font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);font-family:var(--font-head);font-weight:700;margin-bottom:8px;">Your Folionaire file</div>
     <button class="load-opt" onclick="closeLoadModal();document.getElementById('load-input').click();">
-      <span class="load-opt-ico">📂</span><span><span class="load-opt-title">Load JSON or CSV</span><span class="load-opt-sub">A file you previously saved or exported from FolioView</span></span>
+      <span class="load-opt-ico">📂</span><span><span class="load-opt-title">Load JSON or CSV</span><span class="load-opt-sub">A file you previously saved or exported from Folionaire</span></span>
     </button>
 
     <div style="font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);font-family:var(--font-head);font-weight:700;margin:16px 0 8px;">Import transactions from a platform (CSV)</div>
@@ -10444,7 +10456,7 @@ function saveSectorEdit() {
 <script>
 /* ══════════════ FOLIOVIEW DEMO LOCKDOWN LAYER ══════════════ */
 (function(){
-  const BUY_URL = 'https://folioview.gumroad.com/l/FolioView';
+  const BUY_URL = 'https://folionaire.gumroad.com/l/folionaire';
   const LIMITS = { tx: 3, watch: 1, cal: 1, life: 2, scans: 3 };
   const _c = { tx:0, watch:0, cal:0, life:0 };
 
@@ -10484,11 +10496,11 @@ function saveSectorEdit() {
   pill.onclick = window.demoBuy;
   document.body.appendChild(pill);
 
-  /* ── DEMO badges next to logos ── */
+  /* ── DEMO badge centred under each logo ── */
   document.querySelectorAll('.logo').forEach(el=>{
     const b=document.createElement('span');
     b.textContent='DEMO';
-    b.style.cssText='display:inline-block;background:var(--accent);color:#0a0c10;font-size:8px;font-weight:900;letter-spacing:1px;padding:2px 6px;border-radius:4px;margin-left:6px;vertical-align:middle;font-family:var(--font-head);';
+    b.style.cssText='display:block;width:fit-content;margin:3px auto 0;background:var(--accent);color:#0a0c10;font-size:8px;font-weight:900;letter-spacing:2px;padding:2px 8px;border-radius:4px;font-family:var(--font-head);line-height:1.2;';
     el.appendChild(b);
   });
 
