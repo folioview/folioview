@@ -10736,6 +10736,19 @@ function saveSectorEdit() {
   const lockFns = ['saveToFile','exportCSV','loadFileSettings','addPortfolio','renamePm','deletePm','saveNewsApiKey','editNewsApiKey','clearNewsApiKey','addWatchlistList'];
   lockFns.forEach(fn=>{ if(typeof window[fn]==='function') window[fn]=function(){ demoBuy(); }; });
 
+  /* ── Custom proxy stays usable in the demo, but be honest about persistence ── */
+  if (typeof window.saveCustomProxy==='function'){
+    const _scp=window.saveCustomProxy;
+    window.saveCustomProxy=function(){
+      _scp.apply(this,arguments);
+      const st=document.getElementById('custom-proxy-status');
+      if(st && state && state.customProxy){
+        st.style.color='var(--muted)';
+        st.textContent='Saved for this session - the demo resets on refresh. The full version keeps it in your saved data.';
+      }
+    };
+  }
+
   /* ── Load modal: keep first option, lock platform imports ── */
   if(typeof window.pickPlatformCsv==='function') window.pickPlatformCsv=function(){ if(typeof closeLoadModal==='function')try{closeLoadModal();}catch(e){} demoBuy(); };
   if(typeof window.importPlatformCsv==='function') window.importPlatformCsv=function(){ demoBuy(); };
