@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Folionaire v1.0 — Live Demo</title>
+<title>Folionaire v1.0 - Live Demo</title>
 <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4096 4096"><circle cx="2048" cy="2048" r="2048" fill="%23f0b429"/><defs><mask id="fnhat" maskUnits="userSpaceOnUse" x="0" y="0" width="4096" height="4096"><ellipse cx="2048" cy="2225" rx="1170" ry="335" fill="white"/><ellipse cx="2048" cy="2050" rx="1080" ry="280" fill="black"/><path d="M2778 1070 L2772 1101 L2766 1133 L2760 1164 L2754 1195 L2748 1227 L2742 1258 L2736 1289 L2731 1321 L2726 1352 L2721 1383 L2716 1415 L2711 1446 L2707 1477 L2703 1509 L2699 1540 L2695 1571 L2692 1603 L2689 1634 L2686 1665 L2684 1697 L2682 1728 L2679 1759 L2678 1791 L2676 1822 L2674 1853 L2673 1885 L2672 1916 L2670 1947 L2669 1979 L2668 2010 L1428 2010 L1428 2010 L1427 1979 L1426 1947 L1424 1916 L1423 1885 L1422 1853 L1420 1822 L1418 1791 L1417 1759 L1414 1728 L1412 1697 L1410 1665 L1407 1634 L1404 1603 L1401 1571 L1397 1540 L1393 1509 L1389 1477 L1385 1446 L1380 1415 L1375 1383 L1370 1352 L1365 1321 L1360 1289 L1354 1258 L1348 1227 L1342 1195 L1336 1164 L1330 1133 L1324 1101 L1318 1070 Z" fill="white"/><ellipse cx="2048" cy="1080" rx="730" ry="120" fill="white"/><rect x="1368" y="1950" width="1360" height="165" fill="black"/></mask></defs><g transform="matrix(1.15176 -0.16187 0.16187 1.15176 -671.4 351.9)"><rect x="0" y="0" width="4096" height="4096" fill="%230a0c10" mask="url(%23fnhat)"/></g></svg>'>
 
 
@@ -78,7 +78,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-mono);min-hei
 .btn-sm{padding:4px 9px;font-size:11px;}
 .theme-ico{font-family:"Segoe UI Emoji","Apple Color Emoji","Noto Color Emoji",sans-serif;margin-right:6px;}
 .tab-icon svg,.mob-icon svg{width:18px;height:18px;display:block;}
-/* Icon colours — global so BOTH the desktop sidebar and the mobile drawer match */
+/* Icon colours - global so BOTH the desktop sidebar and the mobile drawer match */
 .tab-icon-watchlist{color:#38bdf8;}
 .tab-icon-terminal{color:#a78bfa;}
 .tab-icon-wallet{color:#f7931a;}
@@ -299,7 +299,7 @@ input,.form-group select,.form-group textarea{width:100%;background:var(--bg);bo
 .pie-legend{margin-top:14px;display:flex;flex-wrap:wrap;gap:7px 14px;}
 /* sector pies need pointer-events for hover */
 
-/* All Holdings — true 50/50 split layout */
+/* All Holdings - true 50/50 split layout */
 .pie-split-layout{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;}
 .pie-split-chart{display:flex;flex-direction:column;align-items:center;}
 .pie-split-chart canvas{width:100% !important;max-width:320px;aspect-ratio:1/1;height:auto !important;}
@@ -905,7 +905,7 @@ body.privacy-on canvas{filter:blur(7px);opacity:.9;}
   #closed-table th,#closed-table td,#cgt-table th,#cgt-table td,#tax-table th,#tax-table td{padding:4px 6px !important;font-size:10px;}
   /* CGT/Tax use mobile cards (tables are hidden on mobile) */
   #cgt-scroll,#tax-scroll{display:none !important;}
-  /* mob-spark-btn promoted to global — see .pill-btn below */
+  /* mob-spark-btn promoted to global - see .pill-btn below */
 
   /* â”€â”€ Section header â”€â”€ */
   .table-header{flex-direction:column;align-items:flex-start;gap:10px;}
@@ -1257,8 +1257,8 @@ tr.tx-detail-row>td{padding:0 !important;}
         </div>
       </div>
       <div class="market-status-row" title="Market hours">
-        <span id="mkt-asx">ASX · —</span>
-        <span id="mkt-nasdaq">NASDAQ · —</span>
+        <span id="mkt-asx">ASX · -</span>
+        <span id="mkt-nasdaq">NASDAQ · -</span>
       </div>
     </div>
   </div>
@@ -1422,7 +1422,7 @@ tr.tx-detail-row>td{padding:0 !important;}
     <div id="dash-top-movers"></div>
 
     <div class="dash-section-heading dash-anchor" id="dash-sec-overview">Portfolio Overview</div>
-    <!-- PORTFOLIO CHANGE — full width -->
+    <!-- PORTFOLIO CHANGE - full width -->
     <div class="chart-card" style="margin-bottom:16px;">
       <div class="chart-card-header mob-chart-hdr" style="padding-bottom:10px;">
         <div style="text-align:center;width:100%;">
@@ -1436,7 +1436,7 @@ tr.tx-detail-row>td{padding:0 !important;}
       </div>
     </div>
 
-    <!-- INVESTMENT OVERVIEW — full width, Top-Movers style -->
+    <!-- INVESTMENT OVERVIEW - full width, Top-Movers style -->
     <div class="chart-card" style="margin-bottom:20px;">
       <div class="chart-card-header mob-chart-hdr">
         <div style="text-align:center;width:100%;">
@@ -1459,7 +1459,7 @@ tr.tx-detail-row>td{padding:0 !important;}
         <div id="inv-overview" class="inv-overview"></div>
       </div>
     </div>
-    <!-- ALL HOLDINGS — full width, pie left + holdings table right -->
+    <!-- ALL HOLDINGS - full width, pie left + holdings table right -->
     <div class="chart-card" style="margin-bottom:20px;">
       <div class="pie-split-layout">
         <div class="pie-split-chart">
@@ -1478,7 +1478,7 @@ tr.tx-detail-row>td{padding:0 !important;}
       </div>
     </div>
 
-    <!-- STOCKS + CRYPTO — compact 2-col row below -->
+    <!-- STOCKS + CRYPTO - compact 2-col row below -->
     <div class="dash-grid-2" style="margin-bottom:20px;overflow:visible;margin-left:0;margin-right:0;">
       <div class="chart-card">
         <div class="chart-card-header mob-chart-hdr">
@@ -1812,7 +1812,7 @@ tr.tx-detail-row>td{padding:0 !important;}
   <div class="section" id="sec-closed">
     <div class="table-header mob-center-header">
       <div class="section-title">Closed Positions</div>
-      <div style="font-size:11px;color:var(--muted);padding-top:4px;">Assets fully sold — realised P&amp;L only</div>
+      <div style="font-size:11px;color:var(--muted);padding-top:4px;">Assets fully sold - realised P&amp;L only</div>
       <button class="btn-ghost btn-sm" onclick="openFomoChecker()" style="margin-top:8px;">🔍 FOMO Checker</button>
     </div>
     <div id="closed-summary" style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:16px;"></div>
@@ -1950,7 +1950,7 @@ tr.tx-detail-row>td{padding:0 !important;}
   <div class="section" id="sec-wallet">
     <div class="table-header mob-center-header">
       <div class="section-title">Crypto Wallet Scanner</div>
-      <div style="font-size:11px;color:var(--muted);">Native coin balance only (BTC, ETH, BNB, SOL, POL) — no tokens, no sign-in, results not saved</div>
+      <div style="font-size:11px;color:var(--muted);">Native coin balance only (BTC, ETH, BNB, SOL, POL) - no tokens, no sign-in, results not saved</div>
     </div>
     <div id="wallet-form-row" style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;">
       <div style="flex:1;min-width:200px;display:flex;flex-direction:column;gap:6px;">
@@ -2038,14 +2038,42 @@ tr.tx-detail-row>td{padding:0 !important;}
           <span style="font-family:var(--font-mono);font-size:10px;color:var(--muted);">Current: v1.0</span>
         </div>
         <div style="font-size:12px;color:var(--muted);margin-bottom:14px;">
-          Your purchase includes free updates for the life of v1 — every v1.x release with fixes and new features. Major versions (v2 onwards) are a separate A$10 upgrade for existing owners.
+          Your purchase includes free updates for the life of v1 - every v1.x release with fixes and new features. Major versions (v2 onwards) are a separate A$10 upgrade for existing owners.
         </div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;">
           <a href="https://folionaire.gumroad.com/l/folionaire" target="_blank" rel="noopener" class="btn" style="text-decoration:none;font-size:11px;">🔔 Check for New Version</a>
           <a href="mailto:folionaire@outlook.com" class="btn-ghost" style="text-decoration:none;font-size:11px;">✉ Contact Support</a>
         </div>
+        <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--border);">
+          <div style="font-weight:700;font-size:13px;margin-bottom:6px;">Custom Price Proxy <span style="font-weight:400;color:var(--muted);">(optional)</span></div>
+          <div style="font-size:11px;color:var(--muted);line-height:1.7;margin-bottom:8px;">If price fetching is slow or blocked - most common when opening the file directly on a phone - you can route requests through your own free Cloudflare Worker. It becomes the first-choice route, with the built-in free proxies as fallback. Copy the Worker code below, deploy it on Cloudflare (steps included, free tier is plenty), then paste its URL here.</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+            <input id="custom-proxy-input" type="url" placeholder="https://your-worker.your-name.workers.dev" style="flex:1;min-width:220px;background:var(--bg);border:1px solid var(--border2);color:var(--text);padding:8px 10px;font-family:var(--font-mono);font-size:11px;border-radius:8px;">
+            <button class="btn" style="font-size:10px;padding:6px 12px;" onclick="saveCustomProxy()">Save</button>
+            <button class="btn-ghost" style="font-size:10px;padding:6px 10px;" onclick="testCustomProxy()">Test</button>
+            <button class="btn-ghost" style="font-size:10px;padding:6px 10px;" onclick="clearCustomProxy()">Clear</button>
+          </div>
+          
+          <details style="margin-top:8px;">
+            <summary style="font-size:11px;color:var(--accent);cursor:pointer;">How to deploy (free, ~5 minutes)</summary>
+            <ol style="font-size:11px;color:var(--muted);line-height:1.9;margin:8px 0 4px 18px;padding:0;">
+              <li>Click <strong style="color:var(--text);">Copy Worker code</strong> below.</li>
+              <li>Sign up / log in at <span style="font-family:var(--font-mono);">dash.cloudflare.com</span> (free, no card).</li>
+              <li>In the left menu go to <strong style="color:var(--text);">Build &gt; Compute (Workers &amp; Pages)</strong>.</li>
+              <li>Click <strong style="color:var(--text);">Create application</strong> &gt; Start with Hello World &gt; name it (e.g. folionaire-price-updates) &gt; Deploy.</li>
+              <li>Click <strong style="color:var(--text);">Edit code</strong>, delete the sample, paste the copied code, then Deploy.</li>
+              <li>Copy the Worker URL (https://name.account.workers.dev), paste it above, hit Test, then Save.</li>
+            </ol>
+            <div style="font-size:10px;color:var(--muted);margin:4px 0 0;">The code only allows Folionaire's data sources, so nobody can misuse your Worker as an open proxy. The free tier (100k requests/day) is far more than one person needs.</div>
+          </details>
+          <div style="display:flex;gap:8px;margin-top:8px;align-items:center;flex-wrap:wrap;">
+            <button class="btn-ghost" style="font-size:10px;padding:6px 12px;" onclick="copyWorkerCode()">&#128203; Copy Worker code</button>
+          </div>
+          <textarea id="worker-src-box" readonly spellcheck="false" style="display:none;width:100%;height:120px;margin-top:8px;background:var(--bg);border:1px solid var(--border2);color:var(--muted);font-family:var(--font-mono);font-size:10px;border-radius:8px;padding:8px;"></textarea>
+          <div id="custom-proxy-status" style="font-size:10px;color:var(--muted);margin-top:6px;"></div>
+        </div>
         <div style="margin-top:12px;font-size:11px;color:var(--muted);">
-          Checking for updates opens your Gumroad purchase page — if a newer version is available it will show there. Your current version never stops working.
+          Checking for updates opens your Gumroad purchase page - if a newer version is available it will show there. Your current version never stops working.
         </div>
       </div>
       <div class="dash-card" style="padding:20px;border:1px solid var(--red);">
@@ -2064,16 +2092,16 @@ tr.tx-detail-row>td{padding:0 !important;}
       <div class="dash-card" style="padding:20px;">
         <div style="font-weight:700;font-size:13px;margin-bottom:6px;">About</div>
         <div style="font-size:12px;color:var(--muted);line-height:1.8;">
-          <a href="https://folionaire.gumroad.com/l/folionaire" target="_blank" rel="noopener" style="color:var(--accent);font-weight:700;text-decoration:none;">Folionaire v1.0</a> — Personal portfolio tracker<br>
+          <a href="https://folionaire.gumroad.com/l/folionaire" target="_blank" rel="noopener" style="color:var(--accent);font-weight:700;text-decoration:none;">Folionaire v1.0</a> - Personal portfolio tracker<br>
           <br>
           <strong style="color:var(--text);">Not financial or tax advice</strong><br>
-          Folionaire is a personal tracking and information tool only — it is not financial, investment, or tax advice. The CGT and tax figures are estimates based on general Australian rules and may not reflect your circumstances. Always verify with a registered tax agent or licensed financial adviser before making decisions or lodging a return.<br>
+          Folionaire is a personal tracking and information tool only - it is not financial, investment, or tax advice. The CGT and tax figures are estimates based on general Australian rules and may not reflect your circumstances. Always verify with a registered tax agent or licensed financial adviser before making decisions or lodging a return.<br>
           <br>
           <strong style="color:var(--text);">Your data stays with you</strong><br>
-          Everything is saved locally in your browser — your holdings are never uploaded to a server or cloud account, and no account is required. Export to JSON any time to back up your data or move it to another device.<br>
+          Everything is saved locally in your browser - your holdings are never uploaded to a server or cloud account, and no account is required. Export to JSON any time to back up your data or move it to another device.<br>
           <br>
           <strong style="color:var(--text);">API dependency</strong><br>
-          Live prices are powered by CoinGecko and Yahoo Finance. News &amp; Sentiment uses Google News RSS with a Yahoo Finance RSS fallback, fetched through a chain of free CORS proxies (or your own Marketaux, Finnhub, or Alpha Vantage key if you add one). If these services change, go down, or become unavailable, any feature that relies on them — price fetching, Investment Overview, Terminal data, News &amp; Sentiment — will stop working. If that happens, a future update will look at replacing them with alternative free APIs. In the meantime, Folionaire still works fully as a transaction ledger, CGT calculator, and portfolio tracker using your last known prices or manual entries.<br>
+          Live prices are powered by CoinGecko and Yahoo Finance. News &amp; Sentiment uses Google News RSS with a Yahoo Finance RSS fallback, fetched through a chain of free CORS proxies (or your own Marketaux, Finnhub, or Alpha Vantage key if you add one). If these services change, go down, or become unavailable, any feature that relies on them - price fetching, Investment Overview, Terminal data, News &amp; Sentiment - will stop working. If that happens, a future update will look at replacing them with alternative free APIs. In the meantime, Folionaire still works fully as a transaction ledger, CGT calculator, and portfolio tracker using your last known prices or manual entries.<br>
           <br>
           <strong style="color:var(--text);">Running locally</strong><br>
           For best results, serve this file from a local web server rather than opening it directly as a file in your browser. Opening via <code style="font-family:var(--font-mono);background:var(--surface2);padding:1px 5px;border-radius:3px;">file://</code> can trigger CORS restrictions that block API calls. A simple local server (e.g. Python's <code style="font-family:var(--font-mono);background:var(--surface2);padding:1px 5px;border-radius:3px;">http.server</code>, Node's <code style="font-family:var(--font-mono);background:var(--surface2);padding:1px 5px;border-radius:3px;">serve</code>, or Termux on Android) resolves this. All data stays on your device regardless.<br>
@@ -2112,8 +2140,8 @@ tr.tx-detail-row>td{padding:0 !important;}
     <div class="form-group" id="f-currency-group" style="display:none;">
       <label>Currency</label>
       <select id="f-currency" onchange="_checkCurrencyWarning()">
-        <option value="USD">USD — US Dollar</option>
-        <option value="AUD">AUD — Australian Dollar</option>
+        <option value="USD">USD - US Dollar</option>
+        <option value="AUD">AUD - Australian Dollar</option>
       </select>
     </div>
     <div class="form-group">
@@ -2207,7 +2235,7 @@ tr.tx-detail-row>td{padding:0 !important;}
 <div class="modal-overlay" id="price-modal-overlay" onclick="closePriceModalOutside(event)">
   <div class="modal" style="width:420px;max-height:none;overflow:visible;display:flex;flex-direction:column;">
     <div class="modal-title">
-      <span>Update Price — <span id="pm-ticker"></span></span>
+      <span>Update Price - <span id="pm-ticker"></span></span>
       <button class="modal-close" onclick="closePriceModal()">×</button>
     </div>
     <div class="form-group">
@@ -2217,7 +2245,7 @@ tr.tx-detail-row>td{padding:0 !important;}
     <div id="pm-source" style="font-size:11px;color:var(--muted);margin-bottom:12px;"></div>
     <div id="pm-cgid-row" style="display:none;margin-bottom:16px;padding:12px;background:var(--bg);border:1px solid var(--border2);border-radius:4px;">
       <div style="font-size:11px;font-weight:600;color:var(--text);margin-bottom:6px;">CoinGecko ID Override</div>
-      <div style="font-size:10px;color:var(--muted);margin-bottom:8px;">If auto-fetch keeps failing, find the ID on <a href="https://coingecko.com" target="_blank" style="color:var(--accent);">coingecko.com</a> — it's in the URL, e.g. <code style="background:var(--surface2);padding:1px 4px;">render-token</code></div>
+      <div style="font-size:10px;color:var(--muted);margin-bottom:8px;">If auto-fetch keeps failing, find the ID on <a href="https://coingecko.com" target="_blank" style="color:var(--accent);">coingecko.com</a> - it's in the URL, e.g. <code style="background:var(--surface2);padding:1px 4px;">render-token</code></div>
       <div style="display:flex;gap:8px;">
       <input type="text" id="pm-cgid" placeholder="e.g. render-token, bitcoin…" style="flex:1;font-size:12px;">
         <button class="btn" onclick="saveCgId()" style="white-space:nowrap;font-size:11px;padding:6px 14px;">Save &amp; Retry</button>
@@ -2567,7 +2595,7 @@ function togglePrivacy() {
 // â”€â”€â”€ FILE I/O â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function saveToFile() {
   _unsavedEdits=0; _updateSaveBadge();
-  // Exclude logoCache from export — it's just fetched CDN URLs, re-fetched on load
+  // Exclude logoCache from export - it's just fetched CDN URLs, re-fetched on load
   const { logoCache: _lc, ...exportState } = state;
   const blob = new Blob([JSON.stringify(exportState, null, 2)], { type: 'application/json' });
   const a = Object.assign(document.createElement('a'), { href: URL.createObjectURL(blob), download: 'portfolio-' + new Date().toISOString().slice(0,10) + '.json' });
@@ -2668,7 +2696,7 @@ function importGenericCsv(text, platform){
   const iPrice = find('price','unit price','price per coin','executed price','avg price','purchase price','price (usd)');
   const iTotal = find('total','value','subtotal','cost','proceeds','total value','total (usd)','amount (usd)');
   if(iSym<0 || iAmt<0){
-    // Not a recognisable per-coin transaction CSV — try the Folionaire / exchange
+    // Not a recognisable per-coin transaction CSV - try the Folionaire / exchange
     // parser (handles Folionaire exports and Crypto.com-style files) before giving up.
     if (typeof loadFromCSV === 'function') { loadFromCSV(text); return; }
     alert('Couldn\'t find coin/amount columns in this CSV.\n\nMake sure it is a transaction export (with columns for the coin/ticker and an amount/quantity), or use the "Load JSON or CSV" option for a Folionaire file.');
@@ -3091,7 +3119,7 @@ function addPortfolio() {
   state.portfolios.push({id, name, emoji});
   document.getElementById('pm-mgr-name').value = '';
   save(); renderPmMgrList(); renderPortfolioTabs(); renderPortfolioDropdown();
-  notify('Portfolio added — '+name);
+  notify('Portfolio added - '+name);
 }
 
 function renamePm(i) {
@@ -3528,7 +3556,7 @@ function submitTransaction() {
   if(isNaN(total)||total<=0) total=units*price;
   if(modalType==='sell'&&editingTxId===null) {
     const _holdings=computeHoldings();
-    // Holdings are keyed as "TICKER|portfolio" — find the right one
+    // Holdings are keyed as "TICKER|portfolio" - find the right one
     const _port=portfolio||'main';
     const _key=ticker+'|'+_port;
     const h=_holdings[_key];
@@ -3548,7 +3576,7 @@ function submitTransaction() {
     } else {
       _trackEdit();
       _pushNotification('Edited ' + (modalType==='buy'?'Buy':'Sell') + ' · ' + ticker + ' · ' + fmtUnits(units) + ' units @ $' + fmt(price) + ' (' + currency + ')', ticker);
-      save(); closeModal(); renderPortfolio(); renderHistory(); notify('Updated — '+ticker);
+      save(); closeModal(); renderPortfolio(); renderHistory(); notify('Updated - '+ticker);
     }
     _editOriginalAssetType = null;
     return;
@@ -3579,13 +3607,13 @@ function openPriceModal(ticker) {
     src.innerHTML = `<span class="price-tag auto">Auto</span> via ${meta.source||'API'}${ago!==null?' · '+ago+'m ago':''}`;
     if(btn) btn.textContent='🔄 Re-fetch';
   } else if (meta && meta.source==='not-found') {
-    src.innerHTML = `<span class="price-tag error">Not found</span> — check ticker or exchange type`;
+    src.innerHTML = `<span class="price-tag error">Not found</span> - check ticker or exchange type`;
     if(btn) btn.textContent='🔄 Retry fetch';
   } else if (meta && meta.source==='unknown-coin') {
-    src.innerHTML = `<span class="price-tag error">Unknown coin</span> — CoinGecko couldn't resolve this ticker`;
+    src.innerHTML = `<span class="price-tag error">Unknown coin</span> - CoinGecko couldn't resolve this ticker`;
     if(btn) btn.textContent='🔄 Retry fetch';
   } else {
-    src.innerHTML = `<span class="price-tag manual">Manual</span> — set by you`;
+    src.innerHTML = `<span class="price-tag manual">Manual</span> - set by you`;
     if(btn) btn.textContent='🔄 Auto-fetch';
   }
   document.getElementById('price-modal-overlay').classList.add('open');
@@ -3614,7 +3642,7 @@ function confirmPriceUpdate(){
   state.prices[priceTicker]=p;
   if (!state.priceMeta) state.priceMeta={};
   state.priceMeta[priceTicker]={auto:false,fetched:Date.now(),source:'manual'};
-  save(); closePriceModal(); renderPortfolio(); notify('Price updated — '+priceTicker);
+  save(); closePriceModal(); renderPortfolio(); notify('Price updated - '+priceTicker);
 }
 
 // â”€â”€â”€ HISTORY â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
@@ -3996,7 +4024,7 @@ function fmtPrice4(n){
   if(isNaN(n)||n===null||n===undefined)return'0.0000';
   const abs=Math.abs(n);
   if(abs>0 && abs<0.0001){
-    // Too small for 4 decimals — show enough significant digits instead of truncating to 0.0000
+    // Too small for 4 decimals - show enough significant digits instead of truncating to 0.0000
     let s = abs.toFixed(12).replace(/0+$/,'').replace(/\.$/,'');
     return (n<0?'-':'')+s;
   }
@@ -4120,7 +4148,7 @@ function _trackEditWithBell(msg, ticker) {
 function _checkPriceSpikes() {
   const holdings = computeHoldings();
   const held = new Set(Object.values(holdings).filter(h=>h.units>0.0001).map(h=>(h.ticker||'').toUpperCase()));
-  // Persist in state so brackets survive page reloads — only reset at midnight
+  // Persist in state so brackets survive page reloads - only reset at midnight
   if (!state.spikeNotified) state.spikeNotified = {};
   const today = (typeof _localDateKey === 'function') ? _localDateKey() : new Date().toISOString().slice(0,10);
   if (state.spikeNotifiedDate !== today) {
@@ -4723,7 +4751,7 @@ function saveLifeWatchEdit(id) {
 
 // ── FOMO Checker ─────────────────────────────────────────────────────
 // Lets you try a different sell price on a past sell to see what you would
-// have received instead. Purely a what-if calculator — nothing is saved.
+// have received instead. Purely a what-if calculator - nothing is saved.
 function _fomoSellList() {
   return [...state.transactions]
     .filter(t => t.type === 'sell')
@@ -4742,7 +4770,7 @@ function openFomoChecker() {
     : '';
   ov.innerHTML = `<div class="life-edit-box" style="width:min(480px,100%);">
     <div class="chart-card-header" style="margin-bottom:12px;">
-      <div><div class="chart-title">🔍 FOMO Checker</div><div class="chart-subtitle">Try a different sell price — this is just a what-if, nothing is saved.</div></div>
+      <div><div class="chart-title">🔍 FOMO Checker</div><div class="chart-subtitle">Try a different sell price - this is just a what-if, nothing is saved.</div></div>
     </div>
     ${sells.length ? `
       <div class="form-group">
@@ -4755,7 +4783,7 @@ function openFomoChecker() {
         <input type="number" id="fomo-price" min="0" step="any" oninput="updateFomoCalc()">
       </div>
       <div id="fomo-result" style="margin-top:12px;"></div>
-    ` : `<div style="font-size:12px;color:var(--muted);padding:10px 0;">No sell transactions yet — sell something first to use the FOMO Checker.</div>`}
+    ` : `<div style="font-size:12px;color:var(--muted);padding:10px 0;">No sell transactions yet - sell something first to use the FOMO Checker.</div>`}
     <div style="display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;margin-top:14px;">
       <button class="btn-ghost" onclick="closeFomoChecker()">Close</button>
     </div>
@@ -4788,7 +4816,7 @@ function updateFomoCalc() {
     <div class="dash-card" style="padding:14px 16px;">
       <div class="dash-card-title">What you'd have received</div>
       <div class="dash-card-value">${curr} $${fmt(hypoTotal)}</div>
-      <div class="dash-card-sub ${cls}">${diff>=0?'+':'-'}${curr} $${fmt(Math.abs(diff))} — you ${verb} ${curr} $${fmt(Math.abs(diff))} vs your actual sell.</div>
+      <div class="dash-card-sub ${cls}">${diff>=0?'+':'-'}${curr} $${fmt(Math.abs(diff))} - you ${verb} ${curr} $${fmt(Math.abs(diff))} vs your actual sell.</div>
     </div>`;
 }
 
@@ -5101,7 +5129,7 @@ function checkWatchlistReminders() {
       w.reminded = true;
       changed = true;
       const tk = (w.ticker || '').toUpperCase();
-      _pushNotification(`Reminder: check ${tk}${w.notes ? ` — ${w.notes}` : ''}.`, tk);
+      _pushNotification(`Reminder: check ${tk}${w.notes ? ` - ${w.notes}` : ''}.`, tk);
     }
   });
   if (changed) { save(); renderWatchlist(); } else { _setBellUI(); }
@@ -5126,6 +5154,187 @@ function _fetchRelease() {
   _fetchActive--;
   if (_fetchQueue.length) { _fetchActive++; _fetchQueue.shift()(); }
 }
+
+const FN_WORKER_SRC = `/**
+ * Folionaire - personal price/news proxy (Cloudflare Worker)
+ * ----------------------------------------------------------
+ * Deploy this once on Cloudflare's free tier and paste the Worker URL into
+ * Folionaire → Settings → Custom Price Proxy. Folionaire will route price and
+ * news requests through it first, which fixes slow/blocked fetching (most
+ * common when opening the file directly on a phone).
+ *
+ * HOW TO DEPLOY (~5 minutes, no card required):
+ *   1. Sign up / log in at https://dash.cloudflare.com
+ *   2. In the left menu: Build > Compute (Workers & Pages)
+ *   3. Create application > Start with Hello World > name it
+ *      (e.g. folionaire-price-updates) > Deploy
+ *   4. Click "Edit code", delete the sample, paste THIS ENTIRE FILE, Deploy
+ *   5. Copy the Worker URL (https://<name>.<account>.workers.dev)
+ *   6. In Folionaire: Settings > Custom Price Proxy > paste > Test > Save
+ *
+ * NOTE: if Test reports HTTP 429, your Worker is fine - the data source is
+ * rate-limiting shared Cloudflare IPs at that moment. Save anyway; the app
+ * retries and falls back to the free proxies automatically.
+ *
+ * The allowlist below means your Worker can ONLY reach Folionaire's data
+ * sources - nobody can use it as a general-purpose open proxy.
+ * Free tier allows 100,000 requests/day: far more than one person needs.
+ */
+
+const ALLOWED_HOSTS = [
+  'query1.finance.yahoo.com',
+  'query2.finance.yahoo.com',
+  'finance.yahoo.com',
+  'feeds.finance.yahoo.com',
+  'api.coingecko.com',
+  'news.google.com',
+  'api.marketaux.com',
+  'finnhub.io',
+  'www.alphavantage.co',
+  // wallet balance sources
+  'blockchain.info',
+  'api.blockcypher.com',
+  'api.etherscan.io',
+  'api.bscscan.com',
+  'api.polygonscan.com',
+  'public-api.solscan.io',
+];
+
+export default {
+  async fetch(request) {
+    const cors = {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, OPTIONS',
+      'Access-Control-Allow-Headers': '*',
+    };
+    if (request.method === 'OPTIONS') return new Response(null, { headers: cors });
+    if (request.method !== 'GET') return new Response('GET only', { status: 405, headers: cors });
+
+    const target = new URL(request.url).searchParams.get('url');
+    if (!target) return new Response('Missing ?url= parameter', { status: 400, headers: cors });
+
+    let t;
+    try { t = new URL(target); } catch { return new Response('Invalid url', { status: 400, headers: cors }); }
+    if (t.protocol !== 'https:') return new Response('https only', { status: 400, headers: cors });
+
+    const ok = ALLOWED_HOSTS.some(h => t.hostname === h || t.hostname.endsWith('.' + h));
+    if (!ok) return new Response('Host not on allowlist', { status: 403, headers: cors });
+
+    let upstream;
+    try {
+      upstream = await fetch(t.toString(), {
+        headers: { 'User-Agent': 'Mozilla/5.0 (compatible; FolionaireProxy/1.0)', 'Accept': '*/*' },
+        cf: { cacheTtl: 30, cacheEverything: true },
+      });
+    } catch (e) {
+      return new Response('Upstream fetch failed: ' + (e && e.message), { status: 502, headers: cors });
+    }
+
+    const headers = new Headers(cors);
+    const ct = upstream.headers.get('content-type');
+    if (ct) headers.set('content-type', ct);
+    headers.set('cache-control', 'public, max-age=30');
+    return new Response(upstream.body, { status: upstream.status, headers });
+  }
+};
+`;
+function copyWorkerCode(){
+  const done = ok => { const st=document.getElementById('custom-proxy-status');
+    if(st){ st.style.color = ok?'var(--green)':'var(--red)';
+      st.textContent = ok ? '\u2713 Worker code copied - paste it into your Cloudflare Worker and Deploy.' : 'Copy failed - select the code from the box below and copy manually.'; }
+    if(!ok){ const ta=document.getElementById('worker-src-box'); if(ta){ ta.style.display='block'; ta.value=FN_WORKER_SRC; ta.focus(); ta.select(); } }
+  };
+  try {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(FN_WORKER_SRC).then(()=>done(true), ()=>done(false));
+    } else {
+      const ta=document.createElement('textarea'); ta.value=FN_WORKER_SRC; document.body.appendChild(ta);
+      ta.select(); const ok=document.execCommand('copy'); document.body.removeChild(ta); done(ok);
+    }
+  } catch(e){ done(false); }
+}
+
+// ── Custom proxy (user's own Cloudflare Worker) - tried first for prices & news ──
+function _customProxyBase(){
+  const p = ((typeof state!=='undefined' && state.customProxy) || '').trim();
+  return p ? p.replace(/\/+$/,'') : '';
+}
+function _customProxyEntry(json){
+  const base = _customProxyBase(); if (!base) return null;
+  return { name:'custom', build:u => base + '/?url=' + encodeURIComponent(u), json: !!json };
+}
+function saveCustomProxy(){
+  const el=document.getElementById('custom-proxy-input'); if(!el) return;
+  let v=(el.value||'').trim();
+  if (v && !/^https:\/\//i.test(v)) { if(typeof notify==='function') notify('Proxy URL must start with https://'); return; }
+  state.customProxy = v.replace(/\/+$/,'');
+  if (typeof save==='function') save();
+  window._fvProxyGood=''; window._fvProxyFails={};
+  const st=document.getElementById('custom-proxy-status');
+  if(st){ st.style.color='var(--muted)'; st.textContent = state.customProxy ? 'Saved - tried first for prices and news.' : 'Cleared.'; }
+  if(typeof notify==='function') notify(state.customProxy?'✓ Custom proxy saved':'Custom proxy cleared');
+}
+function clearCustomProxy(){
+  const el=document.getElementById('custom-proxy-input'); if(el) el.value='';
+  state.customProxy=''; if (typeof save==='function') save();
+  const st=document.getElementById('custom-proxy-status'); if(st){ st.style.color='var(--muted)'; st.textContent='Cleared.'; }
+}
+async function testCustomProxy(){
+  const st=document.getElementById('custom-proxy-status');
+  const el=document.getElementById('custom-proxy-input');
+  const base=((el&&el.value)||'').trim().replace(/\/+$/,'');
+  if(!base){ if(st){st.style.color='var(--red)';st.textContent='Enter a proxy URL first.';} return; }
+  if(st){ st.style.color='var(--muted)'; st.textContent='Testing both data sources\u2026'; }
+  const esc = s => String(s||'').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const probe = async (u)=>{
+    try{
+      const r=await fetch(base+'/?url='+encodeURIComponent(u), { signal: AbortSignal.timeout(9000) });
+      let b=''; try{ b=await r.text(); }catch(_){ }
+      return { status:r.status, ok:r.ok, body:b };
+    }catch(e){ return { err:(e&&e.message)||'network error' }; }
+  };
+  const [yh, cg] = await Promise.all([
+    probe('https://query1.finance.yahoo.com/v8/finance/chart/AAPL?range=1d&interval=1d'),
+    probe('https://api.coingecko.com/api/v3/ping')
+  ]);
+  const hello = r => r.ok && /hello/i.test((r.body||'').slice(0,60));
+  if (hello(yh) || hello(cg)){
+    if(st){st.style.color='var(--red)';st.innerHTML='Worker reached, but it is still the "Hello World" sample - click Edit code, paste the Folionaire Worker code, then Deploy.';} return;
+  }
+  const yhOK = yh.ok && (yh.body||'').indexOf('"chart"')!==-1;
+  const cgOK = cg.ok && (cg.body||'').indexOf('gecko_says')!==-1;
+  const line = (name, r, good) => {
+    if (good) return name+': OK';
+    if (r.status===429) return name+': rate-limited right now (normal from shared Cloudflare IPs; the app retries and falls back automatically)';
+    if (r.status===403) return name+': blocked by the Worker (403) - make sure the full Folionaire code with its allowlist is deployed';
+    if (r.err) return name+': unreachable ('+esc(r.err)+')';
+    return name+': HTTP '+(r.status||'?')+' right now (fallbacks cover it)';
+  };
+  const workerOK = yhOK || cgOK || yh.status===429 || cg.status===429;
+  if (workerOK){
+    if(st){
+      st.style.color = (yhOK && cgOK) ? 'var(--green)' : 'var(--green)';
+      st.innerHTML = '\u2713 Worker deployed correctly - save it to use it.<br>'
+        + '\u2022 ' + line('Yahoo (stocks)', yh, yhOK) + '<br>'
+        + '\u2022 ' + line('CoinGecko (crypto)', cg, cgOK);
+    }
+    return;
+  }
+  if (yh.status===403 && cg.status===403){
+    if(st){st.style.color='var(--red)';st.innerHTML='Worker reached but both sources returned 403 - the deployed code is not the Folionaire Worker (allowlist missing). Click Copy Worker code above and redeploy.';} return;
+  }
+  if (yh.err && cg.err){
+    if(st){st.style.color='var(--red)';st.innerHTML='\u2717 Could not reach the proxy: '+esc(yh.err)+'. Check the URL (it should look like https://name.account.workers.dev).';} return;
+  }
+  if(st){
+    st.style.color='var(--red)';
+    st.innerHTML='\u2717 Proxy responded but neither source came back OK.<br>'
+      + '\u2022 ' + line('Yahoo (stocks)', yh, false) + '<br>'
+      + '\u2022 ' + line('CoinGecko (crypto)', cg, false);
+  }
+}
+setTimeout(function(){ try{ const el=document.getElementById('custom-proxy-input'); if(el && typeof state!=='undefined' && state.customProxy) el.value=state.customProxy; }catch(_){} }, 0);
+
 // Parse proxy response (allorigins wraps JSON in {contents:"..."})
 function _parseProxyResponse(text) {
   const parsed = JSON.parse(text);
@@ -5136,6 +5345,14 @@ async function _fetchAllOriginsJson(url, timeoutMs=14000) {
   // Cache check
   const cached = _fetchCache.get(url);
   if (cached && (Date.now() - cached.ts < _FETCH_CACHE_TTL)) return cached.data;
+  // Overall fetch budget: when every route is blocked (e.g. file:// on mobile),
+  // fail fast instead of spinning forever, and tell the user what to do.
+  if (window._fvFetchDeadline && Date.now() > window._fvFetchDeadline) {
+    if (!window._fvBudgetNotified) { window._fvBudgetNotified = true;
+      try { notify('⚠ Price sources look blocked or very slow here. Add a Custom Proxy in Settings, or serve the file from a local/hosted server.'); } catch(_){}
+    }
+    throw new Error('Blocked in this environment - set a Custom Proxy in Settings, or serve the file locally.');
+  }
 
   await _fetchSlot();
   try {
@@ -5164,6 +5381,7 @@ async function _fetchAllOriginsJson(url, timeoutMs=14000) {
     ];
     window._fvProxyFails = window._fvProxyFails || {};
     if (window._fvProxyGood) proxies.sort((a,b)=>(b.name===window._fvProxyGood)-(a.name===window._fvProxyGood));
+    const _cp = _customProxyEntry(); if (_cp) proxies.unshift(_cp); // user's own proxy always first
     for (let pi = 0; pi < proxies.length; pi++) {
       const proxy = proxies[pi];
       if ((window._fvProxyFails[proxy.name]||0) >= 3) continue; // circuit breaker: proxy is down this session
@@ -5313,7 +5531,7 @@ async function loadStockFundamentals(force=false) {
       const res = data?.chart?.result?.[0];
       const meta = res?.meta;
       if (!meta) continue;
-      // Only use the daily (1d/5d) fetch for "today's" price/change — falling back to the
+      // Only use the daily (1d/5d) fetch for "today's" price/change - falling back to the
       // weekly chart's previous close here would compare against a close from up to a week
       // ago and produce a misleadingly large "daily" % change.
       const metaDaily = dataDaily?.chart?.result?.[0]?.meta || null;
@@ -5391,10 +5609,10 @@ async function loadStockNews(force=false) {
     try {
       const r = await fetch(url, { signal: AbortSignal.timeout(6000) });
       if (r.status === 401 || r.status === 402 || r.status === 403) { _apiKeyErr = 'News API rejected the key (HTTP ' + r.status + '). Check the key or your plan limits.'; throw new Error(_apiKeyErr); }
-      if (r.status === 429) { _apiKeyErr = 'News API rate limit reached (HTTP 429) — you may have hit the free daily/minute limit.'; throw new Error(_apiKeyErr); }
+      if (r.status === 429) { _apiKeyErr = 'News API rate limit reached (HTTP 429) - you may have hit the free daily/minute limit.'; throw new Error(_apiKeyErr); }
       if (r.ok) return await r.json();
-    } catch(e) { if (_apiKeyErr) throw e; /* CORS/network — try proxy below */ }
-    for (const p of NEWS_PROXIES.slice(0, 3)) {
+    } catch(e) { if (_apiKeyErr) throw e; /* CORS/network - try proxy below */ }
+    for (const p of (()=>{ const c=_customProxyEntry(false); const b=NEWS_PROXIES.slice(0,3); return c?[c,...b]:b; })()) {
       try {
         const r = await fetch(p.build(url), { signal: AbortSignal.timeout(6500) });
         if (!r.ok) continue;
@@ -5496,7 +5714,8 @@ async function loadStockNews(force=false) {
   ];
   const fetchRss = async (url, label) => {
     let lastErr = '';
-    for (const p of NEWS_PROXIES) {
+    const _nplist = (()=>{ const c=_customProxyEntry(false); return c ? [c, ...NEWS_PROXIES] : NEWS_PROXIES; })();
+    for (const p of _nplist) {
       for (let attempt = 0; attempt < 2; attempt++) {
         try {
           const r = await fetch(p.build(url), { signal: AbortSignal.timeout(6000) });
@@ -5513,11 +5732,11 @@ async function loadStockNews(force=false) {
           break;
         } catch(e) {
           lastErr = p.name + ' ' + (e && e.name === 'TimeoutError' ? 'timeout' : 'failed');
-          break; // don't retry network/timeout failures — move to next proxy
+          break; // don't retry network/timeout failures - move to next proxy
         }
       }
     }
-    throw new Error((label || 'RSS') + ' blocked via all proxies' + (lastErr ? ' — last: ' + lastErr : '') + '.');
+    throw new Error((label || 'RSS') + ' blocked via all proxies' + (lastErr ? ' - last: ' + lastErr : '') + '.');
   };
   const fetchGoogleNews = (query) =>
     fetchRss('https://news.google.com/rss/search?q=' + encodeURIComponent(query) + '&hl=en-AU&gl=AU&ceid=AU:en', 'Google News');
@@ -5576,7 +5795,7 @@ async function loadStockNews(force=false) {
         try { out = await fetchNewsApi(q); } catch(_) {}
         return out;
       }
-      // No key: free RSS chain — Google News, then Yahoo Finance.
+      // No key: free RSS chain - Google News, then Yahoo Finance.
       try { out = parseRSS(await fetchGoogleNews(q.query), 'Google News'); } catch(_) {}
       if (!out.length && q.yTicker) {
         try { out = parseRSS(await fetchYahooNews(q.yTicker), 'Yahoo Finance'); } catch(_) {}
@@ -5606,11 +5825,11 @@ async function loadStockNews(force=false) {
     if (r.status === 'fulfilled') allNews.push(...r.value);
     else failures.push(queries[idx].ticker + ': ' + (r.reason?.message || 'fetch failed'));
   });
-  // Surface a real error only if the key was rejected — a genuinely empty result
+  // Surface a real error only if the key was rejected - a genuinely empty result
   // (no recent news) is not an error and shows the "no new items" message.
   if (_apiKeyErr) throw new Error(_apiKeyErr);
   if (!allNews.length && failures.length && failures.length === results.length) {
-    throw new Error('Could not reach the news source right now — please try again shortly.');
+    throw new Error('Could not reach the news source right now - please try again shortly.');
   }
 
   const seen = new Set();
@@ -5675,7 +5894,7 @@ function saveNewsApiKey(triggerFetch) {
   if (typeof _trackEdit === 'function') _trackEdit();
   save();
   if (triggerFetch && state.newsApi.keys[prov]) {
-    if (typeof notify === 'function') notify('🔑 Key saved — fetching news');
+    if (typeof notify === 'function') notify('🔑 Key saved - fetching news');
     refreshStockNews();
   } else {
     if (typeof notify === 'function') notify('🔑 News API key saved');
@@ -5703,7 +5922,7 @@ function clearNewsApiKey() {
 async function refreshStockNews() {
   const tc = _tc();
   tc.flags.news = true; tc.newsErr = ''; save(); renderTerminal(false);
-  const timeout = new Promise((_, rej) => setTimeout(() => rej(new Error('News fetch timed out. The news source appears to be blocked or slow right now — if you have a Marketaux key, check it below; otherwise try again shortly.')), 32000));
+  const timeout = new Promise((_, rej) => setTimeout(() => rej(new Error('News fetch timed out. The news source appears to be blocked or slow right now - if you have a Marketaux key, check it below; otherwise try again shortly.')), 32000));
   try {
     await Promise.race([loadStockNews(true), timeout]);
     tc.newsTs = Date.now();
@@ -5821,7 +6040,7 @@ async function fetchCryptoFundamentalsForTicker(ticker, inputVal) {
     notify('✓ Loaded: ' + item.name);
   } catch(e) {
     tc.cryptoFundsErr = e.message || 'Fetch failed.';
-    notify('⚠ ' + (e.message || 'Not found — enter the CoinGecko ID manually'));
+    notify('⚠ ' + (e.message || 'Not found - enter the CoinGecko ID manually'));
   } finally {
     tc.flags.cryptoFunds = false; tc._fetchingTicker = null; save(); renderTerminal(false);
   }
@@ -5864,7 +6083,7 @@ async function fetchCryptoFundamentalsForId() {
     notify(`✓ Loaded: ${item.name}`);
     input.value = '';
   } catch(e) {
-    tc.cryptoFundsErr = e.message || 'Fetch failed — check the CoinGecko ID.';
+    tc.cryptoFundsErr = e.message || 'Fetch failed - check the CoinGecko ID.';
     notify('⚠ ' + (e.message || 'Not found'));
   } finally {
     tc.flags.cryptoFunds = false; save(); renderTerminal(false);
@@ -6039,7 +6258,7 @@ async function refreshTerminalAll() {
     await loadStockNews(true);
     tc.lastAllTs = Date.now();
   } catch(e) {
-    tc.allErr = e.message || 'One or more tasks failed — check connection or try again in a minute.';
+    tc.allErr = e.message || 'One or more tasks failed - check connection or try again in a minute.';
   } finally {
     tc.flags.all = false;
     save(); renderTerminal(false);
@@ -6091,21 +6310,21 @@ function computePortfolioRisks() {
   const usdArr = usdHoldings.map(h => ({ ticker: h.ticker, val: valOf(h) })).filter(x => x.val > 0).sort((a,b) => b.val - a.val);
   const grandTotal = holdings.reduce((s, h) => s + valOf(h), 0);
 
-  if (!audArr.length) na('AUD Concentration', 'N/A — no AUD holdings');
+  if (!audArr.length) na('AUD Concentration', 'N/A - no AUD holdings');
   else {
     const pct = audArr[0].val / audArr.reduce((s, x) => s + x.val, 0) * 100;
     if (pct >= 50) flag('AUD Concentration', 'high', `${audArr[0].ticker} is ${pct.toFixed(1)}% of AUD portfolio.`);
     else if (pct >= 30) flag('AUD Concentration', 'med', `${audArr[0].ticker} is ${pct.toFixed(1)}% of AUD portfolio.`);
     else pass('AUD Concentration', `Largest AUD position is ${pct.toFixed(1)}%.`);
   }
-  if (!usdArr.length) na('USD/Crypto Concentration', 'N/A — no USD/crypto holdings');
+  if (!usdArr.length) na('USD/Crypto Concentration', 'N/A - no USD/crypto holdings');
   else {
     const pct = usdArr[0].val / usdArr.reduce((s, x) => s + x.val, 0) * 100;
     if (pct >= 50) flag('USD/Crypto Concentration', 'high', `${usdArr[0].ticker} is ${pct.toFixed(1)}% of crypto/USD portfolio.`);
     else if (pct >= 30) flag('USD/Crypto Concentration', 'med', `${usdArr[0].ticker} is ${pct.toFixed(1)}% of crypto/USD holdings.`);
     else pass('USD/Crypto Concentration', `Largest USD/crypto position is ${pct.toFixed(1)}%.`);
   }
-  if (!audArr.length) na('AUD Diversification', 'N/A — no AUD holdings');
+  if (!audArr.length) na('AUD Diversification', 'N/A - no AUD holdings');
   else if (audArr.length <= 2) flag('AUD Diversification', 'med', `Only ${audArr.length} AUD holding${audArr.length===1?'':'s'}.`);
   else pass('AUD Diversification', `${audArr.length} AUD holdings.`);
 
@@ -6117,7 +6336,7 @@ function computePortfolioRisks() {
     sectorMap[sec] = (sectorMap[sec] || 0) + valOf(h);
   });
   const sectorTotal = Object.values(sectorMap).reduce((a, b) => a + b, 0);
-  if (!stocks.length) na('Sector Concentration', 'N/A — no stock holdings');
+  if (!stocks.length) na('Sector Concentration', 'N/A - no stock holdings');
   else if (!sectorTotal) na('Sector Concentration', 'No sector data set yet.');
   else {
     const top = Object.entries(sectorMap).sort((a, b) => b[1] - a[1])[0];
@@ -6129,12 +6348,12 @@ function computePortfolioRisks() {
 
   const missingPx = holdings.filter(h => !cpOf(h.ticker));
   if (missingPx.length) flag('Price Data', 'med', `Missing prices for: ${missingPx.map(h => h.ticker).join(', ')}`);
-  else if (!holdings.length) na('Price Data', 'N/A — no holdings');
+  else if (!holdings.length) na('Price Data', 'N/A - no holdings');
   else pass('Price Data', 'All holdings have current prices.');
 
   const STABLES = new Set(['USDT','USDC','DAI','BUSD','TUSD','USDP','GUSD','FRAX','LUSD','USDD']);
   const cryptoTotal = cryptos.reduce((s, h) => s + valOf(h), 0);
-  if (!cryptos.length) na('Stablecoin Exposure', 'N/A — no crypto holdings');
+  if (!cryptos.length) na('Stablecoin Exposure', 'N/A - no crypto holdings');
   else {
     const stableVal = cryptos.filter(h => STABLES.has(h.ticker.toUpperCase())).reduce((s, h) => s + valOf(h), 0);
     const stablePct = cryptoTotal > 0 ? stableVal / cryptoTotal * 100 : 0;
@@ -6143,7 +6362,7 @@ function computePortfolioRisks() {
   }
 
   const MEMES = new Set(['DOGE','SHIB','PEPE','FLOKI','BONK','WIF','MEME','TURBO','LADYS','WOJAK','ELON','BABYDOGE']);
-  if (!cryptos.length) na('Meme Coin Exposure', 'N/A — no crypto holdings');
+  if (!cryptos.length) na('Meme Coin Exposure', 'N/A - no crypto holdings');
   else {
     const memeVal = cryptos.filter(h => MEMES.has(h.ticker.toUpperCase())).reduce((s, h) => s + valOf(h), 0);
     const memePct = cryptoTotal > 0 ? memeVal / cryptoTotal * 100 : 0;
@@ -6152,8 +6371,8 @@ function computePortfolioRisks() {
     else pass('Meme Coin Exposure', memeVal > 0 ? `${memePct.toFixed(1)}% meme exposure.` : 'No meme coin exposure.');
   }
 
-  if (!grandTotal) na('Asset Mix', 'N/A — no holdings');
-  else if (!stocks.length || !cryptos.length) na('Asset Mix', 'N/A — portfolio only has one asset class.');
+  if (!grandTotal) na('Asset Mix', 'N/A - no holdings');
+  else if (!stocks.length || !cryptos.length) na('Asset Mix', 'N/A - portfolio only has one asset class.');
   else {
     const cryptoPct = usdHoldings.reduce((s, h) => s + valOf(h), 0) / grandTotal * 100;
     if (cryptoPct >= 80) flag('Asset Mix', 'med', `${cryptoPct.toFixed(1)}% of the total portfolio is crypto.`);
@@ -6162,7 +6381,7 @@ function computePortfolioRisks() {
   }
 
   const bigLosers = holdings.filter(h => { const cp = cpOf(h.ticker); const pnl = h.avgCost > 0 && cp ? ((cp - h.avgCost) / h.avgCost * 100) : null; return pnl !== null && pnl <= -25; });
-  if (!holdings.length) na('Unrealised Losses', 'N/A — no holdings');
+  if (!holdings.length) na('Unrealised Losses', 'N/A - no holdings');
   else if (!bigLosers.length) pass('Unrealised Losses', 'No holdings are down more than 25% from average cost.');
   else {
     const loserItems = bigLosers.map(h => {
@@ -6256,15 +6475,15 @@ function renderTerminal(auto=false) {
   if (!el) return;
   const tc = _tc();
 
-  // Auto-refresh on entry if data is older than 1 hour — sequential, rate-limit safe
-  // Auto-refresh on terminal entry is disabled — all refreshes are manual
+  // Auto-refresh on entry if data is older than 1 hour - sequential, rate-limit safe
+  // Auto-refresh on terminal entry is disabled - all refreshes are manual
   if (false) {
     const staleTop200   = !tc.cryptoTop200   || (Date.now() - (tc.cryptoTop200.ts||0)   > 60*60*1000);
     const staleTrend    = !tc.cryptoTrending || (Date.now() - (tc.cryptoTrending.ts||0) > 60*60*1000);
     const staleGlobal   = !tc.cryptoGlobal   || (Date.now() - (tc.cryptoGlobal.ts||0)   > 60*60*1000);
     const staleVolume = !tc.volumeFetchedAt || (Date.now() - (tc.volumeFetchedAt||0) > 60*60*1000);
     if (staleTop200 || staleTrend || staleGlobal || staleVolume) {
-      // Fire and forget — sequential refresh, dont block render
+      // Fire and forget - sequential refresh, dont block render
       setTimeout(refreshTerminalAll, 400);
     }
   }
@@ -6293,7 +6512,7 @@ function renderTerminal(auto=false) {
     </div>
 
     <div class="dash-card" style="padding:18px;margin-bottom:16px;">
-      ${_termSectionHead('news', '📰 News &amp; Sentiment', `${_newsApiActiveKey()?`<div style="font-size:10px;color:var(--green);margin-top:2px;">✓ Using ${_newsApiName(state.newsApi.provider)} API key — headlines &amp; sentiment</div>`:`<div style="font-size:10px;color:var(--accent);margin-top:2px;" title="Fetched via a fallback chain of free CORS proxies. Works most reliably from a local or hosted server (e.g. python3 -m http.server); some proxies may still be blocked when opened directly as a file://.">⚠ Free RSS mode — most reliable via local/hosted server</div>`}<div style="font-size:10px;color:var(--muted);margin-top:3px;">Last scan: <span style="color:${_termTsColour(tc.newsTs)};">${tc.newsTs ? _fmtTermTs(tc.newsTs) : 'Never'}</span> · Headlines &amp; sentiment for your holdings</div>`, btn(tc.flags.news?'⟳ Refreshing…':'⟳ Refresh', 'refreshStockNews()', !!tc.flags.news))}
+      ${_termSectionHead('news', '📰 News &amp; Sentiment', `${_newsApiActiveKey()?`<div style="font-size:10px;color:var(--green);margin-top:2px;">✓ Using ${_newsApiName(state.newsApi.provider)} API key - headlines &amp; sentiment</div>`:`<div style="font-size:10px;color:var(--accent);margin-top:2px;" title="Fetched via a fallback chain of free CORS proxies. Works most reliably from a local or hosted server (e.g. python3 -m http.server); some proxies may still be blocked when opened directly as a file://.">⚠ Free RSS mode - most reliable via local/hosted server</div>`}<div style="font-size:10px;color:var(--muted);margin-top:3px;">Last scan: <span style="color:${_termTsColour(tc.newsTs)};">${tc.newsTs ? _fmtTermTs(tc.newsTs) : 'Never'}</span> · Headlines &amp; sentiment for your holdings</div>`, btn(tc.flags.news?'⟳ Refreshing…':'⟳ Refresh', 'refreshStockNews()', !!tc.flags.news))}
       ${_termSectionBodyOpen('news', `
       ${tc.newsErr ? `<div style="font-size:11px;color:var(--red);margin-top:8px;">${tc.newsErr}</div>` : ''}
       ${(() => {
@@ -6314,7 +6533,7 @@ function renderTerminal(auto=false) {
         }
         return `<div style="background:var(--bg);border:1px solid var(--border2);border-radius:8px;padding:12px;margin:10px 0 6px;">
           <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
-            <span style="font-size:11px;color:var(--text);font-weight:600;">Optional news API key — real sentiment, per ticker</span>
+            <span style="font-size:11px;color:var(--text);font-weight:600;">Optional news API key - real sentiment, per ticker</span>
             <a id="news-api-link" href="${meta.url}" target="_blank" rel="noopener" style="font-size:10px;color:var(--accent);white-space:nowrap;">Get a free ${provName} key →</a>
           </div>
           <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
@@ -6388,7 +6607,7 @@ function renderTerminal(auto=false) {
         })()
         }
       </div>
-      <div style="font-size:10px;color:var(--muted);margin-top:8px;">ℹ PE ratio, EPS, dividend yield, market cap &amp; institutional holders require Yahoo Finance premium — not available via proxy. Showing what v8/chart provides.</div>
+      <div style="font-size:10px;color:var(--muted);margin-top:8px;">ℹ PE ratio, EPS, dividend yield, market cap &amp; institutional holders require Yahoo Finance premium - not available via proxy. Showing what v8/chart provides.</div>
       `)}
     </div>
 
@@ -6440,7 +6659,7 @@ function renderTerminal(auto=false) {
           }).join('');
         })()}
       </div>
-      <div style="font-size:10px;color:var(--muted);margin-top:8px;">ℹ PE ratio, EPS, dividend yield &amp; market cap require Yahoo Finance premium — not available via proxy.</div>
+      <div style="font-size:10px;color:var(--muted);margin-top:8px;">ℹ PE ratio, EPS, dividend yield &amp; market cap require Yahoo Finance premium - not available via proxy.</div>
       `)}
     </div>
 
@@ -6959,7 +7178,7 @@ function renderDashboard() {
   document.getElementById('dash-kpis').innerHTML = _kpiCards.join('');
   renderTradeAnalytics();
 
-  // Pie charts — wrapped so a Chart.js error can't abort performers/sectors
+  // Pie charts - wrapped so a Chart.js error can't abort performers/sectors
   // Filter All Holdings pie by selected currency
   const _pieT = (_pieAllCurr === 'USD')
     ? tickers.filter(k => (holdings[k].currency||'AUD')==='USD')
@@ -6986,7 +7205,7 @@ function renderDashboard() {
   renderPortfolioChange();
 }
 
-// Perf state — declared BEFORE refreshPerformers so they're never in TDZ when called
+// Perf state - declared BEFORE refreshPerformers so they're never in TDZ when called
 const _perfTabState = { best: 'current', worst: 'current' };
 const _perfYearState = { best: 'all', worst: 'all' };
 window._perfCurrent = [];
@@ -7117,7 +7336,7 @@ function _renderPerfList(top5, next5, elId, tab) {
   el.innerHTML = html;
 }
 
-// Placeholder closing brace placeholder — renderDashboard closed above
+// Placeholder closing brace placeholder - renderDashboard closed above
 function renderPie(canvasId, legendId, keys, holdings, palette) {
   if (charts[canvasId]) { charts[canvasId].destroy(); delete charts[canvasId]; }
   const el = document.getElementById(legendId);
@@ -7209,7 +7428,7 @@ function renderPie(canvasId, legendId, keys, holdings, palette) {
     if (sub) sub.textContent = `${keys.length} positions · $${fmt(total)} total`;
     return;
   }
-  // Stocks / Crypto: compact legend with bar — sorted by % descending
+  // Stocks / Crypto: compact legend with bar - sorted by % descending
   const sortedIdx = keys.map((_,i)=>i).sort((a,b)=>data[b]-data[a]);
   el.innerHTML = sortedIdx.map(i=>{
     const pct=total>0?((data[i]/total)*100):0;
@@ -7358,7 +7577,7 @@ function renderClosedPnlChart() {
   grad.addColorStop(0, lineColor + '44');
   grad.addColorStop(1, lineColor + '00');
 
-  // For bar chart — use per-event P&L (not cumulative)
+  // For bar chart - use per-event P&L (not cumulative)
   const isBar = _closedChartType === 'bar';
   const barLabels = filtered.map(p => p.date);
   const barData   = filtered.map(p => p.pnl);
@@ -7932,7 +8151,7 @@ const CRYPTO_CACHE_MS =  5 * 60 * 1000;       // 5 minutes
 
 // CoinGecko ticker → coin id map (common ones; user can expand)
 const COINGECKO_IDS = {
-  // Pre-mapped — your portfolio coins
+  // Pre-mapped - your portfolio coins
   ABC:'abc-chain', AGC:'agrocoin', BERRY:'berry-data',
   COLLAT:'collateral-network', CRO:'crypto-com-chain',
   DAG:'constellation-labs', GENOME:'genome', JASMY:'jasmycoin',
@@ -8212,6 +8431,7 @@ async function fetchAllPrices(force = false) {
   setApiStatus('coingecko', 'loading', 'fetching...');
   setApiStatus('yahoo', 'loading', 'fetching...');
   setFetchButtonsLoading(true);
+  window._fvFetchDeadline = Date.now() + 60000; window._fvBudgetNotified = false;
   try {
   let fetched = 0, failed = 0;
 
@@ -8310,7 +8530,7 @@ async function fetchAllPrices(force = false) {
   // Store a daily snapshot so charts can show "yesterday/last week" values going forward.
   recordValueSnapshot('price-refresh');
   state._lastPriceFetch = Date.now();
-  // Top Movers is derived from prices — stamp it now so its "Last refresh" date
+  // Top Movers is derived from prices - stamp it now so its "Last refresh" date
   // updates on auto-refresh (on load) too, not only via its manual button.
   if (typeof _tc === 'function') _tc().moversTs = Date.now();
   save();
@@ -8320,7 +8540,7 @@ async function fetchAllPrices(force = false) {
     renderSectorsFromCache();
     setTimeout(()=>{_updateMobStats&&_updateMobStats();_renderMobSparkline&&_renderMobSparkline(_mobSparkCurr||'AUD');;},300);
   }
-  // Always refresh performers regardless of active tab — prices just updated
+  // Always refresh performers regardless of active tab - prices just updated
   refreshPerformers();
   _checkPriceSpikes();
   checkWatchlistAlerts();
@@ -8339,6 +8559,7 @@ async function fetchAllPrices(force = false) {
   else if (stFetched>0) { setApiStatus('yahoo', 'stale', `${stFetched} ok · ${stFailed} fail · ${now}`); setFailedTickers('yahoo', _stFailed); }
   else { setApiStatus('yahoo', 'error', `${_stFailed.length} fail · ${now}`); setFailedTickers('yahoo', _stFailed); }
   } finally {
+    window._fvFetchDeadline = 0;
     setFetchButtonsLoading(false);
   }
 }
@@ -8644,7 +8865,7 @@ function loadLogoFile(e) {
     const ph = document.getElementById('lm-preview-placeholder');
     prev.src = dataUrl; prev.style.display = 'block';
     if (ph) ph.style.display = 'none';
-    // Store dataUrl directly — save immediately
+    // Store dataUrl directly - save immediately
     if (!state.logoOverrides) state.logoOverrides = {};
     state.logoOverrides[_logoModalTicker] = dataUrl;
     _logoCache[_logoModalTicker] = dataUrl;
@@ -9254,7 +9475,7 @@ function renderCGT() {
   const upcoming = lots.filter(l => !l.isEligible).sort((a,b) => a.eligibleDate - b.eligibleDate);
   const shown = _cgtTab === 'eligible' ? eligible : upcoming;
 
-  // Summary — split AUD/USD
+  // Summary - split AUD/USD
   const eligAUD = eligible.filter(l => (l.currency||'AUD')==='AUD');
   const eligUSD = eligible.filter(l => (l.currency||'AUD')==='USD');
   const eligTotalAUD = eligAUD.reduce((s,l) => s + (l.pnl||0), 0);
@@ -9560,13 +9781,13 @@ async function scanWallet() {
     } else if (addr.length >= 32 && addr.length <= 44 && !addr.startsWith('0x')) {
       detectedChain = 'solana';
     } else if (addr.startsWith('0x') && addr.length === 42) {
-      // EVM address — need user to pick chain
+      // EVM address - need user to pick chain
       const pick = await new Promise(resolve => {
         const ov = document.createElement('div');
         ov.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:9999;display:flex;align-items:center;justify-content:center;';
         ov.innerHTML = `<div style="background:var(--surface);border:1px solid var(--border2);border-radius:12px;padding:24px 28px;max-width:340px;width:90%;">
           <div style="font-family:var(--font-head);font-weight:700;font-size:14px;margin-bottom:4px;">Select Chain</div>
-          <div style="font-size:12px;color:var(--muted);margin-bottom:16px;">EVM address detected — which network?</div>
+          <div style="font-size:12px;color:var(--muted);margin-bottom:16px;">EVM address detected - which network?</div>
           <div style="display:flex;flex-direction:column;gap:7px;">
             ${[['eth','Ethereum (ETH)'],['bsc','BNB Chain (BNB)'],['polygon','Polygon (POL)'],['base','Base (ETH)'],['arbitrum','Arbitrum (ETH)']].map(([v,l])=>
               `<button onclick="document.getElementById('chain-pick-overlay').dataset.val='${v}'" style="padding:9px 14px;background:var(--surface2);border:1px solid var(--border2);border-radius:6px;color:var(--text);cursor:pointer;font-size:12px;text-align:left;">${l}</button>`
@@ -9626,7 +9847,7 @@ async function scanBTC(addr, statusEl, resultsEl, step) {
   for (const api of BTC_APIS) {
     try { btc = await api(); break; } catch(e) { continue; }
   }
-  if (btc === null) throw new Error('All Bitcoin APIs failed — check address or try again later');
+  if (btc === null) throw new Error('All Bitcoin APIs failed - check address or try again later');
 
   step('Fetching BTC price\u2026');
   let usdVal = null;
@@ -9753,7 +9974,7 @@ async function fetchCryptoLogoBatch(tickers) {
   });
   const ids = Object.keys(idToTk);
   if (!ids.length) return;
-  // CoinGecko /coins/markets — up to 250 per call, returns image URLs directly
+  // CoinGecko /coins/markets - up to 250 per call, returns image URLs directly
   const batchSize = 100;
   for (let i = 0; i < ids.length; i += batchSize) {
     const batch = ids.slice(i, i + batchSize);
@@ -9838,7 +10059,7 @@ async function fetchAllLogos() {
   const cryptoKeys = keys.filter(k => holdings[k].assetType === 'crypto');
   const stockKeys  = keys.filter(k => holdings[k].assetType !== 'crypto');
 
-  // Crypto: batch fetch from CoinGecko /coins/markets — 1 API call for all
+  // Crypto: batch fetch from CoinGecko /coins/markets - 1 API call for all
   if (cryptoKeys.length) {
   if (btn) btn.innerHTML = `\u23F3 Crypto logos (${cryptoKeys.length})\u2026`;
     const tickers = cryptoKeys.map(k => holdings[k].ticker.toUpperCase());
@@ -10031,7 +10252,7 @@ async function fetchAndRenderSectors(kind='both') {
   const ts0 = Date.now();
   _setSectorStatus('sector-stock-status', `Known: ${Object.keys(stockSectorMap).length}/${Object.keys(stockUniq).length} · Last scan ${_fmtHm(ts0)}`);
   _setSectorStatus('sector-crypto-status', `Known: ${Object.keys(cryptoCatMap).length}/${Object.keys(cryptoUniq).length} · Last scan ${_fmtHm(ts0)}`);
-  // Render immediately — no waiting for network
+  // Render immediately - no waiting for network
   _renderSectorCharts(stockSectorMap, cryptoCatMap, stockKeys, cryptoKeys, holdings);
   updateSectorScanButtons();
   
@@ -10219,7 +10440,7 @@ function renderSectorPie(canvasId, legendId, entries, palette, subId, label, hol
       </div>
     </div>`;
   }).join('');
-  // Attach click listeners directly after innerHTML set — most reliable approach
+  // Attach click listeners directly after innerHTML set - most reliable approach
   el.querySelectorAll('[data-sector-ticker]').forEach(badge => {
     badge.addEventListener('click', function(ev) {
       ev.stopPropagation();
@@ -10235,7 +10456,7 @@ function _renderSectorCharts(stockSectorMap, cryptoCatMap, stockKeys, cryptoKeys
   renderSectorPie('pie-sector-crypto', 'legend-sector-crypto', cryptoEntries, PALETTE_CAT,    'sector-crypto-sub', 'Crypto',  holdings);
 }
 
-// Auto-render sector charts — always render immediately from static map + cache,
+// Auto-render sector charts - always render immediately from static map + cache,
 // no network gate. fetchAndRenderSectors handles its own async enrichment.
 function renderSectorsFromCache() {
   const holdings = computeHoldings();
@@ -10269,7 +10490,7 @@ function openSectorModal(ticker, assetType) {
   ov.innerHTML = `
     <div style="background:#1e2235;color:#e0e0e0;border:1px solid #444;border-radius:8px;padding:24px;width:420px;max-width:95vw;">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
-      <span style="font-weight:700;font-size:14px;">Edit Sector — <span style="color:#7c9eff;">${ticker}</span></span>
+      <span style="font-weight:700;font-size:14px;">Edit Sector - <span style="color:#7c9eff;">${ticker}</span></span>
         <button id="sm-dyn-close" style="background:none;border:none;color:#888;font-size:20px;cursor:pointer;line-height:1;">✕</button>
       </div>
       <label style="font-size:11px;color:#888;display:block;margin-bottom:4px;">Sector / Category</label>
@@ -10368,7 +10589,7 @@ function saveSectorEdit() {
     <button class="load-opt" onclick="pickPlatformCsv('Binance')"><span class="load-opt-ico">🟡</span><span><span class="load-opt-title">Binance</span><span class="load-opt-sub">Wallet → Transaction History → Export</span></span></button>
     <button class="load-opt" onclick="pickPlatformCsv('Coinbase')"><span class="load-opt-ico">🔵</span><span><span class="load-opt-title">Coinbase</span><span class="load-opt-sub">Reports → Generate report → CSV</span></span></button>
     <button class="load-opt" onclick="pickPlatformCsv('Crypto.com')"><span class="load-opt-ico">💠</span><span><span class="load-opt-title">Crypto.com</span><span class="load-opt-sub">Accounts → Transaction History → Export</span></span></button>
-    <button class="load-opt" onclick="pickPlatformCsv('Other')"><span class="load-opt-ico">📄</span><span><span class="load-opt-title">Other platform CSV</span><span class="load-opt-sub">Kraken, KuCoin, Sharesight, etc. — auto-detects columns</span></span></button>
+    <button class="load-opt" onclick="pickPlatformCsv('Other')"><span class="load-opt-ico">📄</span><span><span class="load-opt-title">Other platform CSV</span><span class="load-opt-sub">Kraken, KuCoin, Sharesight, etc. - auto-detects columns</span></span></button>
 
     <div style="font-size:10px;color:var(--muted);margin-top:14px;line-height:1.5;">Imports auto-detect the date, type, coin, amount and price columns. You'll be asked to <strong>merge</strong> with or <strong>replace</strong> your current data. Crypto is assumed unless the CSV says otherwise, and prices refresh right after.</div>
 
@@ -10379,7 +10600,7 @@ function saveSectorEdit() {
 <div id="logo-modal-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:9999;align-items:center;justify-content:center;padding:20px;" onclick="if(event.target===this)closeLogoModal()">
   <div style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;padding:24px;width:380px;max-width:95vw;" onclick="event.stopPropagation()">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
-      <span style="font-family:var(--font-head);font-weight:700;font-size:14px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px;"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3H8l-2 4h12l-2-4z"/><circle cx="12" cy="14" r="3"/></svg>Set Logo — <span id="lm-ticker" style="color:var(--accent);"></span></span>
+      <span style="font-family:var(--font-head);font-weight:700;font-size:14px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px;"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3H8l-2 4h12l-2-4z"/><circle cx="12" cy="14" r="3"/></svg>Set Logo - <span id="lm-ticker" style="color:var(--accent);"></span></span>
       <button onclick="closeLogoModal()" style="background:none;border:none;color:var(--muted);font-size:18px;cursor:pointer;line-height:1;padding:0 2px;">✕</button>
     </div>
     <!-- Preview -->
@@ -10416,7 +10637,7 @@ function saveSectorEdit() {
 <div id="sector-modal-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:10000;align-items:center;justify-content:center;padding:20px;" onclick="if(event.target===this)closeSectorModal()">
   <div style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;padding:24px;width:420px;max-width:95vw;" onclick="event.stopPropagation()">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
-      <span style="font-family:var(--font-head);font-weight:700;font-size:14px;">Edit Sector — <span id="sm-ticker" style="color:var(--accent);"></span></span>
+      <span style="font-family:var(--font-head);font-weight:700;font-size:14px;">Edit Sector - <span id="sm-ticker" style="color:var(--accent);"></span></span>
       <button onclick="closeSectorModal()" style="background:none;border:none;color:var(--muted);font-size:18px;cursor:pointer;line-height:1;padding:0 2px;">✕</button>
     </div>
     <div style="margin-bottom:14px;">
@@ -10462,9 +10683,9 @@ function saveSectorEdit() {
 
   /* ── Buy modal ── */
   const locked = [
-    ['💾','Save, JSON backup & CSV export','Demo resets on refresh — the full version saves everything locally, forever.'],
+    ['💾','Save, JSON backup & CSV export','Demo resets on refresh - the full version saves everything locally, forever.'],
     ['📥','Platform CSV imports','CoinGecko, CoinMarketCap, Binance, Coinbase & Crypto.com one-click imports.'],
-    ['📁','Unlimited portfolios','Kids, SMSF/super, watch-only — create, rename and manage as many as you need.'],
+    ['📁','Unlimited portfolios','Kids, SMSF/super, watch-only - create, rename and manage as many as you need.'],
     ['➕','Unlimited transactions','Demo allows 3 new transactions. Full version: unlimited, with batch edit.'],
     ['🔔','Full watchlists & alerts','Demo allows 1 entry. Full version: unlimited lists, targets & reminders.'],
     ['📅','Full activity calendar','Demo allows 1 event. Full version: unlimited events & reminders.'],
@@ -10481,9 +10702,9 @@ function saveSectorEdit() {
     + '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">'
     + '<div style="font-family:var(--font-head);font-weight:900;font-size:18px;">🔒 That\u2019s a full-version feature</div>'
     + '<button onclick="document.getElementById(\'demo-buy-overlay\').style.display=\'none\'" style="background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;line-height:1;">×</button></div>'
-    + '<div style="font-size:12px;color:var(--muted);margin-bottom:14px;">This is the free live demo. Buy once — own it forever. No subscription, no account, no cloud.</div>'
+    + '<div style="font-size:12px;color:var(--muted);margin-bottom:14px;">This is the free live demo. Buy once - own it forever. No subscription, no account, no cloud.</div>'
     + locked.map(l=>'<div style="display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--border);"><span style="flex-shrink:0;">'+l[0]+'</span><div><div style="font-size:12px;font-weight:700;color:var(--text);">'+l[1]+'</div><div style="font-size:11px;color:var(--muted);">'+l[2]+'</div></div></div>').join('')
-    + '<a href="'+BUY_URL+'" target="_blank" rel="noopener" style="display:block;text-align:center;margin-top:16px;background:var(--accent);color:#0a0c10;font-family:var(--font-head);font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:1px;padding:12px;border-radius:10px;text-decoration:none;">Get the full version — A$49 once</a>'
+    + '<a href="'+BUY_URL+'" target="_blank" rel="noopener" style="display:block;text-align:center;margin-top:16px;background:var(--accent);color:#0a0c10;font-family:var(--font-head);font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:1px;padding:12px;border-radius:10px;text-decoration:none;">Get the full version - A$49 once</a>'
     + '<div style="text-align:center;font-size:10px;color:var(--muted);margin-top:8px;">Free updates for the life of v1 · full source code · works offline</div></div>';
   document.body.appendChild(ov);
   window.demoBuy = function(){ ov.style.display='flex'; };
@@ -10491,7 +10712,7 @@ function saveSectorEdit() {
 
   /* ── Floating demo pill ── */
   const pill = document.createElement('button');
-  pill.textContent = '🔒 DEMO — Buy full version';
+  pill.textContent = '🔒 DEMO - Buy full version';
   pill.style.cssText = 'position:fixed;bottom:76px;right:14px;z-index:99997;background:var(--accent);color:#0a0c10;border:none;border-radius:999px;padding:10px 16px;font-family:var(--font-head);font-weight:800;font-size:11px;letter-spacing:.5px;cursor:pointer;box-shadow:0 8px 28px rgba(240,180,41,.45);';
   pill.onclick = window.demoBuy;
   document.body.appendChild(pill);
@@ -10566,7 +10787,7 @@ function saveSectorEdit() {
     sec.style.position='relative';
     const shade=document.createElement('div');
     shade.style.cssText='position:absolute;inset:0;backdrop-filter:blur(6px);background:rgba(10,12,16,.35);display:flex;align-items:center;justify-content:center;z-index:5;border-radius:16px;cursor:pointer;';
-    shade.innerHTML='<div style="text-align:center;"><div style="font-size:22px;">🔒</div><div style="font-family:var(--font-head);font-weight:800;font-size:13px;color:var(--text);">Risk Scan — full version</div><div style="font-size:11px;color:var(--muted);">Click to see everything included</div></div>';
+    shade.innerHTML='<div style="text-align:center;"><div style="font-size:22px;">🔒</div><div style="font-family:var(--font-head);font-weight:800;font-size:13px;color:var(--text);">Risk Scan - full version</div><div style="font-size:11px;color:var(--muted);">Click to see everything included</div></div>';
     shade.onclick=window.demoBuy;
     sec.appendChild(shade);
   }
