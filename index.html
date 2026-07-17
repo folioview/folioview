@@ -10678,7 +10678,7 @@ function saveSectorEdit() {
 /* ══════════════ FOLIOVIEW DEMO LOCKDOWN LAYER ══════════════ */
 (function(){
   const BUY_URL = 'https://folionaire.gumroad.com/l/folionaire';
-  const LIMITS = { tx: 3, watch: 1, cal: 1, life: 2, scans: 3 };
+  const LIMITS = { tx: 15, watch: 5, cal: 5, life: 3, scans: 10 };
   const _c = { tx:0, watch:0, cal:0, life:0 };
 
   /* ── Buy modal ── */
@@ -10686,13 +10686,12 @@ function saveSectorEdit() {
     ['💾','Save, JSON backup & CSV export','Demo resets on refresh - the full version saves everything locally, forever.'],
     ['📥','Platform CSV imports','CoinGecko, CoinMarketCap, Binance, Coinbase & Crypto.com one-click imports.'],
     ['📁','Unlimited portfolios','Kids, SMSF/super, watch-only - create, rename and manage as many as you need.'],
-    ['➕','Unlimited transactions','Demo allows 3 new transactions. Full version: unlimited, with batch edit.'],
-    ['🔔','Full watchlists & alerts','Demo allows 1 entry. Full version: unlimited lists, targets & reminders.'],
-    ['📅','Full activity calendar','Demo allows 1 event. Full version: unlimited events & reminders.'],
-    ['🧭','Full Life Check','Demo allows 2 entries. Full version: unlimited check-ins & action plans.'],
+    ['➕','Unlimited transactions','Demo allows 15 new transactions. Full version: unlimited, with batch edit.'],
+    ['🔔','Full watchlists & alerts','Demo allows 5 entries. Full version: unlimited lists, targets & reminders.'],
+    ['📅','Full activity calendar','Demo allows 5 events. Full version: unlimited events & reminders.'],
+    ['🧭','Full Life Check','Demo allows 3 entries. Full version: unlimited check-ins & action plans.'],
     ['📰','Your own news API keys','Plug in Marketaux, Finnhub or Alpha Vantage for per-ticker sentiment.'],
-    ['⟳','Unlimited terminal scans','Demo: 3 scans per 24h. Full version: unlimited market intelligence.'],
-    ['📊','All Investment Overview periods','7D / 30D / 60D / 90D change views unlocked.'],
+    ['⟳','Unlimited terminal scans','Demo: 10 scans per 24h. Full version: unlimited market intelligence.'],
     ['🛡','Risk Scan','Concentration & speculative-exposure analysis of your portfolio.'],
   ];
   const ov = document.createElement('div');
@@ -10785,12 +10784,6 @@ function saveSectorEdit() {
     if(typeof orig!=='function')return;
     window[fn]=function(){ if(!scanGate())return; return orig.apply(this,arguments); };
   });
-
-  /* ── Dashboard: only 1D period; others → buy ── */
-  if(typeof window.setInvPeriod==='function'){
-    const _sip=window.setInvPeriod;
-    window.setInvPeriod=function(key,label,btn){ if(key!=='d1'){ demoBuy(); return; } return _sip.apply(this,arguments); };
-  }
 
   /* ── Risk Scan: blur + upsell overlay ── */
   function lockRisk(){
