@@ -91,6 +91,8 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-mono);min-hei
 .tab-icon-tax{color:#fbbf24;}
 .tab-icon-settings{color:#818cf8;}
 .tab-icon-lifecheck{color:#2dd4bf;}
+.tab-icon-insights{color:#fde047;}
+.tab-icon-pulse{color:#fb7185;}
 
 /* Portfolio Change: horizontal boxes on desktop */
 #portfolio-change-row{
@@ -119,6 +121,21 @@ tbody tr:hover{background:var(--surface2);}
 .zero-sup{font-size:10px;vertical-align:super;opacity:.8;margin:0 2px;}
 .green{color:var(--green);}
 .red{color:var(--red);}
+/* Delta badges: soft tinted background with strong-colour figures */
+.chg-badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:8px;font-weight:700;font-family:var(--font-mono);line-height:1.25;}
+.chg-badge.green{background:var(--green-dim);color:var(--green);}
+.chg-badge.red{background:var(--red-dim);color:var(--red);}
+.pchg-val.green{background:var(--green-dim);border-radius:10px;padding:6px 12px;display:inline-block;}
+.pchg-val.red{background:var(--red-dim);border-radius:10px;padding:6px 12px;display:inline-block;}
+.inv-chg.chg-badge{font-size:10px;padding:2px 7px;margin-top:2px;}
+.inv-pnl.chg-badge{font-size:10px;padding:2px 7px;margin-top:2px;}
+.performer-pct.green,.performer-pnl.green{background:var(--green-dim);border-radius:7px;padding:2px 8px;}
+.performer-pct.red,.performer-pnl.red{background:var(--red-dim);border-radius:7px;padding:2px 8px;}
+.performer-pnl.green,.performer-pnl.red{width:fit-content;margin-left:auto;margin-bottom:3px;}
+.performer-pct.green,.performer-pct.red{width:fit-content;margin-left:auto;}
+.performer-row.small .performer-pnl,.performer-row.small .performer-pct{padding:1px 6px;}
+.performer-row .performer-pnl+.performer-pct+div{margin-top:3px;}
+
 .profit-badge{display:inline-block;padding:3px 7px;font-size:11px;font-weight:500;border-radius:2px;}
 .profit-badge.green{background:var(--green-dim);color:var(--green);}
 .profit-badge.red{background:var(--red-dim);color:var(--red);}
@@ -219,7 +236,7 @@ input,.form-group select,.form-group textarea{width:100%;background:var(--bg);bo
 .trade-chip-row{display:flex;gap:6px;flex-wrap:wrap;align-items:center;}
 .trade-chip-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px;}
 .trade-chip-row{justify-content:center;}
-.trade-dot{width:10px;height:10px;border-radius:50%;display:inline-block;background:var(--muted);}
+.trade-dot{cursor:pointer;width:10px;height:10px;border-radius:50%;display:inline-block;background:var(--muted);}
 .trade-dot.win{background:var(--green);box-shadow:0 0 6px var(--green);}
 .trade-dot.loss{background:var(--red);box-shadow:0 0 6px var(--red);}
 .insight-list{display:grid;gap:8px;font-size:12px;color:var(--muted);}
@@ -303,7 +320,7 @@ input,.form-group select,.form-group textarea{width:100%;background:var(--bg);bo
 .pie-split-layout{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;}
 .pie-split-chart{display:flex;flex-direction:column;align-items:center;}
 .pie-split-chart canvas{width:100% !important;max-width:320px;aspect-ratio:1/1;height:auto !important;}
-.pie-split-table{height:680px;overflow-y:auto;overflow-x:hidden;padding-right:8px;border-left:1px solid var(--border);padding-left:20px;}
+.pie-split-table{height:auto;max-height:680px;overflow-y:auto;overflow-x:hidden;padding-right:8px;border-left:1px solid var(--border);padding-left:20px;}
 .pie-split-table::-webkit-scrollbar{width:3px;}
 .pie-split-table::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
 #pie-stock,#pie-crypto{max-width:320px !important;max-height:320px !important;margin:0 auto;display:block;}
@@ -631,6 +648,8 @@ body.privacy-on canvas{filter:blur(7px);opacity:.9;}
   .tab-icon-tax{color:#fbbf24;}
   .tab-icon-settings{color:#818cf8;}
   .tab-icon-lifecheck{color:#2dd4bf;}
+.tab-icon-insights{color:#fde047;}
+.tab-icon-pulse{color:#fb7185;}
   .sidebar-section-label {
     font-size: 9px;
     font-family: var(--font-head);
@@ -829,7 +848,7 @@ body.privacy-on canvas{filter:blur(7px);opacity:.9;}
   .inv-left .ticker-logo,.inv-left .ticker-logo-placeholder{width:45px !important;height:45px !important;font-size:15px !important;}
   /* Portfolio Change: keep numbers inside their boxes on mobile */
   .pchg-box{flex:1 1 84px !important;padding:12px 6px !important;}
-  .pchg-val{font-size:17px !important;overflow-wrap:anywhere;}
+  .pchg-val{font-size:15px !important;white-space:nowrap;}
   /* Terminal section headers: centre title, meta and refresh on their own lines */
   .term-sec-head{flex-direction:column;align-items:center;text-align:center;gap:8px;}
   .term-sec-title{justify-content:center;width:100%;}
@@ -1108,6 +1127,14 @@ tr.tx-detail-row>td{padding:0 !important;}
 </style>
 </head>
 <body>
+<div id="fn-splash" style="position:fixed;inset:0;z-index:2147483000;background:#0a0c10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;transition:opacity .45s ease;">
+  <svg width="94" height="94" viewBox="0 0 4096 4096" style="animation:fnPulse 1.6s ease-in-out infinite;" aria-hidden="true"><circle cx="2048" cy="2048" r="2048" fill="#f0b429"/><defs><mask id="fnhatSplash" maskUnits="userSpaceOnUse" x="0" y="0" width="4096" height="4096"><ellipse cx="2048" cy="2225" rx="1170" ry="335" fill="white"/><ellipse cx="2048" cy="2050" rx="1080" ry="280" fill="black"/><path d="M2778 1070 L2772 1101 L2766 1133 L2760 1164 L2754 1195 L2748 1227 L2742 1258 L2736 1289 L2731 1321 L2726 1352 L2721 1383 L2716 1415 L2711 1446 L2707 1477 L2703 1509 L2699 1540 L2695 1571 L2692 1603 L2689 1634 L2686 1665 L2684 1697 L2682 1728 L2679 1759 L2678 1791 L2676 1822 L2674 1853 L2673 1885 L2672 1916 L2670 1947 L2669 1979 L2668 2010 L1428 2010 L1428 2010 L1427 1979 L1426 1947 L1424 1916 L1423 1885 L1422 1853 L1420 1822 L1418 1791 L1417 1759 L1414 1728 L1412 1697 L1410 1665 L1407 1634 L1404 1603 L1401 1571 L1397 1540 L1393 1509 L1389 1477 L1385 1446 L1380 1415 L1375 1383 L1370 1352 L1365 1321 L1360 1289 L1354 1258 L1348 1227 L1342 1195 L1336 1164 L1330 1133 L1324 1101 L1318 1070 Z" fill="white"/><ellipse cx="2048" cy="1080" rx="730" ry="120" fill="white"/><rect x="1368" y="1950" width="1360" height="165" fill="black"/></mask></defs><g transform="matrix(1.15176 -0.16187 0.16187 1.15176 -671.4 351.9)"><rect x="0" y="0" width="4096" height="4096" fill="#0a0c10" mask="url(#fnhatSplash)"/></g></svg>
+  <div style="font-family:'Roboto',sans-serif;font-weight:800;font-size:30px;letter-spacing:-0.5px;color:#f0f2f6;">FOLIO<span style="color:#f0b429;">NAIRE</span></div>
+  <div style="font-family:'DM Mono',monospace,monospace;font-size:11px;color:#8b90a0;letter-spacing:3px;">V1.0</div>
+</div>
+<style>@keyframes fnPulse{0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(1.06);opacity:.85;}}</style>
+<script>(function(){var s=document.getElementById('fn-splash');if(!s)return;setTimeout(function(){s.style.opacity='0';setTimeout(function(){try{s.remove();}catch(e){}},500);},2000);})();</script>
+
 
 <div class="sidebar" id="desktop-sidebar">
 
@@ -1137,6 +1164,8 @@ tr.tx-detail-row>td{padding:0 !important;}
     <button class="sidebar-tab" data-tab="history" onclick="switchTab('history',this)"><span class="tab-icon tab-icon-transactions"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2" stroke="currentColor" stroke-width="2"/><path d="M9 3h6v3H9z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 11h6M9 15h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>Transactions</button>
     <button class="sidebar-tab" data-tab="closed" onclick="switchTab('closed',this)"><span class="tab-icon tab-icon-closed"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 8l2-4h14l2 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="3" y="8" width="18" height="12" rx="1.5" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9.5 12h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>Closed Positions</button>
     <div class="sidebar-section-label">Analysis</div>
+    <button class="sidebar-tab" data-tab="tradeinsights" onclick="switchTab('tradeinsights',this)"><span class="tab-icon tab-icon-insights"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.3c.6.5 1 1.6 1 2.7h6c0-1.1.4-2.2 1-2.7A6 6 0 0 0 12 3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Trading Insights</button>
+    <button class="sidebar-tab" data-tab="pulse" onclick="switchTab('pulse',this)"><span class="tab-icon tab-icon-pulse"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M6.5 12h2.2l1.6-3.6 3.2 7.2L15 12h2.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Portfolio Pulse</button>
     <button class="sidebar-tab" data-tab="watchlist" onclick="switchTab('watchlist',this)"><span class="tab-icon tab-icon-watchlist"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 4h11a2 2 0 0 1 2 2v14l-7-4-7 4V6a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 8h6M9 11h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>Watchlist</button>
     <button class="sidebar-tab" data-tab="calendar" onclick="switchTab('calendar',this)"><span class="tab-icon tab-icon-calendar"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="2"/><path d="M3 9h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>Calendar</button>
     <button class="sidebar-tab" data-tab="cgt" onclick="switchTab('cgt',this)"><span class="tab-icon tab-icon-cgt"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 2h12v20l-3-2-3 2-3-2-3 2V2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 8h6M9 12h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>CGT</button>
@@ -1280,6 +1309,8 @@ tr.tx-detail-row>td{padding:0 !important;}
       <button class="mob-nav-btn" id="mob-tab-portfolio" onclick="mobSwitchTab('portfolio')"><span class="mob-icon tab-icon-holdings"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v18M16.5 7.5H10a3 3 0 0 0 0 6h4a3 3 0 0 1 0 6H7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>Portfolio</button>
       <button class="mob-nav-btn" id="mob-tab-history" onclick="mobSwitchTab('history')"><span class="mob-icon tab-icon-transactions"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2" stroke="currentColor" stroke-width="2"/><path d="M9 3h6v3H9z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 11h6M9 15h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>Transaction History</button>
       <button class="mob-nav-btn" id="mob-tab-closed" onclick="mobSwitchTab('closed')"><span class="mob-icon tab-icon-closed"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 8l2-4h14l2 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="3" y="8" width="18" height="12" rx="1.5" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9.5 12h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>Closed Positions</button>
+      <button class="mob-nav-btn" id="mob-tab-tradeinsights" onclick="mobSwitchTab('tradeinsights')"><span class="mob-icon tab-icon-insights"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.3c.6.5 1 1.6 1 2.7h6c0-1.1.4-2.2 1-2.7A6 6 0 0 0 12 3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Trading Insights</button>
+      <button class="mob-nav-btn" id="mob-tab-pulse" onclick="mobSwitchTab('pulse')"><span class="mob-icon tab-icon-pulse"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M6.5 12h2.2l1.6-3.6 3.2 7.2L15 12h2.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Portfolio Pulse</button>
       <button class="mob-nav-btn" id="mob-tab-watchlist" onclick="mobSwitchTab('watchlist')"><span class="mob-icon tab-icon-watchlist"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 4h11a2 2 0 0 1 2 2v14l-7-4-7 4V6a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 8h6M9 11h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>Watchlist</button>
       <button class="mob-nav-btn" id="mob-tab-calendar" onclick="mobSwitchTab('calendar')"><span class="mob-icon tab-icon-calendar"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="2"/><path d="M3 9h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>Calendar</button>
       <button class="mob-nav-btn" id="mob-tab-cgt" onclick="mobSwitchTab('cgt')"><span class="mob-icon tab-icon-cgt"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 2h12v20l-3-2-3 2-3-2-3 2V2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 8h6M9 12h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>CGT</button>
@@ -1332,12 +1363,12 @@ tr.tx-detail-row>td{padding:0 !important;}
   </div>
   <div id="mob-spark-wrap">
   <!-- Currency toggle -->
-  <div id="mob-curr-wrap" style="display:flex;justify-content:center;gap:6px;margin:10px 16px 0;">
+  <div id="mob-curr-wrap" style="display:none;">
     <button id="mob-curr-aud" onclick="mobSparkCurr('AUD',this)" class="mob-spark-btn active" style="font-size:10px;padding:4px 16px;">AUD</button>
     <button id="mob-curr-usd" onclick="mobSparkCurr('USD',this)" class="mob-spark-btn" style="font-size:10px;padding:4px 16px;">USD</button>
   </div>
-  <!-- Sparkline range pills -->
-  <div style="display:flex;justify-content:center;gap:8px;margin:8px 16px 0;padding:0 4px;">
+  <!-- Sparkline range pills (legacy, replaced by dashboard hero) -->
+  <div style="display:none;">
     <button onclick="mobSparkRange('24h',this)" class="mob-spark-btn active">24H</button>
     <button onclick="mobSparkRange('7d',this)"  class="mob-spark-btn">7D</button>
     <button onclick="mobSparkRange('30d',this)" class="mob-spark-btn">30D</button>
@@ -1345,8 +1376,8 @@ tr.tx-detail-row>td{padding:0 !important;}
     <button onclick="mobSparkRange('1y',this)"  class="mob-spark-btn">1Y</button>
     <button onclick="mobSparkRange('all',this)" class="mob-spark-btn">All</button>
   </div>
-  <!-- Sparkline canvas -->
-  <div style="width:100%;padding:4px 0 0;position:relative;">
+  <!-- Sparkline canvas (legacy, replaced by dashboard hero) -->
+  <div style="display:none;">
     <canvas id="mob-spark-canvas" height="120" style="width:100%;display:block;"></canvas>
   </div>
   <!-- Update Prices button under graph -->
@@ -1395,6 +1426,8 @@ tr.tx-detail-row>td{padding:0 !important;}
   <button class="tab" onclick="switchTab('portfolio',this)">Portfolio</button>
   <button class="tab" onclick="switchTab('history',this)">Transaction History</button>
   <button class="tab" onclick="switchTab('closed',this)">Closed Positions</button>
+  <button class="tab" onclick="switchTab('tradeinsights',this)">Trading Insights</button>
+  <button class="tab" onclick="switchTab('pulse',this)">Portfolio Pulse</button>
   <button class="tab" onclick="switchTab('watchlist',this)">Watchlist</button>
   <button class="tab" onclick="switchTab('calendar',this)">Calendar</button>
   <button class="tab" onclick="switchTab('cgt',this)">CGT</button>
@@ -1412,30 +1445,38 @@ tr.tx-detail-row>td{padding:0 !important;}
   <div class="section active" id="sec-dashboard">
     <div class="dash-grid" id="dash-kpis"></div>
 
-    <div class="dash-navbar" id="dash-navbar">
-      <button type="button" onclick="dashScrollTo('dash-sec-overview')">Portfolio Overview</button>
-      <button type="button" onclick="dashScrollTo('dash-sec-trading')">Trading Performance</button>
-      <button type="button" onclick="dashScrollTo('dash-sec-risk')">Risk Scan</button>
-    </div>
-
-    <div class="dash-section-heading dash-anchor" id="dash-sec-market">Market Snapshot</div>
-    <div id="dash-top-movers"></div>
-
-    <div class="dash-section-heading dash-anchor" id="dash-sec-overview">Portfolio Overview</div>
-    <!-- PORTFOLIO CHANGE - full width -->
-    <div class="chart-card" style="margin-bottom:16px;">
-      <div class="chart-card-header mob-chart-hdr" style="padding-bottom:10px;">
-        <div style="text-align:center;width:100%;">
-          <div class="chart-title">Portfolio Change</div>
-          <div class="chart-subtitle">Realised P&L from closed positions across all portfolios</div>
+    <!-- PORTFOLIO VALUE HERO -->
+    <div class="chart-card" id="dash-hero" style="margin-bottom:20px;">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;">
+        <div style="min-width:0;">
+          <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1.4px;margin-bottom:6px;">Portfolio Value</div>
+          <div id="hero-value" style="font-family:var(--font-mono);font-weight:800;font-size:clamp(26px,4.5vw,38px);line-height:1;">&#8212;</div>
+          <div id="hero-change" style="margin-top:8px;font-family:var(--font-mono);font-size:13px;color:var(--muted);">&nbsp;</div>
+        </div>
+        <div id="hero-curr-wrap" style="display:flex;gap:6px;">
+          <button id="hero-curr-aud" onclick="heroCurr('AUD',this)" class="pill-btn active" style="font-size:10px;padding:4px 16px;">AUD</button>
+          <button id="hero-curr-usd" onclick="heroCurr('USD',this)" class="pill-btn" style="font-size:10px;padding:4px 16px;">USD</button>
         </div>
       </div>
-      <div id="portfolio-change-tabs" style="display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:14px;"></div>
-      <div id="portfolio-change-row" style="display:flex;align-items:stretch;gap:12px;flex-wrap:wrap;">
-        <div style="font-size:12px;color:var(--muted);text-align:center;width:100%;">Loading…</div>
+      <div style="position:relative;height:clamp(180px,30vw,280px);margin-top:14px;">
+        <canvas id="hero-canvas" style="width:100%;height:100%;display:block;"></canvas>
+        <div id="hero-empty" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;color:var(--muted);font-size:12px;text-align:center;padding:0 20px;">Add transactions and fetch prices to start building your value history.</div>
+      </div>
+      <div id="hero-ranges" style="display:flex;justify-content:center;gap:6px;margin-top:12px;flex-wrap:wrap;">
+        <button class="pill-btn" data-range="1d"  onclick="heroRange('1d',this)"  style="font-size:10px;padding:4px 12px;">1D</button>
+        <button class="pill-btn" data-range="1w"  onclick="heroRange('1w',this)"  style="font-size:10px;padding:4px 12px;">1W</button>
+        <button class="pill-btn" data-range="1m"  onclick="heroRange('1m',this)"  style="font-size:10px;padding:4px 12px;">1M</button>
+        <button class="pill-btn" data-range="3m"  onclick="heroRange('3m',this)"  style="font-size:10px;padding:4px 12px;">3M</button>
+        <button class="pill-btn active" data-range="6m" onclick="heroRange('6m',this)" style="font-size:10px;padding:4px 12px;">6M</button>
+        <button class="pill-btn" data-range="ytd" onclick="heroRange('ytd',this)" style="font-size:10px;padding:4px 12px;">YTD</button>
+        <button class="pill-btn" data-range="1y"  onclick="heroRange('1y',this)"  style="font-size:10px;padding:4px 12px;">1Y</button>
+        <button class="pill-btn" data-range="5y"  onclick="heroRange('5y',this)"  style="font-size:10px;padding:4px 12px;">5Y</button>
+        <button class="pill-btn" data-range="all" onclick="heroRange('all',this)" style="font-size:10px;padding:4px 12px;">ALL</button>
       </div>
     </div>
 
+
+    <div class="dash-section-heading dash-anchor" id="dash-sec-overview">Portfolio Overview</div>
     <!-- INVESTMENT OVERVIEW - full width, Top-Movers style -->
     <div class="chart-card" style="margin-bottom:20px;">
       <div class="chart-card-header mob-chart-hdr">
@@ -1458,6 +1499,131 @@ tr.tx-detail-row>td{padding:0 !important;}
       <div id="inv-overview-card" style="padding-top:10px;">
         <div id="inv-overview" class="inv-overview"></div>
       </div>
+    </div>
+
+    <div class="dash-section-heading dash-anchor" id="dash-sec-market">Market Snapshot</div>
+    <div id="dash-top-movers"></div>
+
+    <!-- PORTFOLIO CHANGE - full width -->
+    <div class="chart-card" style="margin-bottom:16px;">
+      <div class="chart-card-header mob-chart-hdr" style="padding-bottom:10px;">
+        <div style="text-align:center;width:100%;">
+          <div class="chart-title">Portfolio Change</div>
+          <div class="chart-subtitle">Realised P&L from closed positions across all portfolios</div>
+        </div>
+      </div>
+      <div id="portfolio-change-tabs" style="display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:14px;"></div>
+      <div id="portfolio-change-row" style="display:flex;align-items:stretch;gap:12px;flex-wrap:wrap;">
+        <div style="font-size:12px;color:var(--muted);text-align:center;width:100%;">Loading…</div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- TRADING INSIGHTS TAB -->
+  <div class="section" id="sec-tradeinsights">
+    <div class="table-header mob-center-header">
+      <div class="section-title">Trading Insights</div>
+      <div style="font-size:11px;color:var(--muted);padding-top:4px;">Win rate, streaks, patterns and your best &amp; worst trades</div>
+    </div>
+    <div class="dash-grid-2 dash-grid-collapse">
+      <div class="chart-card">
+        <div class="chart-card-header mob-chart-hdr">
+          <div class="chart-title">🏆 Best Performers</div>
+          <div class="mob-chart-controls">
+            <div class="mob-ctrl-row">
+              <button class="range-btn active" id="best-tab-current" onclick="setPerfTab('best','current',this)">Current</button>
+              <button class="range-btn" id="best-tab-closed" onclick="setPerfTab('best','closed',this)">All-Time</button>
+              <select id="best-year-sel" onchange="setPerfYear('best',this.value)" style="font-size:10px;padding:4px 8px;background:var(--surface2);border:1px solid var(--border2);color:var(--text);font-family:var(--font-mono);cursor:pointer;border-radius:20px;outline:none;"></select>
+            </div>
+          </div>
+        </div>
+        <div id="best-performers"></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-card-header mob-chart-hdr">
+          <div class="chart-title">📉 Worst Performers</div>
+          <div class="mob-chart-controls">
+            <div class="mob-ctrl-row">
+              <button class="range-btn active" id="worst-tab-current" onclick="setPerfTab('worst','current',this)">Current</button>
+              <button class="range-btn" id="worst-tab-closed" onclick="setPerfTab('worst','closed',this)">All-Time</button>
+              <select id="worst-year-sel" onchange="setPerfYear('worst',this.value)" style="font-size:10px;padding:4px 8px;background:var(--surface2);border:1px solid var(--border2);color:var(--text);font-family:var(--font-mono);cursor:pointer;border-radius:20px;outline:none;"></select>
+            </div>
+          </div>
+        </div>
+        <div id="worst-performers"></div>
+      </div>
+    </div>
+
+    <div class="dashboard-analytics" id="trade-analytics-kpis"></div>
+    <div class="dash-grid-2 dashboard-row">
+      <div class="chart-card">
+        <div class="chart-card-header mob-chart-hdr" style="padding-bottom:10px;">
+          <div style="text-align:center;width:100%;">
+            <div class="chart-title">Pattern Analysis</div>
+            <div class="chart-subtitle">Insights from emotions, reasons and outcomes</div>
+          </div>
+        </div>
+        <div id="pattern-analysis"></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-card-header mob-chart-hdr" style="padding-bottom:10px;">
+          <div style="text-align:center;width:100%;">
+            <div class="chart-title">Last 5 Trades</div>
+            <div class="chart-subtitle">Most recent transactions added</div>
+          </div>
+        </div>
+        <div id="last-five-trades"></div>
+      </div>
+    </div>
+    <div class="dash-grid-2 dashboard-row">
+      <div class="chart-card">
+        <div class="chart-card-header mob-chart-hdr" style="padding-bottom:10px;">
+          <div style="text-align:center;width:100%;">
+            <div class="chart-title">Win/Loss Distribution</div>
+            <div class="chart-subtitle">Closed sell outcomes by realised P&L</div>
+          </div>
+        </div>
+        <div class="chart-canvas-wrap"><canvas id="win-loss-chart"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-card-header mob-chart-hdr" style="padding-bottom:10px;">
+          <div style="text-align:center;width:100%;">
+            <div class="chart-title">Top Sold Winners &amp; Losers</div>
+            <div class="chart-subtitle">Best and worst realised closed trades</div>
+          </div>
+        </div>
+        <div class="chart-canvas-wrap"><canvas id="sold-performance-chart"></canvas></div>
+      </div>
+    </div>
+    <div class="dash-grid-2 dashboard-row">
+      <div class="chart-card">
+        <div class="chart-card-header mob-chart-hdr" style="padding-bottom:10px;">
+          <div style="text-align:center;width:100%;">
+            <div class="chart-title">Time In Trade Edge</div>
+            <div class="chart-subtitle">Holding time grouped against win rate</div>
+          </div>
+        </div>
+        <div class="chart-canvas-wrap"><canvas id="hold-edge-chart"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-card-header mob-chart-hdr" style="padding-bottom:10px;">
+          <div style="text-align:center;width:100%;">
+            <div class="chart-title">Streak Analysis</div>
+            <div class="chart-subtitle">Current streak, best streaks and last 10 sell patterns</div>
+          </div>
+        </div>
+        <div id="streak-analysis"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PORTFOLIO PULSE TAB -->
+  <div class="section" id="sec-pulse">
+    <div class="table-header mob-center-header">
+      <div class="section-title">Portfolio Pulse</div>
+      <div style="font-size:11px;color:var(--muted);padding-top:4px;">Allocation, sectors, history and risk in one place</div>
     </div>
     <!-- ALL HOLDINGS - full width, pie left + holdings table right -->
     <div class="chart-card" style="margin-bottom:20px;">
@@ -1561,122 +1727,7 @@ tr.tx-detail-row>td{padding:0 !important;}
       <canvas id="line-chart" height="110"></canvas>
     </div>
 
-    <div class="chart-card" style="margin-bottom:20px;">
-      <div class="chart-card-header mob-chart-hdr">
-        <div style="text-align:center;width:100%;">
-          <div class="chart-title">Closed Positions P&amp;L</div>
-          <div class="chart-subtitle" id="closed-chart-sub">Cumulative realised profit / loss over time</div>
-        </div>
-        <div class="mob-chart-controls">
-          <div class="mob-ctrl-row" id="closed-chart-port-tabs"></div>
-          <div class="mob-ctrl-row">
-            <button class="time-btn active" id="closed-type-line" onclick="setClosedChartType('line',this)">📈 Line</button>
-            <button class="time-btn" id="closed-type-bar" onclick="setClosedChartType('bar',this)">📊 Bar</button>
-          </div>
-          <div class="mob-ctrl-row">
-            <button class="mob-spark-btn active" onclick="setClosedRange('24h',this)">24H</button>
-            <button class="mob-spark-btn" onclick="setClosedRange('7d',this)">7D</button>
-            <button class="mob-spark-btn" onclick="setClosedRange('30d',this)">30D</button>
-            <button class="mob-spark-btn" onclick="setClosedRange('90d',this)">90D</button>
-            <button class="mob-spark-btn" onclick="setClosedRange('all',this)">ALL</button>
-          </div>
-        </div>
-      </div>
-      <canvas id="closed-pnl-chart" height="110"></canvas>
-    </div>
-    <div class="dash-grid-2 dash-grid-collapse">
-      <div class="chart-card">
-        <div class="chart-card-header mob-chart-hdr">
-          <div class="chart-title">🏆 Best Performers</div>
-          <div class="mob-chart-controls">
-            <div class="mob-ctrl-row">
-              <button class="range-btn active" id="best-tab-current" onclick="setPerfTab('best','current',this)">Current</button>
-              <button class="range-btn" id="best-tab-closed" onclick="setPerfTab('best','closed',this)">All-Time</button>
-              <select id="best-year-sel" onchange="setPerfYear('best',this.value)" style="font-size:10px;padding:4px 8px;background:var(--surface2);border:1px solid var(--border2);color:var(--text);font-family:var(--font-mono);cursor:pointer;border-radius:20px;outline:none;"></select>
-            </div>
-          </div>
-        </div>
-        <div id="best-performers"></div>
-      </div>
-      <div class="chart-card">
-        <div class="chart-card-header mob-chart-hdr">
-          <div class="chart-title">📉 Worst Performers</div>
-          <div class="mob-chart-controls">
-            <div class="mob-ctrl-row">
-              <button class="range-btn active" id="worst-tab-current" onclick="setPerfTab('worst','current',this)">Current</button>
-              <button class="range-btn" id="worst-tab-closed" onclick="setPerfTab('worst','closed',this)">All-Time</button>
-              <select id="worst-year-sel" onchange="setPerfYear('worst',this.value)" style="font-size:10px;padding:4px 8px;background:var(--surface2);border:1px solid var(--border2);color:var(--text);font-family:var(--font-mono);cursor:pointer;border-radius:20px;outline:none;"></select>
-            </div>
-          </div>
-        </div>
-        <div id="worst-performers"></div>
-      </div>
-    </div>
-
-    <div class="dash-section-heading dash-anchor" id="dash-sec-trading">Trading Performance</div>
-    <div class="dashboard-analytics" id="trade-analytics-kpis"></div>
-    <div class="dash-grid-2 dashboard-row">
-      <div class="chart-card">
-        <div class="chart-card-header mob-chart-hdr" style="padding-bottom:10px;">
-          <div style="text-align:center;width:100%;">
-            <div class="chart-title">Pattern Analysis</div>
-            <div class="chart-subtitle">Insights from emotions, reasons and outcomes</div>
-          </div>
-        </div>
-        <div id="pattern-analysis"></div>
-      </div>
-      <div class="chart-card">
-        <div class="chart-card-header mob-chart-hdr" style="padding-bottom:10px;">
-          <div style="text-align:center;width:100%;">
-            <div class="chart-title">Last 5 Trades</div>
-            <div class="chart-subtitle">Most recent transactions added</div>
-          </div>
-        </div>
-        <div id="last-five-trades"></div>
-      </div>
-    </div>
-    <div class="dash-grid-2 dashboard-row">
-      <div class="chart-card">
-        <div class="chart-card-header mob-chart-hdr" style="padding-bottom:10px;">
-          <div style="text-align:center;width:100%;">
-            <div class="chart-title">Win/Loss Distribution</div>
-            <div class="chart-subtitle">Closed sell outcomes by realised P&L</div>
-          </div>
-        </div>
-        <div class="chart-canvas-wrap"><canvas id="win-loss-chart"></canvas></div>
-      </div>
-      <div class="chart-card">
-        <div class="chart-card-header mob-chart-hdr" style="padding-bottom:10px;">
-          <div style="text-align:center;width:100%;">
-            <div class="chart-title">Top Sold Winners &amp; Losers</div>
-            <div class="chart-subtitle">Best and worst realised closed trades</div>
-          </div>
-        </div>
-        <div class="chart-canvas-wrap"><canvas id="sold-performance-chart"></canvas></div>
-      </div>
-    </div>
-    <div class="dash-grid-2 dashboard-row">
-      <div class="chart-card">
-        <div class="chart-card-header mob-chart-hdr" style="padding-bottom:10px;">
-          <div style="text-align:center;width:100%;">
-            <div class="chart-title">Time In Trade Edge</div>
-            <div class="chart-subtitle">Holding time grouped against win rate</div>
-          </div>
-        </div>
-        <div class="chart-canvas-wrap"><canvas id="hold-edge-chart"></canvas></div>
-      </div>
-      <div class="chart-card">
-        <div class="chart-card-header mob-chart-hdr" style="padding-bottom:10px;">
-          <div style="text-align:center;width:100%;">
-            <div class="chart-title">Streak Analysis</div>
-            <div class="chart-subtitle">Current streak, best streaks and last 10 sell patterns</div>
-          </div>
-        </div>
-        <div id="streak-analysis"></div>
-      </div>
-    </div>
-
-    <div class="dash-section-heading dash-anchor" id="dash-sec-risk">Portfolio Risk Scan</div>
+    <div class="dash-anchor" id="dash-sec-risk"></div>
     <div id="dash-risk-scan"></div>
   </div>
 
@@ -1816,6 +1867,29 @@ tr.tx-detail-row>td{padding:0 !important;}
       <button class="btn-ghost btn-sm" onclick="openFomoChecker()" style="margin-top:8px;">🔍 FOMO Checker</button>
     </div>
     <div id="closed-summary" style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:16px;"></div>
+    <div class="chart-card" style="margin-bottom:20px;">
+      <div class="chart-card-header mob-chart-hdr">
+        <div style="text-align:center;width:100%;">
+          <div class="chart-title">Closed Positions P&amp;L</div>
+          <div class="chart-subtitle" id="closed-chart-sub">Cumulative realised profit / loss over time</div>
+        </div>
+        <div class="mob-chart-controls">
+          <div class="mob-ctrl-row" id="closed-chart-port-tabs"></div>
+          <div class="mob-ctrl-row">
+            <button class="time-btn active" id="closed-type-line" onclick="setClosedChartType('line',this)">📈 Line</button>
+            <button class="time-btn" id="closed-type-bar" onclick="setClosedChartType('bar',this)">📊 Bar</button>
+          </div>
+          <div class="mob-ctrl-row">
+            <button class="mob-spark-btn active" onclick="setClosedRange('24h',this)">24H</button>
+            <button class="mob-spark-btn" onclick="setClosedRange('7d',this)">7D</button>
+            <button class="mob-spark-btn" onclick="setClosedRange('30d',this)">30D</button>
+            <button class="mob-spark-btn" onclick="setClosedRange('90d',this)">90D</button>
+            <button class="mob-spark-btn" onclick="setClosedRange('all',this)">ALL</button>
+          </div>
+        </div>
+      </div>
+      <canvas id="closed-pnl-chart" height="110"></canvas>
+    </div>
     <div class="table-scroll">
       <table id="closed-table">
         <thead>
@@ -1952,24 +2026,30 @@ tr.tx-detail-row>td{padding:0 !important;}
       <div class="section-title">Crypto Wallet Scanner</div>
       <div style="font-size:11px;color:var(--muted);">Native coin balance only (BTC, ETH, BNB, SOL, POL) - no tokens, no sign-in, results not saved</div>
     </div>
-    <div id="wallet-form-row" style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;">
-      <div style="flex:1;min-width:200px;display:flex;flex-direction:column;gap:6px;">
-        <input type="text" id="wallet-addr" placeholder="Enter wallet address" style="width:100%;font-family:var(--font-mono);font-size:12px;">
-        <div style="font-size:11px;color:var(--muted);">0x... or BTC address</div>
+    <div class="chart-card" style="margin-bottom:16px;">
+      <div style="text-align:center;margin-bottom:14px;">
+        <div class="chart-title">Scan a Wallet</div>
+        <div class="chart-subtitle">Paste a public address - nothing connects, nothing is saved</div>
       </div>
-      <select id="wallet-chain" style="font-size:11px;padding:5px 10px;background:var(--bg);border:1px solid var(--border2);color:var(--text);">
-        <option value="auto">Auto-detect</option>
-        <option value="eth">Ethereum</option>
-        <option value="bsc">BNB Chain</option>
-        <option value="polygon">Polygon</option>
-        <option value="arbitrum">Arbitrum</option>
-        <option value="base">Base</option>
-        <option value="solana">Solana</option>
-        <option value="btc">Bitcoin</option>
-      </select>
-      <button class="btn" onclick="scanWallet()">Scan Wallet</button>
+      <div id="wallet-form-row" style="display:flex;gap:8px;flex-wrap:wrap;align-items:flex-start;">
+        <div style="flex:1;min-width:200px;display:flex;flex-direction:column;gap:6px;">
+          <input type="text" id="wallet-addr" placeholder="Enter wallet address" style="width:100%;font-family:var(--font-mono);font-size:12px;">
+          <div style="font-size:11px;color:var(--muted);">0x... or BTC address</div>
+        </div>
+        <select id="wallet-chain" style="font-size:11px;padding:8px 10px;background:var(--bg);border:1px solid var(--border2);color:var(--text);border-radius:8px;">
+          <option value="auto">Auto-detect</option>
+          <option value="eth">Ethereum</option>
+          <option value="bsc">BNB Chain</option>
+          <option value="polygon">Polygon</option>
+          <option value="arbitrum">Arbitrum</option>
+          <option value="base">Base</option>
+          <option value="solana">Solana</option>
+          <option value="btc">Bitcoin</option>
+        </select>
+        <button class="btn" onclick="scanWallet()">Scan Wallet</button>
+      </div>
+      <div id="wallet-status" style="font-size:12px;color:var(--muted);margin-top:12px;"></div>
     </div>
-    <div id="wallet-status" style="font-size:12px;color:var(--muted);margin-bottom:12px;"></div>
     <div id="wallet-results"></div>
   </div>
 
@@ -2044,7 +2124,12 @@ tr.tx-detail-row>td{padding:0 !important;}
           <a href="https://folionaire.gumroad.com/l/folionaire" target="_blank" rel="noopener" class="btn" style="text-decoration:none;font-size:11px;">🔔 Check for New Version</a>
           <a href="mailto:folionaire@outlook.com" class="btn-ghost" style="text-decoration:none;font-size:11px;">✉ Contact Support</a>
         </div>
-        <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--border);">
+        <div style="margin-top:12px;font-size:11px;color:var(--muted);">
+          Checking for updates opens your Gumroad purchase page - if a newer version is available it will show there. Your current version never stops working.
+        </div>
+      </div>
+      <div class="dash-card" style="padding:20px;">
+        <div>
           <div style="font-weight:700;font-size:13px;margin-bottom:6px;">Custom Price Proxy <span style="font-weight:400;color:var(--muted);">(optional)</span></div>
           <div style="font-size:11px;color:var(--muted);line-height:1.7;margin-bottom:8px;">If price fetching is slow or blocked - most common when opening the file directly on a phone - you can route requests through your own free Cloudflare Worker. It becomes the first-choice route, with the built-in free proxies as fallback. Copy the Worker code below, deploy it on Cloudflare (steps included, free tier is plenty), then paste its URL here.</div>
           <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
@@ -2071,9 +2156,6 @@ tr.tx-detail-row>td{padding:0 !important;}
           </div>
           <textarea id="worker-src-box" readonly spellcheck="false" style="display:none;width:100%;height:120px;margin-top:8px;background:var(--bg);border:1px solid var(--border2);color:var(--muted);font-family:var(--font-mono);font-size:10px;border-radius:8px;padding:8px;"></textarea>
           <div id="custom-proxy-status" style="font-size:10px;color:var(--muted);margin-top:6px;"></div>
-        </div>
-        <div style="margin-top:12px;font-size:11px;color:var(--muted);">
-          Checking for updates opens your Gumroad purchase page - if a newer version is available it will show there. Your current version never stops working.
         </div>
       </div>
       <div class="dash-card" style="padding:20px;border:1px solid var(--red);">
@@ -2479,6 +2561,7 @@ const _privacyMaskSelector = [
   '.num', '.dnum',
   // Dashboard + mobile totals
   '#hdr-invested', '#hdr-value', '#hdr-pnl', '#mob-hdr-invested', '#mob-hdr-value', '#mob-hdr-pnl',
+  '#hero-value', '#hero-change',
   // Dashboard cards + holdings list
   '.dash-card-value', '.psh-val',
   // Pie legends + performers + closed summary/cards
@@ -2909,8 +2992,10 @@ function switchTab(tab, el) {
   el.classList.add('active');
   if (tab==='calendar') renderCalendar();
   if (tab==='history') renderHistory();
-  if (tab==='closed') renderClosed();
+  if (tab==='closed') { renderClosed(); try { renderClosedPnlChart(); } catch(_) {} }
   if (tab==='dashboard') { renderDashboard(); refreshPerformers(); }
+  if (tab==='tradeinsights') { renderDashboard(); refreshPerformers(); }
+  if (tab==='pulse') renderDashboard();
   if (tab==='cgt') renderCGT();
   if (tab==='tax') renderTax();
   if (tab==='watchlist') renderWatchlist();
@@ -4563,6 +4648,7 @@ function resetLifeDraft() {
 function renderLifeCheck() {
   const el = document.getElementById('life-check-content');
   if (!el) return;
+  try { (state.lifeCheck?.entries||[]).forEach(e => { if (e && (typeof e.why !== 'string' || e.why === '[object Object]')) e.why = ''; }); } catch(_) {}
   if (!state.lifeCheck || !Array.isArray(state.lifeCheck.entries)) state.lifeCheck = { entries: [] };
   const latest = _lifeLatest();
   const scores = latest?.scores || {};
@@ -4603,7 +4689,7 @@ function renderLifeCheck() {
       </div>
       <div class="form-group">
         <label>Why do you think this scored lowest?</label>
-        <textarea id="life-why" placeholder="What is dragging this area down right now?">${latest?.why ? _escapeHtml(latest.why) : ''}</textarea>
+        <textarea id="life-why" placeholder="What is dragging this area down right now?">${(latest && typeof latest.why==='string' && latest.why!=='[object Object]') ? _escapeHtml(latest.why) : ''}</textarea>
       </div>
       <div class="form-group" id="life-urgent-wrap" style="display:none;">
         <label>More dire need</label>
@@ -6434,33 +6520,29 @@ function _renderTopMoversCard() {
       <div style="display:flex;gap:14px;margin-top:10px;">
         <div style="flex:1;">
           <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px;">Gainers</div>
-          ${(topUp.length?topUp:[]).map(r=>`<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border2);gap:10px;">
+          ${(topUp.length?topUp:[]).map(r=>`<div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid var(--border2);gap:10px;">
             <div style="display:flex;align-items:center;gap:6px;"><span class="mover-logo">${logoHtml(r.tk,r.assetType||'nasdaq',18)}</span><span style="font-family:var(--font-head);font-weight:800;font-size:12px;letter-spacing:.5px;">${r.tk}</span></div>
-            <span class="${r.chg>=0?'green':'red'}" style="font-family:var(--font-mono);">${r.chg>=0?'+':''}${r.chg.toFixed(2)}%</span>
+            <span class="chg-badge ${r.chg>=0?'green':'red'}" style="font-size:12px;flex-shrink:0;">${r.chg>=0?'+':''}${r.chg.toFixed(2)}%</span>
           </div>`).join('') || `<div style="font-size:12px;color:var(--muted);padding:6px 0;">No change data yet (fetch prices first).</div>`}
         </div>
         <div style="flex:1;">
           <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px;">Losers</div>
-          ${(topDn.length?topDn:[]).map(r=>`<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border2);gap:10px;">
+          ${(topDn.length?topDn:[]).map(r=>`<div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid var(--border2);gap:10px;">
             <div style="display:flex;align-items:center;gap:6px;"><span class="mover-logo">${logoHtml(r.tk,r.assetType||'nasdaq',18)}</span><span style="font-family:var(--font-head);font-weight:800;font-size:12px;letter-spacing:.5px;">${r.tk}</span></div>
-            <span class="${r.chg>=0?'green':'red'}" style="font-family:var(--font-mono);">${r.chg>=0?'+':''}${r.chg.toFixed(2)}%</span>
+            <span class="chg-badge ${r.chg>=0?'green':'red'}" style="font-size:12px;flex-shrink:0;">${r.chg>=0?'+':''}${r.chg.toFixed(2)}%</span>
           </div>`).join('') || `<div style="font-size:12px;color:var(--muted);padding:6px 0;">No change data yet (fetch prices first).</div>`}
         </div>
       </div>
     </div>`;
 }
 function _renderRiskScanCard() {
-  const tc = _tc();
   const risks = computePortfolioRisks();
-  const btn = (label, onClick, disabled) =>
-    `<button class="btn-ghost btn-sm" onclick="${onClick}" style="font-size:11px;${disabled?'opacity:.6;pointer-events:none;':''}">${label}</button>`;
   return `<div class="dash-card" style="padding:18px;margin-bottom:16px;">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
-        <div style="font-weight:900;font-family:var(--font-head);font-size:13px;">🛡 Portfolio Risk Scan</div>
-        ${btn(tc.flags.risk?'⟳ Scanning…':'⟳ Scan Again', 'refreshPortfolioRisk()', !!tc.flags.risk)}
+      <div style="text-align:center;margin-bottom:8px;">
+        <div class="chart-title">🛡 Portfolio Risk Scan</div>
+        <div class="chart-subtitle">Updates automatically as your portfolio changes</div>
       </div>
-      <div style="font-size:10px;margin-top:-2px;margin-bottom:8px;">Last scan: <span style="color:${_termTsColour(tc.riskTs)};">${tc.riskTs ? _fmtTermTs(tc.riskTs) : 'Never'}</span></div>
-      <div style="font-size:11px;color:var(--muted);margin-bottom:10px;">Concentration, sector weight, unrealised losses, crypto risk.</div>
+      <div style="font-size:11px;color:var(--muted);margin-bottom:10px;text-align:center;">Concentration, sector weight, unrealised losses, crypto risk.</div>
       <div style="font-size:10px;color:var(--muted);margin-bottom:10px;">
         <div style="font-weight:700;color:var(--text);margin-bottom:4px;">Rules active</div>
         <div>Stocks: concentration, sector concentration, earnings proximity</div>
@@ -6975,6 +7057,21 @@ function _groupOutcome(rows, key) {
   return Object.values(map).sort((a,b)=>b.count-a.count || b.pnl-a.pnl);
 }
 
+function showTradeDotTip(el){
+  let tip=document.getElementById('trade-dot-tip');
+  if(tip && tip._for===el){ tip.remove(); return; }
+  if(tip) tip.remove();
+  tip=document.createElement('div');
+  tip.id='trade-dot-tip'; tip._for=el;
+  tip.textContent=el.getAttribute('data-tip')||'';
+  tip.style.cssText='position:fixed;z-index:99999;background:var(--surface);border:1px solid var(--border2);color:var(--text);border-radius:8px;padding:6px 10px;font-size:11px;font-family:var(--font-mono);box-shadow:0 8px 24px rgba(0,0,0,.35);white-space:nowrap;pointer-events:none;transform:translate(-50%,-130%);';
+  document.body.appendChild(tip);
+  const r=el.getBoundingClientRect();
+  tip.style.left=Math.min(Math.max(r.left+r.width/2, 70), window.innerWidth-70)+'px';
+  tip.style.top=r.top+'px';
+  clearTimeout(window._tdTipTimer);
+  window._tdTipTimer=setTimeout(()=>{ try{tip.remove();}catch(_){} }, 2400);
+}
 function renderTradeAnalytics() {
   const trades = computeSellTradeAnalytics();
   const wins = trades.filter(t=>t.win), losses = trades.filter(t=>!t.win);
@@ -7002,7 +7099,7 @@ function renderTradeAnalytics() {
     let bestWin=0,worstLoss=0,curWin=0,curLoss=0,tmpWin=0,tmpLoss=0;
     chronological.forEach(t=>{ if(t.win){tmpWin++;tmpLoss=0;bestWin=Math.max(bestWin,tmpWin);} else {tmpLoss++;tmpWin=0;worstLoss=Math.max(worstLoss,tmpLoss);} });
     [...chronological].reverse().some(t=>{ if(t.win && curLoss===0){curWin++; return false;} if(!t.win && curWin===0){curLoss++; return false;} return true; });
-    const last10 = trades.slice(0,10).map(t=>`<span class="trade-dot ${t.win?'win':'loss'}" title="${t.ticker} ${t.pnl>=0?'+':'-'}$${fmt(Math.abs(t.pnl))}"></span>`).join('');
+    const last10 = trades.slice(0,10).map(t=>`<span class="trade-dot ${t.win?'win':'loss'}" title="${t.ticker} ${t.pnl>=0?'+':'-'}$${fmt(Math.abs(t.pnl))}" data-tip="${t.ticker} · ${t.win?'Win':'Loss'} · ${t.pnl>=0?'+':'-'}$${fmt(Math.abs(t.pnl))}" onclick="showTradeDotTip(this)"></span>`).join('');
     streakEl.innerHTML = `<div class="dashboard-analytics" style="margin:0 0 12px;">
       <div class="dash-card"><div class="dash-card-title">Current Winning Trades</div><div class="dash-card-value green">${curWin}</div><div class="dash-card-sub">${curLoss?curLoss+' current losses':''}</div></div>
       <div class="dash-card"><div class="dash-card-title">Best Win Streak</div><div class="dash-card-value green">${bestWin}</div></div>
@@ -7044,6 +7141,7 @@ function renderTradeAnalytics() {
 }
 
 function renderDashboard() {
+  try { renderDashHero(); } catch(_) {}
   const _topMoversEl = document.getElementById('dash-top-movers');
   if (_topMoversEl) _topMoversEl.innerHTML = _renderTopMoversCard();
   const _riskScanEl = document.getElementById('dash-risk-scan');
@@ -7118,12 +7216,12 @@ function renderDashboard() {
           : `<div class="ticker-logo-placeholder" title="Click to add logo" style="cursor:pointer;" onclick="event.stopPropagation();openLogoModal('${tk}')">${tk.slice(0,2)}</div>`;
 
         const priceStr = it.cp ? `${it.currency} $${fmtPriceFull(it.cp)}` : `<span class="muted">—</span>`;
-        const chgStr = (it.chg === null) ? '' : `<span class="inv-chg ${it.chg>=0?'green':'red'}">${it.chg>=0?'+':''}${it.chg.toFixed(2)}%</span>`;
+        const chgStr = (it.chg === null) ? '' : `<span class="inv-chg chg-badge ${it.chg>=0?'green':'red'}">${it.chg>=0?'+':''}${it.chg.toFixed(2)}%</span>`;
         const valStr = `${it.currency} $${fmt(it.val)}`;
         const unitsStr = `${fmtUnits(it.units)} units`;
         const typeStr = `${assetLabel(it.assetType)}`;
         const pnl = it.val - it.totalSpent;
-        const pnlStr = it.cp ? `<div class="inv-pnl ${pnl>=0?'green':'red'}">${pnl>=0?'+':'-'}${it.currency} $${fmt(Math.abs(pnl))}</div>` : '';
+        const pnlStr = it.cp ? `<div class="inv-pnl chg-badge ${pnl>=0?'green':'red'}">${pnl>=0?'+':'-'}${it.currency} $${fmt(Math.abs(pnl))}</div>` : '';
 
         return `<div class="inv-row">
           <div class="inv-left">
@@ -7337,6 +7435,17 @@ function _renderPerfList(top5, next5, elId, tab) {
 }
 
 // Placeholder closing brace placeholder - renderDashboard closed above
+function _fitCenterFont(cx, text, weight, startPx, minPx, maxWidth){
+  let s = startPx;
+  cx.font = `${weight} ${s}px DM Mono,monospace`;
+  let w = cx.measureText(text).width;
+  if (w > maxWidth && w > 0){
+    s = Math.max(minPx, Math.floor(s * maxWidth / w));
+    cx.font = `${weight} ${s}px DM Mono,monospace`;
+  }
+  return s;
+}
+
 function renderPie(canvasId, legendId, keys, holdings, palette) {
   if (charts[canvasId]) { charts[canvasId].destroy(); delete charts[canvasId]; }
   const el = document.getElementById(legendId);
@@ -7370,13 +7479,16 @@ function renderPie(canvasId, legendId, keys, holdings, palette) {
       const innerR = outerR * 0.65;
       // Scale font to ~55% of inner diameter, capped sensibly
       // Font scales with innerR naturally, just cap the max
-      const fontSize = Math.max(10, Math.min(20, Math.round(innerR * 0.38)));
-      const subSize  = Math.max(8,  Math.min(13, Math.round(innerR * 0.24)));
+      const maxW = innerR * 1.78; // keep text inside the hole
       cx.save();
-      cx.font=`700 ${fontSize}px DM Mono,monospace`; cx.fillStyle=cssVar('--text');
       cx.textAlign='center'; cx.textBaseline='middle';
-      cx.fillText('$'+fmt(total), cx2, cy2 - subSize * 0.9);
-      cx.font=`500 ${subSize}px DM Mono,monospace`; cx.fillStyle=cssVar('--muted');
+      const fontSize = _fitCenterFont(cx, '$'+fmt(total), 700, Math.max(10, Math.min(20, Math.round(innerR * 0.38))), 9, maxW);
+      cx.fillStyle=cssVar('--text');
+      const subStart = Math.max(8, Math.min(13, Math.round(innerR * 0.24)));
+      cx.font=`700 ${fontSize}px DM Mono,monospace`;
+      cx.fillText('$'+fmt(total), cx2, cy2 - subStart * 0.9);
+      const subSize = _fitCenterFont(cx, keys.length+' positions', 500, subStart, 8, maxW);
+      cx.fillStyle=cssVar('--muted');
       cx.fillText(keys.length+' positions', cx2, cy2 + fontSize * 0.7);
       cx.restore();
     }
@@ -8948,6 +9060,117 @@ function _mobUpdatePrices() {
     }, 3000);
   });
 }
+
+// ── Portfolio Value hero (desktop + mobile) ──
+const HERO_DAYS = { '1d':1,'1w':7,'1m':30,'3m':91,'6m':182,'1y':365,'5y':1825,'all':99999 };
+function _heroDays(key){
+  if (key==='ytd'){ const n=new Date(); const j=new Date(n.getFullYear(),0,1); return Math.max(1, Math.ceil((n-j)/86400000)); }
+  return HERO_DAYS[key] || 182;
+}
+function _heroSeries(curr, days){
+  const cutoff=new Date(); cutoff.setDate(cutoff.getDate()-days);
+  const snaps=Array.isArray(state.valueSnapshots)?state.valueSnapshots:[];
+  if (snaps.length>=2){
+    const byDate={};
+    snaps.forEach(s=>{ const v=s?.totals?.[curr]?.all;
+      if(!(typeof v==='number'&&isFinite(v)&&v>0))return;
+      const d=String(s.date||''); if(!d)return;
+      if(!byDate[d]||(s.ts||0)>(byDate[d].ts||0)) byDate[d]={date:d,val:v,ts:s.ts||0}; });
+    const pts=Object.values(byDate).sort((a,b)=>String(a.date).localeCompare(String(b.date)));
+    const inR=pts.filter(p=> new Date(p.date+'T00:00:00')>=cutoff);
+    const use=inR.length>=2?inR:pts.slice(-8);
+    if(use.length>=2) return use.map(p=>({d:new Date(p.date+'T00:00:00'), v:p.val}));
+  }
+  const holdings=computeHoldings();
+  const held=new Set(Object.values(holdings).filter(h=>{
+    if(h.units<=0.0001)return false;
+    const c=h.currency||(h.assetType==='crypto'?'USD':'AUD');
+    return c===curr; }).map(h=>h.ticker.toUpperCase()));
+  if(!held.size) return [];
+  const txs=[...state.transactions].filter(t=>{
+    if(t.type!=='buy'&&t.type!=='sell')return false;
+    const c=t.currency||(t.assetType==='crypto'?'USD':'AUD');
+    return c===curr&&held.has(t.ticker.toUpperCase()); }).sort((a,b)=>new Date(a.date)-new Date(b.date));
+  if(!txs.length) return [];
+  const run={}, snapMap={};
+  txs.forEach(tx=>{
+    const tk=tx.ticker.toUpperCase();
+    run[tk]=Math.max(0,(run[tk]||0)+(tx.type==='buy'?1:-1)*tx.units);
+    let tot=0,has=false;
+    Object.keys(run).forEach(k=>{ if(run[k]<=0)return;
+      const p=state.prices[k]??state.prices[k.toUpperCase()]??null;
+      if(p!=null){tot+=p*run[k];has=true;} });
+    if(has&&tot>0) snapMap[tx.date]=tot; });
+  const ents=Object.entries(snapMap).sort(([a],[b])=>new Date(a)-new Date(b));
+  const inR=ents.filter(([d])=>new Date(d)>=cutoff);
+  const use=(inR.length>=2?inR:ents.slice(-8));
+  return use.map(([d,v])=>({d:new Date(d), v}));
+}
+function heroCurr(c){
+  state.ui=state.ui||{}; state.ui.heroCurr=c; try{save();}catch(_){ }
+  renderDashHero();
+}
+function heroRange(r){
+  state.ui=state.ui||{}; state.ui.heroRange=r; try{save();}catch(_){ }
+  renderDashHero();
+}
+function renderDashHero(){
+  const canvas=document.getElementById('hero-canvas'); if(!canvas) return;
+  const curr=(state.ui&&state.ui.heroCurr)||'AUD';
+  const rkey=(state.ui&&state.ui.heroRange)||'6m';
+  const a=document.getElementById('hero-curr-aud'), u=document.getElementById('hero-curr-usd');
+  if(a)a.classList.toggle('active',curr==='AUD');
+  if(u)u.classList.toggle('active',curr==='USD');
+  document.querySelectorAll('#hero-ranges .pill-btn').forEach(b=>b.classList.toggle('active', b.dataset.range===rkey));
+  if(window._heroChart){ try{window._heroChart.destroy();}catch(_){ } window._heroChart=null; }
+  const empty=document.getElementById('hero-empty');
+  const valEl=document.getElementById('hero-value'); const chgEl=document.getElementById('hero-change');
+  const series=_heroSeries(curr,_heroDays(rkey));
+  if(!series||series.length<2){
+    if(empty) empty.style.display='flex';
+    // still show the live total if holdings + prices exist
+    try{
+      const holdings=computeHoldings(); let tot=0;
+      Object.values(holdings).forEach(h=>{
+        if(h.units<=0.0001)return;
+        const c=h.currency||(h.assetType==='crypto'?'USD':'AUD');
+        if(c!==curr)return;
+        const p=state.prices[h.ticker.toUpperCase()];
+        if(p!=null) tot+=p*h.units; });
+      if(valEl) valEl.textContent = tot>0 ? (curr+' $'+fmt(tot)) : '—';
+      if(chgEl) chgEl.innerHTML='&nbsp;';
+    }catch(_){ }
+    return;
+  }
+  if(empty) empty.style.display='none';
+  const vals=series.map(p=>p.v);
+  const first=vals[0], last=vals[vals.length-1];
+  const chg=last-first, pct=first?(chg/first*100):0;
+  const up=chg>=0; const col=up?'#4ade80':'#f87171';
+  const rangeLbl={'1d':'past day','1w':'past week','1m':'past month','3m':'past 3 months','6m':'past 6 months','ytd':'year to date','1y':'past year','5y':'past 5 years','all':'all time'}[rkey]||'';
+  if(valEl) valEl.textContent = curr+' $'+fmt(last);
+  if(chgEl) chgEl.innerHTML='<span style="color:'+col+';font-weight:700;">'+(up?'+':'-')+curr+' $'+fmt(Math.abs(chg))+' ('+(up?'+':'')+pct.toFixed(2)+'%)</span> <span style="color:var(--muted);">'+rangeLbl+'</span>';
+  const ctx2d=canvas.getContext('2d');
+  const lbls=series.map(p=>p.d.toLocaleDateString('en-AU',{day:'numeric',month:'short'}));
+  window._heroChart=new Chart(ctx2d,{ type:'line',
+    data:{ labels:lbls, datasets:[{ data:vals, borderColor:col, borderWidth:2.5, fill:true,
+      backgroundColor:()=>{ const h=canvas.offsetHeight||240; const g=ctx2d.createLinearGradient(0,0,0,h);
+        g.addColorStop(0,col+'3d'); g.addColorStop(.7,col+'0a'); g.addColorStop(1,col+'00'); return g; },
+      pointRadius:0, pointHoverRadius:4, pointHoverBackgroundColor:col, pointHoverBorderColor:'#fff', pointHoverBorderWidth:1.5,
+      cubicInterpolationMode:'monotone', tension:0.35 }]},
+    options:{ responsive:true, maintainAspectRatio:false,
+      interaction:{ mode:'index', intersect:false },
+      plugins:{ legend:{display:false},
+        tooltip:{ backgroundColor:'rgba(10,12,18,.92)', titleColor:'#fff', bodyColor:'#bbb', displayColors:false, padding:10, cornerRadius:8,
+          callbacks:{ label:c=>' '+curr+' $'+fmt(c.parsed.y) } } },
+      scales:{
+        x:{ grid:{display:false}, border:{display:false},
+            ticks:{ color:'rgba(150,153,166,.55)', font:{size:10}, maxTicksLimit:6, maxRotation:0 } },
+        y:{ position:'right', grid:{ color:'rgba(128,128,145,.07)' }, border:{display:false},
+            ticks:{ color:'rgba(150,153,166,.55)', font:{size:10}, maxTicksLimit:5, callback:v=>'$'+fmt(v) } } } }
+  });
+}
+
 function mobSparkCurr(curr, el) {
   _mobSparkCurr = curr;
   const audBtn = document.getElementById('mob-curr-aud');
@@ -8966,141 +9189,7 @@ function mobSparkRange(range, btn) {
   _renderMobSparkline();
 }
 function _renderMobSparkline() {
-  const canvas = document.getElementById('mob-spark-canvas');
-  if (!canvas) return;
-  if (window._mobSparkChart) { try { window._mobSparkChart.destroy(); } catch(e){} window._mobSparkChart = null; }
-  if (!state.transactions || !state.transactions.length) return;
-
-  const _sCurr = _mobSparkCurr || 'AUD';
-  const cutoffs = {'24h':1,'7d':7,'30d':30,'90d':90,'1y':365,'all':99999};
-  const days = cutoffs[_mobSparkRange] || 30;
-  const cutoff = new Date(); cutoff.setDate(cutoff.getDate() - days);
-
-  // Prefer stored snapshots when available (so the sparkline can show yesterday/last week changes).
-  const snaps = Array.isArray(state.valueSnapshots) ? state.valueSnapshots : [];
-  if (snaps.length >= 2) {
-    // Collapse intraday snapshots to last per day
-    const byDate = {};
-    snaps.forEach(s => {
-      const v = s?.totals?.[_sCurr]?.all;
-      if (!(typeof v === 'number' && isFinite(v) && v > 0)) return;
-      const d = String(s.date || '');
-      if (!d) return;
-      if (!byDate[d] || (s.ts || 0) > (byDate[d].ts || 0)) byDate[d] = { date: d, val: v, ts: (s.ts || 0) };
-    });
-    const pts = Object.values(byDate).sort((a,b)=>String(a.date).localeCompare(String(b.date)));
-
-    const inRange = pts.filter(p => (new Date(p.date+'T00:00:00')).getTime() >= cutoff.getTime());
-    const usePts = inRange.length >= 2 ? inRange : pts.slice(-8);
-    if (usePts.length >= 2) {
-      const vals = usePts.map(p => p.val);
-      const lbls = usePts.map(p => new Date(p.date+'T00:00:00').toLocaleDateString('en-AU',{day:'numeric',month:'short'}));
-      const isUp = vals[vals.length-1] >= vals[0];
-      const col = isUp ? '#4ade80' : '#f87171';
-      const ctx2d = canvas.getContext('2d');
-      window._mobSparkChart = new Chart(ctx2d, {
-        type: 'line',
-        data: { labels: lbls, datasets: [{ data: vals, borderColor: col, borderWidth: 2.5,
-          fill: true,
-          backgroundColor: (ctx) => {
-            const g = ctx2d.createLinearGradient(0, 0, 0, canvas.offsetHeight || 110);
-            g.addColorStop(0, col+'44'); g.addColorStop(1, col+'00'); return g;
-          },
-          pointRadius: 0, tension: 0.4 }] },
-        options: { responsive:true, maintainAspectRatio:false,
-          plugins:{ legend:{display:false}, tooltip:{
-            backgroundColor:'rgba(10,12,18,.92)', titleColor:'#fff', bodyColor:'#aaa',
-            displayColors:false,
-            callbacks:{ label: ctx => ' ' + _sCurr + ' $' + fmt(ctx.parsed.y) }
-          }},
-          scales:{
-            x:{ display:true, grid:{display:false}, border:{display:false},
-              ticks:{color:'rgba(160,160,180,.6)',font:{size:9},maxTicksLimit:4,maxRotation:0}},
-            y:{ display:true, position:'right', grid:{color:'rgba(255,255,255,.04)'}, border:{display:false},
-              ticks:{color:'rgba(160,160,180,.6)',font:{size:9},callback:v=>'$'+fmt(v)}}
-          }
-        }
-      });
-      return;
-    }
-  }
-
-  // Step 1: get currently held tickers in the selected currency only
-  const holdings = computeHoldings();
-  const heldTickers = new Set(
-    Object.values(holdings)
-      .filter(h => {
-        if (h.units <= 0.0001) return false;
-        const curr = h.currency || (h.assetType === 'crypto' ? 'USD' : 'AUD');
-        return curr === _sCurr;
-      })
-      .map(h => h.ticker.toUpperCase())
-  );
-
-  if (!heldTickers.size) return;
-
-  // Step 2: replay only transactions for currently held tickers in this currency
-  const allTx = [...state.transactions]
-    .filter(t => {
-      if (t.type !== 'buy' && t.type !== 'sell') return false;
-      const curr = t.currency || (t.assetType === 'crypto' ? 'USD' : 'AUD');
-      return curr === _sCurr && heldTickers.has(t.ticker.toUpperCase());
-    })
-    .sort((a,b) => new Date(a.date) - new Date(b.date));
-
-  if (!allTx.length) return;
-
-  const runUnits = {};
-  const snapshots = {};
-
-  allTx.forEach(tx => {
-    const tk = tx.ticker.toUpperCase();
-    if (!runUnits[tk]) runUnits[tk] = 0;
-    runUnits[tk] = Math.max(0, runUnits[tk] + (tx.type === 'buy' ? 1 : -1) * tx.units);
-
-    let tot = 0, hasPx = false;
-    Object.keys(runUnits).forEach(k => {
-      if (runUnits[k] <= 0) return;
-      const p = state.prices[k] ?? state.prices[k.toUpperCase()] ?? null;
-      if (p != null) { tot += p * runUnits[k]; hasPx = true; }
-    });
-    if (hasPx && tot > 0) snapshots[tx.date] = tot;
-  });
-
-  const allEntries = Object.entries(snapshots).sort(([a],[b]) => new Date(a) - new Date(b));
-  if (!allEntries.length) return;
-  const entries = allEntries.filter(([d]) => new Date(d) >= cutoff);
-  const useEntries = entries.length >= 2 ? entries : allEntries.slice(-8);
-  if (useEntries.length < 2) return;
-
-  const vals = useEntries.map(([,v]) => v);
-  const lbls = useEntries.map(([d]) => new Date(d).toLocaleDateString('en-AU',{day:'numeric',month:'short'}));
-  const isUp = vals[vals.length-1] >= vals[0];
-  const col = isUp ? '#4ade80' : '#f87171';
-  const ctx2d = canvas.getContext('2d');
-  window._mobSparkChart = new Chart(ctx2d, {
-    type: 'line',
-    data: { labels: lbls, datasets: [{ data: vals, borderColor: col, borderWidth: 2.5,
-      fill: true,
-      backgroundColor: (ctx) => {
-        const g = ctx2d.createLinearGradient(0, 0, 0, canvas.offsetHeight || 110);
-        g.addColorStop(0, col+'44'); g.addColorStop(1, col+'00'); return g;
-      },
-      pointRadius: 0, tension: 0.4 }] },
-    options: { responsive:true, maintainAspectRatio:false,
-      plugins:{ legend:{display:false}, tooltip:{
-        backgroundColor:'rgba(10,12,18,.92)', titleColor:'#fff', bodyColor:'#aaa',
-        displayColors:false,
-        callbacks:{ label: ctx => ' ' + _sCurr + ' $' + fmt(ctx.parsed.y) }
-      }},
-      scales:{
-        x:{ display:true, grid:{display:false}, border:{display:false},
-          ticks:{color:'rgba(160,160,180,.6)',font:{size:9},maxTicksLimit:4,maxRotation:0}},
-        y:{ display:true, position:'right', grid:{color:'rgba(255,255,255,.04)'}, border:{display:false},
-          ticks:{color:'rgba(160,160,180,.6)',font:{size:9},callback:v=>'$'+fmt(v)}}
-      }
-    }
-  });
+  renderDashHero();
 }
 
 
@@ -10370,13 +10459,16 @@ function renderSectorPie(canvasId, legendId, entries, palette, subId, label, hol
       const x=(left+right)/2, y=(top+bottom)/2;
       const outerR = Math.min(right-left, bottom-top) / 2;
       const innerR = outerR * 0.65;
-      const fontSize = Math.max(11, Math.min(22, Math.round(innerR * 0.44)));
-      const subSize  = Math.max(9,  Math.min(14, Math.round(innerR * 0.28)));
+      const maxW = innerR * 1.78;
       cx.save();
-      cx.font=`700 ${fontSize}px DM Mono,monospace`; cx.fillStyle=cssVar('--text');
       cx.textAlign='center'; cx.textBaseline='middle';
-      cx.fillText('$'+fmt(total), x, y - subSize * 0.9);
-      cx.font=`500 ${subSize}px DM Mono,monospace`; cx.fillStyle=cssVar('--muted');
+      const fontSize = _fitCenterFont(cx, '$'+fmt(total), 700, Math.max(11, Math.min(22, Math.round(innerR * 0.44))), 9, maxW);
+      cx.fillStyle=cssVar('--text');
+      const subStart = Math.max(9, Math.min(14, Math.round(innerR * 0.28)));
+      cx.font=`700 ${fontSize}px DM Mono,monospace`;
+      cx.fillText('$'+fmt(total), x, y - subStart * 0.9);
+      const subSize = _fitCenterFont(cx, entries.length+' sectors', 500, subStart, 8, maxW);
+      cx.fillStyle=cssVar('--muted');
       cx.fillText(entries.length+' sectors', x, y + fontSize * 0.7);
       cx.restore();
     }
@@ -10787,7 +10879,7 @@ function saveSectorEdit() {
 
   /* ── Risk Scan: blur + upsell overlay ── */
   function lockRisk(){
-    const sec=document.getElementById('dash-sec-risk');
+    const sec=document.getElementById('dash-risk-scan');
     if(!sec||sec.dataset.demoLocked)return;
     sec.dataset.demoLocked='1';
     sec.style.position='relative';
