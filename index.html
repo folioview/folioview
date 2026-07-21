@@ -93,6 +93,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-mono);min-hei
 .tab-icon-lifecheck{color:#2dd4bf;}
 .tab-icon-insights{color:#fde047;}
 .tab-icon-pulse{color:#fb7185;}
+.tab-icon-dividends{color:#4ade80;}
 
 /* Portfolio Change: horizontal boxes on desktop */
 #portfolio-change-row{
@@ -121,6 +122,11 @@ tbody tr:hover{background:var(--surface2);}
 .zero-sup{font-size:10px;vertical-align:super;opacity:.8;margin:0 2px;}
 .green{color:var(--green);}
 .red{color:var(--red);}
+/* Dividend controls */
+#sec-dividends select,#dv-edit-modal select{background:var(--bg);border:1px solid var(--border2);color:var(--text);padding:8px 10px;border-radius:8px;font-family:var(--font-mono);font-size:12px;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path d='M1 1l4 4 4-4' stroke='%23999' stroke-width='1.6' fill='none' stroke-linecap='round'/></svg>");background-repeat:no-repeat;background-position:right 10px center;padding-right:26px;}
+#sec-dividends td:last-child{white-space:nowrap;}
+#sec-dividends td:last-child .btn-ghost{margin-right:12px;}
+#sec-dividends .dv-check{width:16px;height:16px;accent-color:var(--accent);cursor:pointer;margin-right:4px;}
 /* Delta badges: soft tinted background with strong-colour figures */
 .chg-badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:8px;font-weight:700;font-family:var(--font-mono);line-height:1.25;}
 .chg-badge.green{background:var(--green-dim);color:var(--green);}
@@ -344,7 +350,7 @@ input,.form-group select,.form-group textarea{width:100%;background:var(--bg);bo
 .inv-type{font-size:10px;color:var(--muted);font-family:var(--font-head);font-weight:700;letter-spacing:.6px;text-transform:uppercase;white-space:nowrap;opacity:.9;}
 .inv-name{font-size:10px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:160px;}
 .inv-price{font-size:11px;font-family:var(--font-mono);white-space:nowrap;}
-.inv-chg{font-size:10px;font-family:var(--font-mono);white-space:nowrap;opacity:.95;display:block;margin-top:1px;}
+.inv-chg{font-size:10px;font-family:var(--font-mono);white-space:nowrap;opacity:.95;display:inline-block;margin-top:1px;}
 .inv-chg-row{text-align:center;margin-top:1px;display:block;}
 .inv-mid{flex:0 0 180px;text-align:center;white-space:nowrap;}
 .inv-right{text-align:right;white-space:nowrap;flex-shrink:0;}
@@ -650,6 +656,7 @@ body.privacy-on canvas{filter:blur(7px);opacity:.9;}
   .tab-icon-lifecheck{color:#2dd4bf;}
 .tab-icon-insights{color:#fde047;}
 .tab-icon-pulse{color:#fb7185;}
+.tab-icon-dividends{color:#4ade80;}
   .sidebar-section-label {
     font-size: 9px;
     font-family: var(--font-head);
@@ -846,9 +853,14 @@ body.privacy-on canvas{filter:blur(7px);opacity:.9;}
   .mover-logo img, .mover-logo > span{width:40px !important;height:40px !important;}
   .mover-logo > span svg{width:22px !important;height:22px !important;}
   .inv-left .ticker-logo,.inv-left .ticker-logo-placeholder{width:45px !important;height:45px !important;font-size:15px !important;}
+  .inv-mid{max-width:96px;overflow:hidden;}
+  .inv-chg.chg-badge{display:inline-flex !important;font-size:9px !important;padding:1px 5px !important;white-space:nowrap;width:fit-content;}
+  .inv-chg-row{display:flex;justify-content:center;}
+  .inv-price{font-size:11px !important;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
   /* Portfolio Change: keep numbers inside their boxes on mobile */
   .pchg-box{flex:1 1 84px !important;padding:12px 6px !important;}
-  .pchg-val{font-size:15px !important;white-space:nowrap;}
+  .pchg-box{padding:12px 4px !important;overflow:hidden;}
+  .pchg-val{font-size:14px !important;white-space:nowrap;display:inline-block;max-width:100%;padding:5px 6px !important;}
   /* Terminal section headers: centre title, meta and refresh on their own lines */
   .term-sec-head{flex-direction:column;align-items:center;text-align:center;gap:8px;}
   .term-sec-title{justify-content:center;width:100%;}
@@ -1059,6 +1071,17 @@ body.privacy-on canvas{filter:blur(7px);opacity:.9;}
 .mob-bnav-add span{font-size:8px;color:#0a0c10;}
 
 @media (max-width: 768px) {
+
+  /* Dividend table -> stacked cards on mobile */
+  #sec-dividends .data-table thead{display:none;}
+  #sec-dividends .data-table,#sec-dividends .data-table tbody,#sec-dividends .data-table tr,#sec-dividends .data-table td{display:block;width:100%;}
+  #sec-dividends .data-table tr.dv-row{border:1px solid var(--border2);border-radius:12px;padding:10px 12px;margin-bottom:10px;background:var(--surface2);}
+  #sec-dividends .data-table td{border:none;padding:4px 0;display:flex;justify-content:space-between;align-items:center;gap:12px;text-align:right;}
+  #sec-dividends .data-table td::before{content:attr(data-label);color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.6px;text-align:left;flex-shrink:0;}
+  #sec-dividends .data-table td[data-label="Note"]{white-space:normal;word-break:break-word;}
+  #sec-dividends .data-table td.dv-actions{justify-content:flex-end;padding-top:8px;margin-top:4px;border-top:1px solid var(--border);}
+  #sec-dividends .data-table td.dv-actions::before{content:"";}
+
   #mob-bottom-nav{display:grid !important;}
 }
 
@@ -1162,6 +1185,7 @@ tr.tx-detail-row>td{padding:0 !important;}
     <button class="sidebar-tab active" data-tab="dashboard" onclick="switchTab('dashboard',this)"><span class="tab-icon tab-icon-dashboard"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1v-8.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span>Dashboard</button>
     <button class="sidebar-tab" data-tab="portfolio" onclick="switchTab('portfolio',this)"><span class="tab-icon tab-icon-holdings"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v18M16.5 7.5H10a3 3 0 0 0 0 6h4a3 3 0 0 1 0 6H7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>Portfolio</button>
     <button class="sidebar-tab" data-tab="history" onclick="switchTab('history',this)"><span class="tab-icon tab-icon-transactions"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2" stroke="currentColor" stroke-width="2"/><path d="M9 3h6v3H9z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 11h6M9 15h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>Transactions</button>
+    <button class="sidebar-tab" data-tab="dividends" onclick="switchTab('dividends',this)"><span class="tab-icon tab-icon-dividends"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21v-8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M12 13c0-3 2.4-5 5.5-5 .3 2.9-2 5-5.5 5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 15c0-3.3-2.2-5.5-5.5-5.5C6.2 12.7 8.6 15 12 15Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span>Dividends</button>
     <button class="sidebar-tab" data-tab="closed" onclick="switchTab('closed',this)"><span class="tab-icon tab-icon-closed"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 8l2-4h14l2 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="3" y="8" width="18" height="12" rx="1.5" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9.5 12h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>Closed Positions</button>
     <div class="sidebar-section-label">Analysis</div>
     <button class="sidebar-tab" data-tab="tradeinsights" onclick="switchTab('tradeinsights',this)"><span class="tab-icon tab-icon-insights"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.3c.6.5 1 1.6 1 2.7h6c0-1.1.4-2.2 1-2.7A6 6 0 0 0 12 3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Trading Insights</button>
@@ -1203,6 +1227,7 @@ tr.tx-detail-row>td{padding:0 !important;}
       <button class="btn-ghost" style="font-size:11px;flex:1;" onclick="openLoadModal()">📂 Load</button>
     </div>
     <button class="btn-ghost" style="font-size:11px;" onclick="exportCSV()">📊 Export CSV</button>
+    <button class="btn-ghost" style="font-size:11px;" onclick="exportLedger()">📒 Export Ledger</button>
     <button class="btn-ghost" style="font-size:11px;display:flex;align-items:center;justify-content:center;gap:6px;" onclick="fetchAllLogos()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>Load Logos</button>
     <button class="btn-ghost" style="font-size:11px;display:flex;align-items:center;justify-content:center;gap:6px;" id="sidebar-refresh-btn" onclick="fetchAllPrices(true)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7M21 4v4h-4"/></svg>Fetch Prices</button>
   </div>
@@ -1260,7 +1285,7 @@ tr.tx-detail-row>td{padding:0 !important;}
     <div class="header-btns">
       <button class="btn" style="font-size:10px;padding:5px 12px;" onclick="saveToFile()" style="position:relative;overflow:visible;">💾 Save</button>
       <button class="btn-ghost" style="font-size:10px;" onclick="openLoadModal()">📂 Load</button>
-      <button class="btn-ghost" style="font-size:10px;" onclick="exportCSV()">📊 Export CSV</button>
+      <button class="btn-ghost" style="font-size:10px;" onclick="openExportPicker()">📤 Export</button>
       <button class="btn-ghost" style="font-size:10px;" id="refresh-btn" onclick="fetchAllPrices(true)">🔄 Fetch Prices</button>
       <input type="file" id="load-input" accept=".json,.csv,.txt,.tsv,text/csv,text/plain,application/json,application/vnd.ms-excel,application/octet-stream" style="display:none" onchange="loadFromFile(event)">
       <button id="header-theme-cycle" onclick="cycleThemeDesktop()" title="Cycle theme" style="border:1px solid var(--border2);background:var(--surface2);border-radius:4px;cursor:pointer;padding:4px 9px;font-size:14px;color:var(--text);transition:all .15s;min-width:34px;display:inline-flex;align-items:center;justify-content:center;"></button>
@@ -1308,6 +1333,7 @@ tr.tx-detail-row>td{padding:0 !important;}
       <button class="mob-nav-btn active" id="mob-tab-dashboard" onclick="mobSwitchTab('dashboard')"><span class="mob-icon tab-icon-dashboard"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1v-8.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span>Dashboard</button>
       <button class="mob-nav-btn" id="mob-tab-portfolio" onclick="mobSwitchTab('portfolio')"><span class="mob-icon tab-icon-holdings"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v18M16.5 7.5H10a3 3 0 0 0 0 6h4a3 3 0 0 1 0 6H7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>Portfolio</button>
       <button class="mob-nav-btn" id="mob-tab-history" onclick="mobSwitchTab('history')"><span class="mob-icon tab-icon-transactions"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2" stroke="currentColor" stroke-width="2"/><path d="M9 3h6v3H9z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 11h6M9 15h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>Transaction History</button>
+      <button class="mob-nav-btn" id="mob-tab-dividends" onclick="mobSwitchTab('dividends')"><span class="mob-icon tab-icon-dividends"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21v-8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M12 13c0-3 2.4-5 5.5-5 .3 2.9-2 5-5.5 5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 15c0-3.3-2.2-5.5-5.5-5.5C6.2 12.7 8.6 15 12 15Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span>Dividends</button>
       <button class="mob-nav-btn" id="mob-tab-closed" onclick="mobSwitchTab('closed')"><span class="mob-icon tab-icon-closed"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 8l2-4h14l2 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="3" y="8" width="18" height="12" rx="1.5" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9.5 12h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>Closed Positions</button>
       <button class="mob-nav-btn" id="mob-tab-tradeinsights" onclick="mobSwitchTab('tradeinsights')"><span class="mob-icon tab-icon-insights"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.3c.6.5 1 1.6 1 2.7h6c0-1.1.4-2.2 1-2.7A6 6 0 0 0 12 3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Trading Insights</button>
       <button class="mob-nav-btn" id="mob-tab-pulse" onclick="mobSwitchTab('pulse')"><span class="mob-icon tab-icon-pulse"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M6.5 12h2.2l1.6-3.6 3.2 7.2L15 12h2.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Portfolio Pulse</button>
@@ -1329,7 +1355,7 @@ tr.tx-detail-row>td{padding:0 !important;}
       <div class="mob-action-row">
         <button class="mob-action-btn" onclick="saveToFile();toggleMobMenu()">💾 Save</button>
         <button class="mob-action-btn" onclick="toggleMobMenu();openLoadModal()">📂 Load</button>
-        <button class="mob-action-btn" onclick="exportCSV();toggleMobMenu()">📊 CSV</button>
+        <button class="mob-action-btn" onclick="toggleMobMenu();openExportPicker()">📤 Export</button>
       </div>
       <div class="mob-action-row" style="gap:10px;">
         <button onclick="fetchAllLogos();toggleMobMenu()" title="Load logos" aria-label="Load logos"
@@ -1425,6 +1451,7 @@ tr.tx-detail-row>td{padding:0 !important;}
   <button class="tab active" onclick="switchTab('dashboard',this)">Dashboard</button>
   <button class="tab" onclick="switchTab('portfolio',this)">Portfolio</button>
   <button class="tab" onclick="switchTab('history',this)">Transaction History</button>
+  <button class="tab" onclick="switchTab('dividends',this)">Dividends</button>
   <button class="tab" onclick="switchTab('closed',this)">Closed Positions</button>
   <button class="tab" onclick="switchTab('tradeinsights',this)">Trading Insights</button>
   <button class="tab" onclick="switchTab('pulse',this)">Portfolio Pulse</button>
@@ -1495,6 +1522,9 @@ tr.tx-detail-row>td{padding:0 !important;}
         <button class="mob-spark-btn" id="inv-period-30d" onclick="setInvPeriod('d30','30D',this)" style="font-size:9px;padding:3px 10px;">30D</button>
         <button class="mob-spark-btn" id="inv-period-60d" onclick="setInvPeriod('d60','60D',this)" style="font-size:9px;padding:3px 10px;">60D</button>
         <button class="mob-spark-btn" id="inv-period-90d" onclick="setInvPeriod('d90','90D',this)" style="font-size:9px;padding:3px 10px;">90D</button>
+        <span style="width:1px;height:14px;background:var(--border2);margin:0 2px;align-self:center;"></span>
+        <button class="mob-spark-btn" id="inv-sort-val" onclick="setInvSort('value',this)" style="font-size:9px;padding:3px 10px;">Value</button>
+        <button class="mob-spark-btn" id="inv-sort-chg" onclick="setInvSort('chg',this)" style="font-size:9px;padding:3px 10px;">Movement</button>
       </div>
       <div id="inv-overview-card" style="padding-top:10px;">
         <div id="inv-overview" class="inv-overview"></div>
@@ -1831,6 +1861,41 @@ tr.tx-detail-row>td{padding:0 !important;}
     </table></div>
   </div>
 
+
+  <!-- DIVIDENDS TAB -->
+  <div class="section" id="sec-dividends">
+    <div class="table-header mob-center-header">
+      <div class="section-title">Dividends &amp; Income</div>
+      <div style="font-size:11px;color:var(--muted);padding-top:4px;">Record dividends and distributions, with franking for AU holdings</div>
+    </div>
+    <div class="chart-card" style="margin-bottom:16px;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;align-items:end;">
+        <div><label class="fld-label">Ticker</label><input type="text" id="dv-ticker" placeholder="e.g. VAS" style="width:100%;text-transform:uppercase;"></div>
+        <div><label class="fld-label">Pay date</label><input type="date" id="dv-date" style="width:100%;"></div>
+        <div><label class="fld-label">Amount received</label><input type="number" id="dv-amount" placeholder="0.00" step="0.01" style="width:100%;"></div>
+        <div><label class="fld-label">Currency</label><select id="dv-currency" style="width:100%;"><option value="AUD">AUD</option><option value="USD">USD</option></select></div>
+        <div><label class="fld-label">Franked %</label><input type="number" id="dv-franked" placeholder="100" step="1" min="0" max="100" style="width:100%;"></div>
+        <div><label class="fld-label">Portfolio</label><select id="dv-portfolio" style="width:100%;"><option value="main">Main</option></select></div>
+        <div style="grid-column:1/-1;"><label class="fld-label">Note (optional)</label><input type="text" id="dv-note" placeholder="e.g. Q3 distribution, DRP" style="width:100%;"></div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;margin-top:12px;flex-wrap:wrap;">
+        <button class="btn" id="dv-add-btn" onclick="addDividend()">+ Add Dividend</button>
+        <button class="btn-ghost" id="dv-cancel-btn" onclick="cancelEditDividend()" style="display:none;">Cancel</button>
+        <span style="font-size:11px;color:var(--muted);">Franking credit is estimated at the 30% company rate: credit = franked amount &times; 30/70.</span>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:flex-end;gap:8px;margin-bottom:10px;align-items:center;">
+      <span id="dv-sel-count" style="font-size:11px;color:var(--muted);display:none;"></span>
+      <button class="btn-ghost btn-sm" id="dv-select-btn" onclick="toggleDivSelect()">☑ Select</button>
+      <button class="btn btn-sm" id="dv-del-selected" style="display:none;background:var(--red);border-color:var(--red);color:#fff;" onclick="deleteSelectedDividends()">Delete Selected</button>
+    </div>
+    <div id="dividend-summary" style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:16px;"></div>
+    <div class="table-wrap"><table class="data-table">
+      <thead><tr><th>Pay date</th><th>Ticker</th><th>Amount</th><th>Franked %</th><th>Franking credit</th><th>Gross</th><th>Note</th><th></th></tr></thead>
+      <tbody id="dividend-body"></tbody>
+    </table></div>
+  </div>
+
   <!-- CALENDAR TAB -->
   <div class="section" id="sec-calendar">
     <div class="table-header mob-center-header">
@@ -2064,9 +2129,9 @@ tr.tx-detail-row>td{padding:0 !important;}
         <div style="font-size:12px;color:var(--muted);margin-bottom:14px;">Save, load or export your portfolio data.</div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;">
           <button class="btn" onclick="saveToFile()">💾 Save JSON</button>
-          <button class="btn-ghost" onclick="document.getElementById('load-input-s').click()">📂 Load JSON</button>
+          <button class="btn-ghost" onclick="openLoadPicker('load-input-s')">📂 Load</button>
           <input type="file" id="load-input-s" accept=".json,.csv,.txt,.tsv,text/csv,text/plain,application/json,application/vnd.ms-excel,application/octet-stream" style="display:none" onchange="loadFileSettings(this)">
-          <button class="btn-ghost" onclick="exportCSV()">📊 Export CSV</button>
+          <button class="btn-ghost" onclick="openExportPicker()">📤 Export</button>
         </div>
       </div>
       <div class="dash-card" style="padding:20px;">
@@ -2355,7 +2420,7 @@ tr.tx-detail-row>td{padding:0 !important;}
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>/*DEMO SEED*/try{localStorage.setItem('folio_demo_state', "{\"transactions\":[{\"id\":1001,\"type\":\"buy\",\"assetType\":\"asx\",\"currency\":\"AUD\",\"portfolio\":\"main\",\"ticker\":\"VAS\",\"units\":50,\"price\":88.0,\"total\":4400.0,\"date\":\"2024-02-15\",\"fees\":9.5,\"emotion\":\"Patient\",\"reason\":\"Portfolio diversification\",\"notes\":\"Core ETF \\u2014 monthly DCA\"},{\"id\":1002,\"type\":\"buy\",\"assetType\":\"asx\",\"currency\":\"AUD\",\"portfolio\":\"main\",\"ticker\":\"VAS\",\"units\":30,\"price\":92.4,\"total\":2772.0,\"date\":\"2024-08-10\",\"fees\":9.5,\"emotion\":\"Calm\",\"reason\":\"DCA (Down cost Average)\",\"notes\":\"\"},{\"id\":1003,\"type\":\"buy\",\"assetType\":\"asx\",\"currency\":\"AUD\",\"portfolio\":\"main\",\"ticker\":\"VGS\",\"units\":40,\"price\":110.2,\"total\":4408.0,\"date\":\"2024-03-05\",\"fees\":9.5,\"emotion\":\"Confident\",\"reason\":\"Portfolio diversification\",\"notes\":\"Global exposure\"},{\"id\":1004,\"type\":\"buy\",\"assetType\":\"asx\",\"currency\":\"AUD\",\"portfolio\":\"main\",\"ticker\":\"CBA\",\"units\":20,\"price\":105.0,\"total\":2100.0,\"date\":\"2024-01-20\",\"fees\":10.0,\"emotion\":\"Confident\",\"reason\":\"Dividend yield\",\"notes\":\"Franking credits\"},{\"id\":1005,\"type\":\"buy\",\"assetType\":\"asx\",\"currency\":\"AUD\",\"portfolio\":\"main\",\"ticker\":\"CBA\",\"units\":10,\"price\":118.5,\"total\":1185.0,\"date\":\"2024-09-12\",\"fees\":0,\"emotion\":\"Calm\",\"reason\":\"Dividend yield\",\"notes\":\"\"},{\"id\":1006,\"type\":\"buy\",\"assetType\":\"asx\",\"currency\":\"AUD\",\"portfolio\":\"main\",\"ticker\":\"BHP\",\"units\":60,\"price\":45.1,\"total\":2706.0,\"date\":\"2024-04-18\",\"fees\":10.0,\"emotion\":\"Uncertain\",\"reason\":\"Sector trend\",\"notes\":\"Iron ore cycle\"},{\"id\":1007,\"type\":\"buy\",\"assetType\":\"nasdaq\",\"currency\":\"USD\",\"portfolio\":\"main\",\"ticker\":\"AAPL\",\"units\":15,\"price\":180.0,\"total\":2700.0,\"date\":\"2024-02-28\",\"fees\":5.0,\"emotion\":\"Confident\",\"reason\":\"Fundamentals\",\"notes\":\"\"},{\"id\":1008,\"type\":\"buy\",\"assetType\":\"nasdaq\",\"currency\":\"USD\",\"portfolio\":\"main\",\"ticker\":\"NVDA\",\"units\":12,\"price\":90.0,\"total\":1080.0,\"date\":\"2024-03-15\",\"fees\":5.0,\"emotion\":\"Excited\",\"reason\":\"Earnings growth\",\"notes\":\"AI tailwind\"},{\"id\":1009,\"type\":\"buy\",\"assetType\":\"nasdaq\",\"currency\":\"USD\",\"portfolio\":\"main\",\"ticker\":\"NVDA\",\"units\":8,\"price\":118.0,\"total\":944.0,\"date\":\"2024-10-02\",\"fees\":0,\"emotion\":\"FOMO\",\"reason\":\"Momentum\",\"notes\":\"Chased the breakout\"},{\"id\":1010,\"type\":\"buy\",\"assetType\":\"nasdaq\",\"currency\":\"USD\",\"portfolio\":\"main\",\"ticker\":\"TSLA\",\"units\":20,\"price\":240.0,\"total\":4800.0,\"date\":\"2024-05-06\",\"fees\":5.0,\"emotion\":\"Excited\",\"reason\":\"Speculation\",\"notes\":\"\"},{\"id\":1011,\"type\":\"sell\",\"assetType\":\"nasdaq\",\"currency\":\"USD\",\"portfolio\":\"main\",\"ticker\":\"TSLA\",\"units\":10,\"price\":250.0,\"total\":2500.0,\"date\":\"2025-01-15\",\"fees\":5.0,\"emotion\":\"Greedy\",\"reason\":\"Profit taking\",\"notes\":\"Trimmed half\"},{\"id\":1012,\"type\":\"buy\",\"assetType\":\"crypto\",\"currency\":\"USD\",\"portfolio\":\"main\",\"ticker\":\"BTC\",\"units\":0.15,\"price\":42000.0,\"total\":6300.0,\"date\":\"2024-01-10\",\"fees\":0,\"emotion\":\"Confident\",\"reason\":\"Macro theme\",\"notes\":\"Digital gold thesis\"},{\"id\":1013,\"type\":\"buy\",\"assetType\":\"crypto\",\"currency\":\"USD\",\"portfolio\":\"main\",\"ticker\":\"BTC\",\"units\":0.05,\"price\":61000.0,\"total\":3050.0,\"date\":\"2024-11-20\",\"fees\":0,\"emotion\":\"FOMO\",\"reason\":\"Momentum\",\"notes\":\"\"},{\"id\":1014,\"type\":\"buy\",\"assetType\":\"crypto\",\"currency\":\"USD\",\"portfolio\":\"main\",\"ticker\":\"ETH\",\"units\":2.0,\"price\":2300.0,\"total\":4600.0,\"date\":\"2024-02-05\",\"fees\":0,\"emotion\":\"Confident\",\"reason\":\"Product adoption\",\"notes\":\"\"},{\"id\":1015,\"type\":\"buy\",\"assetType\":\"crypto\",\"currency\":\"USD\",\"portfolio\":\"main\",\"ticker\":\"SOL\",\"units\":40,\"price\":95.0,\"total\":3800.0,\"date\":\"2024-03-22\",\"fees\":2.0,\"emotion\":\"Excited\",\"reason\":\"Speculation\",\"notes\":\"\"},{\"id\":1016,\"type\":\"sell\",\"assetType\":\"crypto\",\"currency\":\"USD\",\"portfolio\":\"main\",\"ticker\":\"SOL\",\"units\":40,\"price\":175.0,\"total\":7000.0,\"date\":\"2025-03-10\",\"fees\":0,\"emotion\":\"Confident\",\"reason\":\"Profit taking\",\"notes\":\"Closed for +$3,200 \\u2014 my best trade\"},{\"id\":1017,\"type\":\"buy\",\"assetType\":\"nasdaq\",\"currency\":\"USD\",\"portfolio\":\"main\",\"ticker\":\"PYPL\",\"units\":25,\"price\":75.0,\"total\":1875.0,\"date\":\"2024-02-12\",\"fees\":5.0,\"emotion\":\"Confident\",\"reason\":\"Valuation\",\"notes\":\"Thought it was cheap\"},{\"id\":1018,\"type\":\"sell\",\"assetType\":\"nasdaq\",\"currency\":\"USD\",\"portfolio\":\"main\",\"ticker\":\"PYPL\",\"units\":25,\"price\":62.0,\"total\":1550.0,\"date\":\"2024-12-05\",\"fees\":0,\"emotion\":\"Defeated\",\"reason\":\"Risk management exit\",\"notes\":\"Cut the loss \\u2014 thesis broke\"},{\"id\":1019,\"type\":\"buy\",\"assetType\":\"crypto\",\"currency\":\"USD\",\"portfolio\":\"main\",\"ticker\":\"DOGE\",\"units\":5000,\"price\":0.16,\"total\":800.0,\"date\":\"2024-11-15\",\"fees\":0,\"emotion\":\"FOMO\",\"reason\":\"Speculation\",\"notes\":\"Meme punt (small)\"}],\"prices\":{\"VAS\":98.2,\"VGS\":132.4,\"CBA\":128.1,\"BHP\":43.5,\"NDQ\":43.0,\"A200\":138.6,\"DHHF\":35.1,\"AAPL\":226.0,\"NVDA\":138.5,\"TSLA\":255.0,\"PYPL\":63.0,\"BTC\":69000.0,\"ETH\":3450.0,\"SOL\":168.0,\"LINK\":14.5,\"DOGE\":0.14},\"priceMeta\":{\"VAS\":{\"auto\":true,\"fetched\":1717200000000,\"source\":\"demo\",\"companyName\":\"Vanguard Australian Shares ETF\",\"chgPct24h\":0.42,\"prevClose\":97.7893},\"VGS\":{\"auto\":true,\"fetched\":1717200000000,\"source\":\"demo\",\"companyName\":\"Vanguard MSCI Intl Shares ETF\",\"chgPct24h\":1.06,\"prevClose\":131.0113},\"CBA\":{\"auto\":true,\"fetched\":1717200000000,\"source\":\"demo\",\"companyName\":\"Commonwealth Bank of Australia\",\"chgPct24h\":-1.2,\"prevClose\":129.6559},\"BHP\":{\"auto\":true,\"fetched\":1717200000000,\"source\":\"demo\",\"companyName\":\"BHP Group Ltd\",\"chgPct24h\":-0.55,\"prevClose\":43.7406},\"NDQ\":{\"auto\":true,\"fetched\":1717200000000,\"source\":\"demo\",\"companyName\":\"BetaShares Nasdaq 100 ETF\",\"chgPct24h\":0.67,\"prevClose\":42.7138},\"A200\":{\"auto\":true,\"fetched\":1717200000000,\"source\":\"demo\",\"companyName\":\"BetaShares Australia 200 ETF\",\"chgPct24h\":-0.23,\"prevClose\":138.9195},\"DHHF\":{\"auto\":true,\"fetched\":1717200000000,\"source\":\"demo\",\"companyName\":\"BetaShares DHHF Diversified ETF\",\"chgPct24h\":0.31,\"prevClose\":34.9915},\"AAPL\":{\"auto\":true,\"fetched\":1717200000000,\"source\":\"demo\",\"companyName\":\"Apple Inc\",\"chgPct24h\":0.88,\"prevClose\":224.0285},\"NVDA\":{\"auto\":true,\"fetched\":1717200000000,\"source\":\"demo\",\"companyName\":\"NVIDIA Corporation\",\"chgPct24h\":2.14,\"prevClose\":135.5982},\"TSLA\":{\"auto\":true,\"fetched\":1717200000000,\"source\":\"demo\",\"companyName\":\"Tesla Inc\",\"chgPct24h\":-1.35,\"prevClose\":258.4896},\"PYPL\":{\"auto\":true,\"fetched\":1717200000000,\"source\":\"demo\",\"companyName\":\"PayPal Holdings Inc\",\"chgPct24h\":-0.4,\"prevClose\":63.253},\"BTC\":{\"auto\":true,\"fetched\":1717200000000,\"source\":\"demo\",\"companyName\":\"Bitcoin\",\"chgPct24h\":-0.84,\"prevClose\":69584.5099},\"ETH\":{\"auto\":true,\"fetched\":1717200000000,\"source\":\"demo\",\"companyName\":\"Ethereum\",\"chgPct24h\":-0.33,\"prevClose\":3461.4227},\"SOL\":{\"auto\":true,\"fetched\":1717200000000,\"source\":\"demo\",\"companyName\":\"Solana\",\"chgPct24h\":2.32,\"prevClose\":164.1908},\"LINK\":{\"auto\":true,\"fetched\":1717200000000,\"source\":\"demo\",\"companyName\":\"Chainlink\",\"chgPct24h\":-0.4,\"prevClose\":14.5582},\"DOGE\":{\"auto\":true,\"fetched\":1717200000000,\"source\":\"demo\",\"companyName\":\"Dogecoin\",\"chgPct24h\":3.1,\"prevClose\":0.1358}},\"priceChanges\":{\"VAS\":{\"d1\":0.42,\"d7\":0.46,\"d30\":-4.68,\"d60\":10.13,\"d90\":-11.38},\"VGS\":{\"d1\":1.06,\"d7\":2.8,\"d30\":0.05,\"d60\":-10.03,\"d90\":10.37},\"CBA\":{\"d1\":-1.2,\"d7\":-4.21,\"d30\":1.54,\"d60\":-9.62,\"d90\":-10.46},\"BHP\":{\"d1\":-0.55,\"d7\":-0.98,\"d30\":10.19,\"d60\":-7.79,\"d90\":-3.84},\"NDQ\":{\"d1\":0.67,\"d7\":2.48,\"d30\":12.85,\"d60\":7.62,\"d90\":4.83},\"A200\":{\"d1\":-0.23,\"d7\":2.42,\"d30\":-6.98,\"d60\":17.19,\"d90\":-0.52},\"DHHF\":{\"d1\":0.31,\"d7\":-0.66,\"d30\":-5.41,\"d60\":-1.51,\"d90\":25.81},\"AAPL\":{\"d1\":0.88,\"d7\":0.66,\"d30\":4.8,\"d60\":9.72,\"d90\":3.62},\"NVDA\":{\"d1\":2.14,\"d7\":5.02,\"d30\":-6.62,\"d60\":-9.97,\"d90\":-4.7},\"TSLA\":{\"d1\":-1.35,\"d7\":-1.3,\"d30\":1.41,\"d60\":-1.32,\"d90\":14.28},\"PYPL\":{\"d1\":-0.4,\"d7\":-0.53,\"d30\":-1.41,\"d60\":15.01,\"d90\":19.95},\"BTC\":{\"d1\":-0.84,\"d7\":-2.46,\"d30\":4.64,\"d60\":5.86,\"d90\":28.76},\"ETH\":{\"d1\":-0.33,\"d7\":0.99,\"d30\":-1.67,\"d60\":21.33,\"d90\":-9.1},\"SOL\":{\"d1\":2.32,\"d7\":4.73,\"d30\":8.66,\"d60\":-6.83,\"d90\":9.45},\"LINK\":{\"d1\":-0.4,\"d7\":-2.6,\"d30\":6.7,\"d60\":14.0,\"d90\":13.65},\"DOGE\":{\"d1\":3.1,\"d7\":8.58,\"d30\":-1.1,\"d60\":11.64,\"d90\":14.72}},\"logoOverrides\":{},\"logoCache\":{},\"portfolios\":[{\"id\":\"main\",\"name\":\"My Portfolio\",\"emoji\":\"\\ud83d\\udc64\"}],\"watchlists\":[{\"id\":\"default\",\"name\":\"Watchlist\"},{\"id\":\"crypto-targets\",\"name\":\"Crypto Targets\"},{\"id\":\"life-check\",\"name\":\"Life Check\"}],\"watchlist\":[{\"id\":2001,\"ticker\":\"BTC\",\"assetType\":\"crypto\",\"listId\":\"default\",\"currency\":\"USD\",\"condition\":\"lte\",\"target\":60000,\"remindOn\":\"2025-07-01\",\"notes\":\"Add on a dip toward 60k\",\"createdAt\":1717200000000,\"triggered\":false,\"reminded\":false,\"source\":\"\"},{\"id\":2002,\"ticker\":\"AAPL\",\"assetType\":\"nasdaq\",\"listId\":\"default\",\"currency\":\"USD\",\"condition\":\"lte\",\"target\":200,\"remindOn\":\"\",\"notes\":\"Load more under $200\",\"createdAt\":1717200000000,\"triggered\":false,\"reminded\":false,\"source\":\"\"},{\"id\":2003,\"ticker\":\"NVDA\",\"assetType\":\"nasdaq\",\"listId\":\"default\",\"currency\":\"USD\",\"condition\":\"gte\",\"target\":160,\"remindOn\":\"\",\"notes\":\"Trim if it runs to 160\",\"createdAt\":1717200000000,\"triggered\":false,\"reminded\":false,\"source\":\"\"},{\"id\":2004,\"ticker\":\"ETH\",\"assetType\":\"crypto\",\"listId\":\"crypto-targets\",\"currency\":\"USD\",\"condition\":\"gte\",\"target\":4000,\"remindOn\":\"\",\"notes\":\"Take partial profit at 4k\",\"createdAt\":1717200000000,\"triggered\":false,\"reminded\":false,\"source\":\"\"},{\"id\":2005,\"ticker\":\"SOL\",\"assetType\":\"crypto\",\"listId\":\"crypto-targets\",\"currency\":\"USD\",\"condition\":\"gte\",\"target\":220,\"remindOn\":\"\",\"notes\":\"Re-entry / profit watch\",\"createdAt\":1717200000000,\"triggered\":false,\"reminded\":false,\"source\":\"\"},{\"id\":2006,\"ticker\":\"CBA\",\"assetType\":\"asx\",\"listId\":\"default\",\"currency\":\"AUD\",\"condition\":\"gte\",\"target\":null,\"remindOn\":\"2025-08-14\",\"notes\":\"Ex-dividend date reminder\",\"createdAt\":1717200000000,\"triggered\":false,\"reminded\":false,\"source\":\"\"},{\"id\":2007,\"ticker\":\"HEALTH\",\"assetType\":\"life\",\"listId\":\"life-check\",\"currency\":\"\",\"condition\":\"gte\",\"target\":null,\"remindOn\":\"2025-05-01\",\"notes\":\"Read 20 minutes each morning\",\"createdAt\":1717200000000,\"triggered\":false,\"reminded\":false,\"source\":\"lifecheck\",\"lifeCheckId\":3001,\"lifeArea\":\"Personal Development\",\"lifeHorizon\":\"Short Term\"}],\"calendarEvents\":{\"2025-02-12\":[{\"text\":\"CBA half-year results\",\"createdAt\":1717200000000}],\"2025-04-30\":[{\"text\":\"Review portfolio & rebalance\",\"createdAt\":1717200000000}],\"2025-07-31\":[{\"text\":\"NVDA earnings \\u2014 watch guidance\",\"createdAt\":1717200000000}],\"2025-08-14\":[{\"text\":\"CBA ex-dividend date\",\"createdAt\":1717200000000},{\"text\":\"Reinvest dividend into VAS\",\"createdAt\":1717200000000}]},\"notifications\":[{\"id\":4001,\"ts\":1717196400000,\"ticker\":\"SOL\",\"msg\":\"SOL closed for +$3,200 realised profit\",\"read\":false},{\"id\":4002,\"ts\":1717027200000,\"ticker\":\"BTC\",\"msg\":\"Bought 0.05 BTC @ $61,000\",\"read\":true},{\"id\":4003,\"ts\":1716768000000,\"ticker\":\"PYPL\",\"msg\":\"PYPL position closed \\u2212$325 (risk exit)\",\"read\":true},{\"id\":4004,\"ts\":1716595200000,\"ticker\":\"NVDA\",\"msg\":\"NVDA up 2.1% today\",\"read\":true}],\"lifeCheck\":{\"entries\":[{\"id\":3001,\"ts\":1717200000000,\"scores\":{\"Health\":6,\"Wealth\":7,\"Career\":5,\"Relationships\":8,\"Personal Development\":4},\"lowest\":\"Personal Development\",\"tiedLowest\":[\"Personal Development\"],\"selectedAreas\":[\"Personal Development\",\"Career\"],\"why\":{\"Personal Development\":\"Not carving out time to learn new skills.\",\"Career\":\"Feeling a bit plateaued in the current role.\"},\"plans\":{},\"actionDates\":{},\"actions\":[{\"area\":\"Personal Development\",\"horizon\":\"short\",\"label\":\"Short Term\",\"text\":\"Read 20 minutes each morning\",\"date\":\"2025-05-01\"},{\"area\":\"Career\",\"horizon\":\"mid\",\"label\":\"Mid Term\",\"text\":\"Complete a professional certification\",\"date\":\"2025-09-01\"}]}]},\"valueSnapshots\":[],\"newsApi\":{\"provider\":\"marketaux\",\"keys\":{\"marketaux\":\"\",\"finnhub\":\"\",\"alphavantage\":\"\"},\"enabled\":false},\"ui\":{\"privacy\":false,\"bellHistoryMax\":10}}");}catch(e){}</script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>/*DEMO SEED*/try{localStorage.setItem('folio_demo_state', "{\"transactions\":[{\"id\":1001,\"type\":\"buy\",\"assetType\":\"asx\",\"currency\":\"AUD\",\"portfolio\":\"main\",\"ticker\":\"VAS\",\"units\":50,\"price\":88.0,\"total\":4400.0,\"date\":\"2024-02-15\",\"fees\":9.5,\"emotion\":\"Patient\",\"reason\":\"Portfolio diversification\",\"notes\":\"Core ETF \\u2014 monthly DCA\"},{\"id\":1002,\"type\":\"buy\",\"assetType\":\"asx\",\"currency\":\"AUD\",\"portfolio\":\"main\",\"ticker\":\"VAS\",\"units\":30,\"price\":92.4,\"total\":2772.0,\"date\":\"2024-08-10\",\"fees\":9.5,\"emotion\":\"Calm\",\"reason\":\"DCA (Down cost Average)\",\"notes\":\"\"},{\"id\":1003,\"type\":\"buy\",\"assetType\":\"asx\",\"currency\":\"AUD\",\"portfolio\":\"main\",\"ticker\":\"VGS\",\"units\":40,\"price\":110.2,\"total\":4408.0,\"date\":\"2024-03-05\",\"fees\":9.5,\"emotion\":\"Confident\",\"reason\":\"Portfolio diversification\",\"notes\":\"Global exposure\"},{\"id\":1004,\"type\":\"buy\",\"assetType\":\"asx\",\"currency\":\"AUD\",\"portfolio\":\"main\",\"ticker\":\"CBA\",\"units\":20,\"price\":105.0,\"total\":2100.0,\"date\":\"2024-01-20\",\"fees\":10.0,\"emotion\":\"Confident\",\"reason\":\"Dividend yield\",\"notes\":\"Franking credits\"},{\"id\":1005,\"type\":\"buy\",\"assetType\":\"asx\",\"currency\":\"AUD\",\"portfolio\":\"main\",\"ticker\":\"CBA\",\"units\":10,\"price\":118.5,\"total\":1185.0,\"date\":\"2024-09-12\",\"fees\":0,\"emotion\":\"Calm\",\"reason\":\"Dividend yield\",\"notes\":\"\"},{\"id\":1006,\"type\":\"buy\",\"assetType\":\"asx\",\"currency\":\"AUD\",\"portfolio\":\"main\",\"ticker\":\"BHP\",\"units\":60,\"price\":45.1,\"total\":2706.0,\"date\":\"2024-04-18\",\"fees\":10.0,\"emotion\":\"Uncertain\",\"reason\":\"Sector trend\",\"notes\":\"Iron ore cycle\"},{\"id\":1007,\"type\":\"buy\",\"assetType\":\"nasdaq\",\"currency\":\"USD\",\"portfolio\":\"main\",\"ticker\":\"AAPL\",\"units\":15,\"price\":180.0,\"total\":2700.0,\"date\":\"2024-02-28\",\"fees\":5.0,\"emotion\":\"Confident\",\"reason\":\"Fundamentals\",\"notes\":\"\"},{\"id\":1008,\"type\":\"buy\",\"assetType\":\"nasdaq\",\"currency\":\"USD\",\"portfolio\":\"main\",\"ticker\":\"NVDA\",\"units\":12,\"price\":90.0,\"total\":1080.0,\"date\":\"2024-03-15\",\"fees\":5.0,\"emotion\":\"Excited\",\"reason\":\"Earnings growth\",\"notes\":\"AI tailwind\"},{\"id\":1009,\"type\":\"buy\",\"assetType\":\"nasdaq\",\"currency\":\"USD\",\"portfolio\":\"main\",\"ticker\":\"NVDA\",\"units\":8,\"price\":118.0,\"total\":944.0,\"date\":\"2024-10-02\",\"fees\":0,\"emotion\":\"FOMO\",\"reason\":\"Momentum\",\"notes\":\"Chased the breakout\"},{\"id\":1010,\"type\":\"buy\",\"assetType\":\"nasdaq\",\"currency\":\"USD\",\"portfolio\":\"main\",\"ticker\":\"TSLA\",\"units\":20,\"price\":240.0,\"total\":4800.0,\"date\":\"2024-05-06\",\"fees\":5.0,\"emotion\":\"Excited\",\"reason\":\"Speculation\",\"notes\":\"\"},{\"id\":1011,\"type\":\"sell\",\"assetType\":\"nasdaq\",\"currency\":\"USD\",\"portfolio\":\"main\",\"ticker\":\"TSLA\",\"units\":10,\"price\":250.0,\"total\":2500.0,\"date\":\"2025-01-15\",\"fees\":5.0,\"emotion\":\"Greedy\",\"reason\":\"Profit taking\",\"notes\":\"Trimmed half\"},{\"id\":1012,\"type\":\"buy\",\"assetType\":\"crypto\",\"currency\":\"USD\",\"portfolio\":\"main\",\"ticker\":\"BTC\",\"units\":0.15,\"price\":42000.0,\"total\":6300.0,\"date\":\"2024-01-10\",\"fees\":0,\"emotion\":\"Confident\",\"reason\":\"Macro theme\",\"notes\":\"Digital gold thesis\"},{\"id\":1013,\"type\":\"buy\",\"assetType\":\"crypto\",\"currency\":\"USD\",\"portfolio\":\"main\",\"ticker\":\"BTC\",\"units\":0.05,\"price\":61000.0,\"total\":3050.0,\"date\":\"2024-11-20\",\"fees\":0,\"emotion\":\"FOMO\",\"reason\":\"Momentum\",\"notes\":\"\"},{\"id\":1014,\"type\":\"buy\",\"assetType\":\"crypto\",\"currency\":\"USD\",\"portfolio\":\"main\",\"ticker\":\"ETH\",\"units\":2.0,\"price\":2300.0,\"total\":4600.0,\"date\":\"2024-02-05\",\"fees\":0,\"emotion\":\"Confident\",\"reason\":\"Product adoption\",\"notes\":\"\"},{\"id\":1015,\"type\":\"buy\",\"assetType\":\"crypto\",\"currency\":\"USD\",\"portfolio\":\"main\",\"ticker\":\"SOL\",\"units\":40,\"price\":95.0,\"total\":3800.0,\"date\":\"2024-03-22\",\"fees\":2.0,\"emotion\":\"Excited\",\"reason\":\"Speculation\",\"notes\":\"\"},{\"id\":1016,\"type\":\"sell\",\"assetType\":\"crypto\",\"currency\":\"USD\",\"portfolio\":\"main\",\"ticker\":\"SOL\",\"units\":40,\"price\":175.0,\"total\":7000.0,\"date\":\"2025-03-10\",\"fees\":0,\"emotion\":\"Confident\",\"reason\":\"Profit taking\",\"notes\":\"Closed for +$3,200 \\u2014 my best trade\"},{\"id\":1017,\"type\":\"buy\",\"assetType\":\"nasdaq\",\"currency\":\"USD\",\"portfolio\":\"main\",\"ticker\":\"PYPL\",\"units\":25,\"price\":75.0,\"total\":1875.0,\"date\":\"2024-02-12\",\"fees\":5.0,\"emotion\":\"Confident\",\"reason\":\"Valuation\",\"notes\":\"Thought it was cheap\"},{\"id\":1018,\"type\":\"sell\",\"assetType\":\"nasdaq\",\"currency\":\"USD\",\"portfolio\":\"main\",\"ticker\":\"PYPL\",\"units\":25,\"price\":62.0,\"total\":1550.0,\"date\":\"2024-12-05\",\"fees\":0,\"emotion\":\"Defeated\",\"reason\":\"Risk management exit\",\"notes\":\"Cut the loss \\u2014 thesis broke\"},{\"id\":1019,\"type\":\"buy\",\"assetType\":\"crypto\",\"currency\":\"USD\",\"portfolio\":\"main\",\"ticker\":\"DOGE\",\"units\":5000,\"price\":0.16,\"total\":800.0,\"date\":\"2024-11-15\",\"fees\":0,\"emotion\":\"FOMO\",\"reason\":\"Speculation\",\"notes\":\"Meme punt (small)\"}],\"prices\":{\"VAS\":98.2,\"VGS\":132.4,\"CBA\":128.1,\"BHP\":43.5,\"NDQ\":43.0,\"A200\":138.6,\"DHHF\":35.1,\"AAPL\":226.0,\"NVDA\":138.5,\"TSLA\":255.0,\"PYPL\":63.0,\"BTC\":69000.0,\"ETH\":3450.0,\"SOL\":168.0,\"LINK\":14.5,\"DOGE\":0.14},\"priceMeta\":{\"VAS\":{\"auto\":true,\"fetched\":1717200000000,\"source\":\"demo\",\"companyName\":\"Vanguard Australian Shares ETF\",\"chgPct24h\":0.42,\"prevClose\":97.7893},\"VGS\":{\"auto\":true,\"fetched\":1717200000000,\"source\":\"demo\",\"companyName\":\"Vanguard MSCI Intl Shares ETF\",\"chgPct24h\":1.06,\"prevClose\":131.0113},\"CBA\":{\"auto\":true,\"fetched\":1717200000000,\"source\":\"demo\",\"companyName\":\"Commonwealth Bank of Australia\",\"chgPct24h\":-1.2,\"prevClose\":129.6559},\"BHP\":{\"auto\":true,\"fetched\":1717200000000,\"source\":\"demo\",\"companyName\":\"BHP Group Ltd\",\"chgPct24h\":-0.55,\"prevClose\":43.7406},\"NDQ\":{\"auto\":true,\"fetched\":1717200000000,\"source\":\"demo\",\"companyName\":\"BetaShares Nasdaq 100 ETF\",\"chgPct24h\":0.67,\"prevClose\":42.7138},\"A200\":{\"auto\":true,\"fetched\":1717200000000,\"source\":\"demo\",\"companyName\":\"BetaShares Australia 200 ETF\",\"chgPct24h\":-0.23,\"prevClose\":138.9195},\"DHHF\":{\"auto\":true,\"fetched\":1717200000000,\"source\":\"demo\",\"companyName\":\"BetaShares DHHF Diversified ETF\",\"chgPct24h\":0.31,\"prevClose\":34.9915},\"AAPL\":{\"auto\":true,\"fetched\":1717200000000,\"source\":\"demo\",\"companyName\":\"Apple Inc\",\"chgPct24h\":0.88,\"prevClose\":224.0285},\"NVDA\":{\"auto\":true,\"fetched\":1717200000000,\"source\":\"demo\",\"companyName\":\"NVIDIA Corporation\",\"chgPct24h\":2.14,\"prevClose\":135.5982},\"TSLA\":{\"auto\":true,\"fetched\":1717200000000,\"source\":\"demo\",\"companyName\":\"Tesla Inc\",\"chgPct24h\":-1.35,\"prevClose\":258.4896},\"PYPL\":{\"auto\":true,\"fetched\":1717200000000,\"source\":\"demo\",\"companyName\":\"PayPal Holdings Inc\",\"chgPct24h\":-0.4,\"prevClose\":63.253},\"BTC\":{\"auto\":true,\"fetched\":1717200000000,\"source\":\"demo\",\"companyName\":\"Bitcoin\",\"chgPct24h\":-0.84,\"prevClose\":69584.5099},\"ETH\":{\"auto\":true,\"fetched\":1717200000000,\"source\":\"demo\",\"companyName\":\"Ethereum\",\"chgPct24h\":-0.33,\"prevClose\":3461.4227},\"SOL\":{\"auto\":true,\"fetched\":1717200000000,\"source\":\"demo\",\"companyName\":\"Solana\",\"chgPct24h\":2.32,\"prevClose\":164.1908},\"LINK\":{\"auto\":true,\"fetched\":1717200000000,\"source\":\"demo\",\"companyName\":\"Chainlink\",\"chgPct24h\":-0.4,\"prevClose\":14.5582},\"DOGE\":{\"auto\":true,\"fetched\":1717200000000,\"source\":\"demo\",\"companyName\":\"Dogecoin\",\"chgPct24h\":3.1,\"prevClose\":0.1358}},\"priceChanges\":{\"VAS\":{\"d1\":0.42,\"d7\":0.46,\"d30\":-4.68,\"d60\":10.13,\"d90\":-11.38},\"VGS\":{\"d1\":1.06,\"d7\":2.8,\"d30\":0.05,\"d60\":-10.03,\"d90\":10.37},\"CBA\":{\"d1\":-1.2,\"d7\":-4.21,\"d30\":1.54,\"d60\":-9.62,\"d90\":-10.46},\"BHP\":{\"d1\":-0.55,\"d7\":-0.98,\"d30\":10.19,\"d60\":-7.79,\"d90\":-3.84},\"NDQ\":{\"d1\":0.67,\"d7\":2.48,\"d30\":12.85,\"d60\":7.62,\"d90\":4.83},\"A200\":{\"d1\":-0.23,\"d7\":2.42,\"d30\":-6.98,\"d60\":17.19,\"d90\":-0.52},\"DHHF\":{\"d1\":0.31,\"d7\":-0.66,\"d30\":-5.41,\"d60\":-1.51,\"d90\":25.81},\"AAPL\":{\"d1\":0.88,\"d7\":0.66,\"d30\":4.8,\"d60\":9.72,\"d90\":3.62},\"NVDA\":{\"d1\":2.14,\"d7\":5.02,\"d30\":-6.62,\"d60\":-9.97,\"d90\":-4.7},\"TSLA\":{\"d1\":-1.35,\"d7\":-1.3,\"d30\":1.41,\"d60\":-1.32,\"d90\":14.28},\"PYPL\":{\"d1\":-0.4,\"d7\":-0.53,\"d30\":-1.41,\"d60\":15.01,\"d90\":19.95},\"BTC\":{\"d1\":-0.84,\"d7\":-2.46,\"d30\":4.64,\"d60\":5.86,\"d90\":28.76},\"ETH\":{\"d1\":-0.33,\"d7\":0.99,\"d30\":-1.67,\"d60\":21.33,\"d90\":-9.1},\"SOL\":{\"d1\":2.32,\"d7\":4.73,\"d30\":8.66,\"d60\":-6.83,\"d90\":9.45},\"LINK\":{\"d1\":-0.4,\"d7\":-2.6,\"d30\":6.7,\"d60\":14.0,\"d90\":13.65},\"DOGE\":{\"d1\":3.1,\"d7\":8.58,\"d30\":-1.1,\"d60\":11.64,\"d90\":14.72}},\"logoOverrides\":{},\"logoCache\":{},\"portfolios\":[{\"id\":\"main\",\"name\":\"My Portfolio\",\"emoji\":\"\\ud83d\\udc64\"}],\"watchlists\":[{\"id\":\"default\",\"name\":\"Watchlist\"},{\"id\":\"crypto-targets\",\"name\":\"Crypto Targets\"},{\"id\":\"life-check\",\"name\":\"Life Check\"}],\"watchlist\":[{\"id\":2001,\"ticker\":\"BTC\",\"assetType\":\"crypto\",\"listId\":\"default\",\"currency\":\"USD\",\"condition\":\"lte\",\"target\":60000,\"remindOn\":\"2025-07-01\",\"notes\":\"Add on a dip toward 60k\",\"createdAt\":1717200000000,\"triggered\":false,\"reminded\":false,\"source\":\"\"},{\"id\":2002,\"ticker\":\"AAPL\",\"assetType\":\"nasdaq\",\"listId\":\"default\",\"currency\":\"USD\",\"condition\":\"lte\",\"target\":200,\"remindOn\":\"\",\"notes\":\"Load more under $200\",\"createdAt\":1717200000000,\"triggered\":false,\"reminded\":false,\"source\":\"\"},{\"id\":2003,\"ticker\":\"NVDA\",\"assetType\":\"nasdaq\",\"listId\":\"default\",\"currency\":\"USD\",\"condition\":\"gte\",\"target\":160,\"remindOn\":\"\",\"notes\":\"Trim if it runs to 160\",\"createdAt\":1717200000000,\"triggered\":false,\"reminded\":false,\"source\":\"\"},{\"id\":2004,\"ticker\":\"ETH\",\"assetType\":\"crypto\",\"listId\":\"crypto-targets\",\"currency\":\"USD\",\"condition\":\"gte\",\"target\":4000,\"remindOn\":\"\",\"notes\":\"Take partial profit at 4k\",\"createdAt\":1717200000000,\"triggered\":false,\"reminded\":false,\"source\":\"\"},{\"id\":2005,\"ticker\":\"SOL\",\"assetType\":\"crypto\",\"listId\":\"crypto-targets\",\"currency\":\"USD\",\"condition\":\"gte\",\"target\":220,\"remindOn\":\"\",\"notes\":\"Re-entry / profit watch\",\"createdAt\":1717200000000,\"triggered\":false,\"reminded\":false,\"source\":\"\"},{\"id\":2006,\"ticker\":\"CBA\",\"assetType\":\"asx\",\"listId\":\"default\",\"currency\":\"AUD\",\"condition\":\"gte\",\"target\":null,\"remindOn\":\"2025-08-14\",\"notes\":\"Ex-dividend date reminder\",\"createdAt\":1717200000000,\"triggered\":false,\"reminded\":false,\"source\":\"\"},{\"id\":2007,\"ticker\":\"HEALTH\",\"assetType\":\"life\",\"listId\":\"life-check\",\"currency\":\"\",\"condition\":\"gte\",\"target\":null,\"remindOn\":\"2025-05-01\",\"notes\":\"Read 20 minutes each morning\",\"createdAt\":1717200000000,\"triggered\":false,\"reminded\":false,\"source\":\"lifecheck\",\"lifeCheckId\":3001,\"lifeArea\":\"Personal Development\",\"lifeHorizon\":\"Short Term\"}],\"calendarEvents\":{\"2025-02-12\":[{\"text\":\"CBA half-year results\",\"createdAt\":1717200000000}],\"2025-04-30\":[{\"text\":\"Review portfolio & rebalance\",\"createdAt\":1717200000000}],\"2025-07-31\":[{\"text\":\"NVDA earnings \\u2014 watch guidance\",\"createdAt\":1717200000000}],\"2025-08-14\":[{\"text\":\"CBA ex-dividend date\",\"createdAt\":1717200000000},{\"text\":\"Reinvest dividend into VAS\",\"createdAt\":1717200000000}]},\"notifications\":[{\"id\":4001,\"ts\":1717196400000,\"ticker\":\"SOL\",\"msg\":\"SOL closed for +$3,200 realised profit\",\"read\":false},{\"id\":4002,\"ts\":1717027200000,\"ticker\":\"BTC\",\"msg\":\"Bought 0.05 BTC @ $61,000\",\"read\":true},{\"id\":4003,\"ts\":1716768000000,\"ticker\":\"PYPL\",\"msg\":\"PYPL position closed \\u2212$325 (risk exit)\",\"read\":true},{\"id\":4004,\"ts\":1716595200000,\"ticker\":\"NVDA\",\"msg\":\"NVDA up 2.1% today\",\"read\":true}],\"lifeCheck\":{\"entries\":[{\"id\":3001,\"ts\":1717200000000,\"scores\":{\"Health\":6,\"Wealth\":7,\"Career\":5,\"Relationships\":8,\"Personal Development\":4},\"lowest\":\"Personal Development\",\"tiedLowest\":[\"Personal Development\"],\"selectedAreas\":[\"Personal Development\",\"Career\"],\"why\":{\"Personal Development\":\"Not carving out time to learn new skills.\",\"Career\":\"Feeling a bit plateaued in the current role.\"},\"plans\":{},\"actionDates\":{},\"actions\":[{\"area\":\"Personal Development\",\"horizon\":\"short\",\"label\":\"Short Term\",\"text\":\"Read 20 minutes each morning\",\"date\":\"2025-05-01\"},{\"area\":\"Career\",\"horizon\":\"mid\",\"label\":\"Mid Term\",\"text\":\"Complete a professional certification\",\"date\":\"2025-09-01\"}]}]},\"valueSnapshots\":[],\"newsApi\":{\"provider\":\"marketaux\",\"keys\":{\"marketaux\":\"\",\"finnhub\":\"\",\"alphavantage\":\"\"},\"enabled\":false},\"ui\":{\"privacy\":false,\"bellHistoryMax\":10},\"dividends\":[{\"ticker\":\"VAS\",\"date\":\"2025-01-08\",\"amount\":412.5,\"currency\":\"AUD\",\"franked\":100,\"portfolio\":\"main\",\"note\":\"Quarterly distribution\",\"id\":1735000000000},{\"ticker\":\"VAS\",\"date\":\"2024-10-07\",\"amount\":388.2,\"currency\":\"AUD\",\"franked\":100,\"portfolio\":\"main\",\"note\":\"Quarterly distribution\",\"id\":1735000000137},{\"ticker\":\"CBA\",\"date\":\"2025-03-28\",\"amount\":525.0,\"currency\":\"AUD\",\"franked\":100,\"portfolio\":\"main\",\"note\":\"Interim dividend\",\"id\":1735000000274},{\"ticker\":\"CBA\",\"date\":\"2024-09-27\",\"amount\":615.0,\"currency\":\"AUD\",\"franked\":100,\"portfolio\":\"main\",\"note\":\"Final dividend\",\"id\":1735000000411},{\"ticker\":\"BHP\",\"date\":\"2025-03-20\",\"amount\":298.4,\"currency\":\"AUD\",\"franked\":100,\"portfolio\":\"main\",\"note\":\"Interim dividend\",\"id\":1735000000548},{\"ticker\":\"DHHF\",\"date\":\"2025-01-15\",\"amount\":176.8,\"currency\":\"AUD\",\"franked\":72,\"portfolio\":\"main\",\"note\":\"Quarterly distribution (partly franked)\",\"id\":1735000000685},{\"ticker\":\"VGS\",\"date\":\"2025-01-10\",\"amount\":142.3,\"currency\":\"AUD\",\"franked\":0,\"portfolio\":\"main\",\"note\":\"Distribution (unfranked, intl)\",\"id\":1735000000822},{\"ticker\":\"AAPL\",\"date\":\"2025-02-13\",\"amount\":12.4,\"currency\":\"USD\",\"franked\":0,\"portfolio\":\"main\",\"note\":\"Quarterly dividend\",\"id\":1735000001233}]}");}catch(e){}</script>
 <script>
 /* ── Sandbox-safe fetch: some environments (webviews, sandboxed previews) proxy
    fetch via postMessage and can't clone AbortSignal. Detect that failure and
@@ -2402,7 +2467,7 @@ tr.tx-detail-row>td{padding:0 !important;}
 const _raw = localStorage.getItem('folio_demo_state') ||
              localStorage.getItem('folioview_demo_state') ||
              localStorage.getItem('portfolio_demo_state');
-let state = JSON.parse(_raw || 'null') || { transactions: [], prices: {}, priceMeta: {}, portfolios: [] };
+let state = JSON.parse(_raw || 'null') || { transactions: [], prices: {}, priceMeta: {}, portfolios: [], dividends: [] };
 // Migrate: if loaded from old key, immediately re-save under correct key
 if (_raw && !localStorage.getItem('folio_demo_state')) {
   localStorage.setItem('folio_demo_state', _raw);
@@ -2993,6 +3058,7 @@ function switchTab(tab, el) {
   if (tab==='calendar') renderCalendar();
   if (tab==='history') renderHistory();
   if (tab==='closed') { renderClosed(); try { renderClosedPnlChart(); } catch(_) {} }
+  if (tab==='dividends') renderDividends();
   if (tab==='dashboard') { renderDashboard(); refreshPerformers(); }
   if (tab==='tradeinsights') { renderDashboard(); refreshPerformers(); }
   if (tab==='pulse') renderDashboard();
@@ -7140,8 +7206,20 @@ function renderTradeAnalytics() {
   }
 }
 
+function setInvSort(mode, el){
+  state.ui=state.ui||{}; state.ui.invSort=(mode==='chg')?'chg':'value';
+  try{save();}catch(_){ }
+  renderDashboard();
+}
+function _syncInvSortPills(){
+  const s=(state.ui&&state.ui.invSort)==='chg'?'chg':'value';
+  const v=document.getElementById('inv-sort-val'), c=document.getElementById('inv-sort-chg');
+  if(v) v.classList.toggle('active', s==='value');
+  if(c) c.classList.toggle('active', s==='chg');
+}
 function renderDashboard() {
   try { renderDashHero(); } catch(_) {}
+  try { _syncInvSortPills(); } catch(_) {}
   const _topMoversEl = document.getElementById('dash-top-movers');
   if (_topMoversEl) _topMoversEl.innerHTML = _renderTopMoversCard();
   const _riskScanEl = document.getElementById('dash-risk-scan');
@@ -7202,7 +7280,13 @@ function renderDashboard() {
         }
         return { ...a, cp, val, chg };
       })
-      .sort((a,b) => b.val - a.val);
+      .sort((a,b) => {
+        if ((state.ui&&state.ui.invSort)==='chg') {
+          const av=(a.chg==null?-Infinity:a.chg), bv=(b.chg==null?-Infinity:b.chg);
+          return bv-av;
+        }
+        return b.val - a.val;
+      });
 
     const head = `<div class="inv-cols"><span>Asset</span><span>Price</span><span>Portfolio</span></div>`;
     if (!items.length) {
@@ -9668,7 +9752,219 @@ function renderCGT() {
 // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 // TAX TAB
 // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+
+// -- Dividends & income ledger --
+function _divList(){ return Array.isArray(state.dividends) ? state.dividends : (state.dividends=[]); }
+function _frankingCredit(amount, frankedPct){
+  const f = Math.max(0, Math.min(100, frankedPct||0))/100;
+  return (amount * f) * (30/70);
+}
+
+
+// export / load pickers
+function openExportPicker(){ const m=document.getElementById('fn-export-picker'); if(m) m.style.display='flex'; }
+function openLoadPicker(target){ window._loadTarget=target||'load-input-s'; const m=document.getElementById('fn-load-picker'); if(m) m.style.display='flex'; }
+function closePickers(){ ['fn-export-picker','fn-load-picker'].forEach(id=>{ const m=document.getElementById(id); if(m) m.style.display='none'; }); }
+function _pickerRun(fn){ closePickers(); try{ fn(); }catch(e){ notify('Export failed: '+(e&&e.message||'error')); } }
+function _loadPick(accept){
+  closePickers();
+  const inp=document.getElementById(window._loadTarget||'load-input-s');
+  if(!inp) return;
+  inp.setAttribute('accept', accept);
+  inp.click();
+}
+
+// styled in-app confirm (replaces browser confirm for destructive actions)
+window._fnConfirmCb=null;
+function fnConfirm(msg, cb){
+  const el=document.getElementById('fn-confirm'); if(!el){ if(confirm(msg)) cb(true); return; }
+  document.getElementById('fn-confirm-msg').textContent=msg;
+  window._fnConfirmCb=cb; el.style.display='flex';
+}
+function _fnConfirmClose(v){
+  const el=document.getElementById('fn-confirm'); if(el) el.style.display='none';
+  const cb=window._fnConfirmCb; window._fnConfirmCb=null;
+  if(cb) cb(v);
+}
+let _dvEditId=null;
+let _dvSelectMode=false; let _dvSelected=new Set();
+function toggleDivSelect(){
+  _dvSelectMode=!_dvSelectMode; _dvSelected.clear();
+  const b=document.getElementById('dv-select-btn'); if(b) b.textContent=_dvSelectMode?'✕ Cancel':'☑ Select';
+  const d=document.getElementById('dv-del-selected'); if(d) d.style.display='none';
+  const c=document.getElementById('dv-sel-count'); if(c) c.style.display='none';
+  renderDividends();
+}
+function _dvTick(id, el){
+  if(el.checked) _dvSelected.add(String(id)); else _dvSelected.delete(String(id));
+  const d=document.getElementById('dv-del-selected'); if(d) d.style.display=_dvSelected.size?'inline-flex':'none';
+  const c=document.getElementById('dv-sel-count'); if(c){ c.style.display=_dvSelected.size?'inline':'none'; c.textContent=_dvSelected.size+' selected'; }
+}
+function deleteSelectedDividends(){
+  if(!_dvSelected.size) return;
+  fnConfirm('Delete '+_dvSelected.size+' dividend entr'+(_dvSelected.size===1?'y':'ies')+'? This cannot be undone.', ok=>{
+    if(!ok) return;
+    state.dividends=_divList().filter(d=>!_dvSelected.has(String(d.id)));
+    _dvSelected.clear(); _dvSelectMode=false;
+    const b=document.getElementById('dv-select-btn'); if(b) b.textContent='☑ Select';
+    const dd=document.getElementById('dv-del-selected'); if(dd) dd.style.display='none';
+    const c=document.getElementById('dv-sel-count'); if(c) c.style.display='none';
+    _trackEdit(); save(); renderDividends(); notify('Dividends deleted');
+  });
+}
+function closeDividendModal(){ _dvEditId=null; const m=document.getElementById('dv-edit-modal'); if(m) m.style.display='none'; }
+function saveDividendModal(){
+  const d=_divList().find(x=>x.id==_dvEditId); if(!d){ closeDividendModal(); return; }
+  const ticker=(document.getElementById('dvm-ticker').value||'').trim().toUpperCase();
+  const date=document.getElementById('dvm-date').value;
+  const amount=parseFloat(document.getElementById('dvm-amount').value);
+  const currency=document.getElementById('dvm-currency').value||'AUD';
+  const franked=parseFloat(document.getElementById('dvm-franked').value);
+  const portfolio=document.getElementById('dvm-portfolio').value||'main';
+  const note=(document.getElementById('dvm-note').value||'').trim();
+  if(!ticker||!date||!amount||amount<=0){ notify('Fill ticker, date and amount.'); return; }
+  Object.assign(d,{ticker,date,amount,currency,franked:(currency==='AUD'&&!isNaN(franked))?franked:0,portfolio,note});
+  _trackEdit(); save(); closeDividendModal(); renderDividends(); notify('Dividend updated \u00b7 '+ticker);
+}
+function exportLedger(){
+  const lines=['; Folionaire export in Plain Text Accounting (ledger) format','; Generated '+new Date().toISOString().slice(0,10),''];
+  const txs=[...(state.transactions||[])].sort((a,b)=>new Date(a.date)-new Date(b.date));
+  txs.forEach(t=>{
+    if(t.type!=='buy'&&t.type!=='sell') return;
+    const cur=t.currency||(t.assetType==='crypto'?'USD':'AUD');
+    const units=t.type==='buy'?t.units:-t.units;
+    const cash=(t.type==='buy'?-1:1)*(t.total||t.units*t.price);
+    lines.push(`${t.date} * ${t.type==='buy'?'Buy':'Sell'} ${t.ticker}${t.notes?('  ; '+t.notes.replace(/\n/g,' ')):''}`);
+    lines.push(`    Assets:Investments:${t.ticker}    ${units} ${t.ticker} @ ${t.price} ${cur}`);
+    if(t.fees) lines.push(`    Expenses:Brokerage:Fees    ${t.fees} ${cur}`);
+    lines.push(`    Assets:Cash:${cur}    ${(cash-(t.type==='buy'?(t.fees||0):0)).toFixed(2)} ${cur}`);
+    lines.push('');
+  });
+  (state.dividends||[]).slice().sort((a,b)=>new Date(a.date)-new Date(b.date)).forEach(d=>{
+    const fc=d.currency==='AUD'?_frankingCredit(d.amount,d.franked):0;
+    lines.push(`${d.date} * Dividend ${d.ticker}${d.note?('  ; '+d.note):''}`);
+    if(fc>0) lines.push(`    ; franked ${d.franked}%, franking credit ${fc.toFixed(2)} AUD (estimate at 30% rate)`);
+    lines.push(`    Assets:Cash:${d.currency}    ${d.amount.toFixed(2)} ${d.currency}`);
+    lines.push(`    Income:Dividends:${d.ticker}    ${(-d.amount).toFixed(2)} ${d.currency}`);
+    lines.push('');
+  });
+  const blob=new Blob([lines.join('\n')],{type:'text/plain'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='folionaire.journal';
+  document.body.appendChild(a); a.click(); setTimeout(()=>{URL.revokeObjectURL(a.href); a.remove();},100);
+  notify('Ledger exported \u00b7 folionaire.journal');
+}
+
+let editingDivId=null;
+function editDividend(id){
+  const d=_divList().find(x=>x.id==id); if(!d) return;
+  _dvEditId=id;
+  document.getElementById('dvm-ticker').value=d.ticker;
+  document.getElementById('dvm-date').value=d.date;
+  document.getElementById('dvm-amount').value=d.amount;
+  document.getElementById('dvm-currency').value=d.currency;
+  document.getElementById('dvm-franked').value=d.franked||0;
+  const ps=document.getElementById('dvm-portfolio');
+  if(ps){ const ports=[{id:'main',name:'Main'},...((state.portfolios||[]).filter(p=>p.id!=='main'))];
+    ps.innerHTML=ports.map(p=>`<option value="${p.id}">${_escapeHtml(p.name||p.id)}</option>`).join('');
+    if([...ps.options].some(o=>o.value===d.portfolio)) ps.value=d.portfolio; }
+  document.getElementById('dvm-note').value=d.note||'';
+  document.getElementById('dv-edit-modal').style.display='flex';
+}
+function cancelEditDividend(){
+  editingDivId=null;
+  ['dv-ticker','dv-amount','dv-franked','dv-note'].forEach(id=>{const e=document.getElementById(id); if(e)e.value='';});
+  const btn=document.getElementById('dv-add-btn'); if(btn) btn.textContent='+ Add Dividend';
+  const cancel=document.getElementById('dv-cancel-btn'); if(cancel) cancel.style.display='none';
+}
+function addDividend(){
+  const ticker=(document.getElementById('dv-ticker').value||'').trim().toUpperCase();
+  const date=document.getElementById('dv-date').value;
+  const amount=parseFloat(document.getElementById('dv-amount').value);
+  const currency=document.getElementById('dv-currency').value||'AUD';
+  const franked=parseFloat(document.getElementById('dv-franked').value);
+  const portfolio=document.getElementById('dv-portfolio').value||'main';
+  const note=(document.getElementById('dv-note').value||'').trim();
+  if(!ticker){ notify('\u26A0 Enter a ticker for the dividend.'); document.getElementById('dv-ticker')?.focus(); return; }
+  if(!date){ notify('\u26A0 Enter a pay date.'); document.getElementById('dv-date')?.focus(); return; }
+  if(!amount||amount<=0){ notify('\u26A0 Enter the amount received.'); document.getElementById('dv-amount')?.focus(); return; }
+  const frankedPct = (currency==='AUD' && !isNaN(franked)) ? franked : 0;
+  if(editingDivId!==null){
+    const d=_divList().find(x=>x.id==editingDivId);
+    if(d){ Object.assign(d,{ticker,date,amount,currency,franked:frankedPct,portfolio,note}); }
+    editingDivId=null;
+    const btn=document.getElementById('dv-add-btn'); if(btn) btn.textContent='+ Add Dividend';
+    const cancel=document.getElementById('dv-cancel-btn'); if(cancel) cancel.style.display='none';
+    _trackEdit(); save();
+    ['dv-ticker','dv-amount','dv-franked','dv-note'].forEach(id=>{ const e=document.getElementById(id); if(e) e.value=''; });
+    renderDividends(); notify('Dividend updated \u00b7 '+ticker); return;
+  }
+  _divList().push({ id:Date.now()+Math.random(), ticker, date, amount, currency, franked:frankedPct, portfolio, note });
+  _trackEdit();
+  _pushNotification('Dividend \u00b7 '+ticker+' \u00b7 '+currency+' $'+fmt(amount), ticker);
+  save();
+  ['dv-ticker','dv-amount','dv-franked','dv-note'].forEach(id=>{ const e=document.getElementById(id); if(e) e.value=''; });
+  renderDividends();
+  notify('Dividend added \u00b7 '+ticker);
+}
+function deleteDividend(id){
+  fnConfirm('Delete this dividend entry? This cannot be undone.', ok=>{
+    if(!ok) return;
+    state.dividends=_divList().filter(d=>d.id!=id);
+    _trackEdit(); save(); renderDividends(); notify('Dividend deleted');
+  });
+}
+function renderDividends(){
+  const body=document.getElementById('dividend-body'); if(!body) return;
+  const psel=document.getElementById('dv-portfolio');
+  if(psel){ const cur=psel.value; const ports=[{id:'main',name:'Main'},...((state.portfolios||[]).filter(p=>p.id!=='main'))];
+    psel.innerHTML=ports.map(p=>`<option value="${p.id}">${_escapeHtml(p.name||p.id)}</option>`).join('');
+    if([...psel.options].some(o=>o.value===cur)) psel.value=cur; }
+  const list=[..._divList()].sort((a,b)=>new Date(b.date)-new Date(a.date));
+  if(!list.length){
+    body.innerHTML='<tr><td colspan="8"><div class="empty-state"><div class="icon">💰</div><p>No dividends recorded yet. Add them from your dividend statements above.</p></div></td></tr>';
+  } else {
+    body.innerHTML=list.map(d=>{
+      const fc=d.currency==='AUD'?_frankingCredit(d.amount,d.franked):0;
+      const gross=d.amount+fc;
+      return `<tr class="dv-row">
+        <td data-label="Pay date">${_dvSelectMode?`<input type="checkbox" class="dv-check" onchange="_dvTick('${d.id}',this)"${_dvSelected.has(String(d.id))?' checked':''}> `:''}${d.date}</td>
+        <td data-label="Ticker"><strong>${_escapeHtml(d.ticker)}</strong></td>
+        <td data-label="Amount">${d.currency} $${fmt(d.amount)}</td>
+        <td data-label="Franked">${d.currency==='AUD'?((d.franked||0)+'%'):'\u2014'}</td>
+        <td data-label="Franking credit">${fc>0?('$'+fmt(fc)):'\u2014'}</td>
+        <td data-label="Gross">${d.currency} $${fmt(gross)}</td>
+        <td data-label="Note" style="color:var(--muted);">${_escapeHtml(d.note||'')||'\u2014'}</td>
+        <td data-label="" class="dv-actions"><button class="btn-ghost btn-sm" onclick="editDividend('${d.id}')">Edit</button><button class="icon-btn" onclick="deleteDividend('${d.id}')" title="Delete">\u2715</button></td>
+      </tr>`;
+    }).join('');
+  }
+  const byCur={};
+  _divList().forEach(d=>{ const c=d.currency||'AUD'; byCur[c]=byCur[c]||{income:0,franking:0,n:0};
+    byCur[c].income+=d.amount; byCur[c].n++;
+    if(c==='AUD') byCur[c].franking+=_frankingCredit(d.amount,d.franked); });
+  const sumEl=document.getElementById('dividend-summary');
+  if(sumEl){
+    sumEl.innerHTML=Object.entries(byCur).map(([c,v])=>`
+      <div class="dash-card" style="flex:1;min-width:140px;padding:12px 16px;">
+        <div class="dash-card-title">Income (${c})</div>
+        <div style="font-size:16px;font-weight:800;font-family:var(--font-mono);color:var(--green);">$${fmt(v.income)}</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:2px;">${v.n} payment${v.n!==1?'s':''}</div>
+      </div>`+((c==='AUD'&&v.franking>0)?`
+      <div class="dash-card" style="flex:1;min-width:140px;padding:12px 16px;">
+        <div class="dash-card-title">Franking Credits (AUD)</div>
+        <div style="font-size:16px;font-weight:800;font-family:var(--font-mono);color:var(--accent);">$${fmt(v.franking)}</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:2px;">grossed-up estimate</div>
+      </div>
+      <div class="dash-card" style="flex:1;min-width:140px;padding:12px 16px;">
+        <div class="dash-card-title">Grossed-up (AUD)</div>
+        <div style="font-size:16px;font-weight:800;font-family:var(--font-mono);">$${fmt(v.income+v.franking)}</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:2px;">income + franking</div>
+      </div>`:'')).join('')||'';
+  }
+}
+
 function renderTax() {
+  try { renderDividends(); } catch(_) {}
   const sel = document.getElementById('tax-year-select');
   // Populate years from transactions
   const years = [...new Set(state.transactions
@@ -10770,7 +11066,7 @@ function saveSectorEdit() {
 /* ══════════════ FOLIOVIEW DEMO LOCKDOWN LAYER ══════════════ */
 (function(){
   const BUY_URL = 'https://folionaire.gumroad.com/l/folionaire';
-  const LIMITS = { tx: 15, watch: 5, cal: 5, life: 3, scans: 10 };
+  const LIMITS = { tx: 15, watch: 5, cal: 5, life: 3, scans: 10, div: 5 };
   const _c = { tx:0, watch:0, cal:0, life:0 };
 
   /* ── Buy modal ── */
@@ -10858,6 +11154,7 @@ function saveSectorEdit() {
     };
   }
   cap('submitTransaction','tx',LIMITS.tx);
+  cap('addDividend','div',LIMITS.div);
   cap('addWatchItem','watch',LIMITS.watch);
   cap('addCalendarEvent','cal',LIMITS.cal);
   cap('saveLifeCheck','life',LIMITS.life);
@@ -10899,6 +11196,63 @@ function saveSectorEdit() {
   try{ if(!sessionStorage.getItem('fv_demo_seen')){ sessionStorage.setItem('fv_demo_seen','1'); setTimeout(window.demoBuy, 1200); } }catch(e){}
 })();
 </script>
+
+
+<!-- Styled confirm dialog -->
+<div id="fn-confirm" style="display:none;position:fixed;inset:0;z-index:99998;background:rgba(0,0,0,.55);align-items:center;justify-content:center;">
+  <div style="background:var(--surface);border:1px solid var(--border2);border-radius:14px;padding:20px;max-width:340px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,.45);">
+    <div id="fn-confirm-msg" style="font-size:13px;line-height:1.6;margin-bottom:16px;"></div>
+    <div style="display:flex;gap:8px;justify-content:flex-end;">
+      <button class="btn-ghost" onclick="_fnConfirmClose(false)">Cancel</button>
+      <button class="btn" id="fn-confirm-yes" style="background:var(--red);border-color:var(--red);color:#fff;" onclick="_fnConfirmClose(true)">Delete</button>
+    </div>
+  </div>
+</div>
+<!-- Dividend edit modal -->
+<div id="dv-edit-modal" style="display:none;position:fixed;inset:0;z-index:99997;background:rgba(0,0,0,.55);align-items:center;justify-content:center;padding:16px;">
+  <div style="background:var(--surface);border:1px solid var(--border2);border-radius:14px;padding:20px;max-width:420px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.45);max-height:90vh;overflow-y:auto;">
+    <div style="font-weight:800;font-family:var(--font-head);font-size:14px;margin-bottom:14px;">Edit Dividend</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+      <div><label class="fld-label">Ticker</label><input type="text" id="dvm-ticker" style="width:100%;text-transform:uppercase;"></div>
+      <div><label class="fld-label">Pay date</label><input type="date" id="dvm-date" style="width:100%;"></div>
+      <div><label class="fld-label">Amount</label><input type="number" id="dvm-amount" step="0.01" style="width:100%;"></div>
+      <div><label class="fld-label">Currency</label><select id="dvm-currency" style="width:100%;"><option value="AUD">AUD</option><option value="USD">USD</option></select></div>
+      <div><label class="fld-label">Franked %</label><input type="number" id="dvm-franked" step="1" min="0" max="100" style="width:100%;"></div>
+      <div><label class="fld-label">Portfolio</label><select id="dvm-portfolio" style="width:100%;"></select></div>
+      <div style="grid-column:1/-1;"><label class="fld-label">Note</label><input type="text" id="dvm-note" style="width:100%;"></div>
+    </div>
+    <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:16px;">
+      <button class="btn-ghost" onclick="closeDividendModal()">Cancel</button>
+      <button class="btn" onclick="saveDividendModal()">Save Changes</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- Export / Load pickers -->
+<div id="fn-export-picker" style="display:none;position:fixed;inset:0;z-index:99996;background:rgba(0,0,0,.55);align-items:center;justify-content:center;padding:16px;">
+  <div style="background:var(--surface);border:1px solid var(--border2);border-radius:14px;padding:20px;max-width:360px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.45);">
+    <div style="font-weight:800;font-family:var(--font-head);font-size:14px;margin-bottom:4px;">Export</div>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:14px;">Choose a format.</div>
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <button class="btn" onclick="_pickerRun(saveToFile)">💾 JSON backup <span style="font-weight:400;opacity:.75;">- full save, re-loadable</span></button>
+      <button class="btn-ghost" onclick="_pickerRun(exportCSV)">📊 CSV <span style="opacity:.75;">- transactions for spreadsheets</span></button>
+      <button class="btn-ghost" onclick="_pickerRun(exportLedger)">📒 Ledger <span style="opacity:.75;">- Plain Text Accounting (.journal)</span></button>
+    </div>
+    <div style="display:flex;justify-content:flex-end;margin-top:14px;"><button class="btn-ghost" onclick="closePickers()">Cancel</button></div>
+  </div>
+</div>
+<div id="fn-load-picker" style="display:none;position:fixed;inset:0;z-index:99996;background:rgba(0,0,0,.55);align-items:center;justify-content:center;padding:16px;">
+  <div style="background:var(--surface);border:1px solid var(--border2);border-radius:14px;padding:20px;max-width:360px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.45);">
+    <div style="font-weight:800;font-family:var(--font-head);font-size:14px;margin-bottom:4px;">Load</div>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:14px;">Choose what you're loading.</div>
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <button class="btn" onclick="_loadPick('.json,application/json')">📂 JSON backup <span style="font-weight:400;opacity:.75;">- restores everything</span></button>
+      <button class="btn-ghost" onclick="_loadPick('.csv,.txt,.tsv,text/csv,text/plain')">📄 CSV transactions <span style="opacity:.75;">- imports rows</span></button>
+    </div>
+    <div style="display:flex;justify-content:flex-end;margin-top:14px;"><button class="btn-ghost" onclick="closePickers()">Cancel</button></div>
+  </div>
+</div>
 
 </body>
 </html>
