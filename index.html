@@ -10044,9 +10044,9 @@ function exportLedger(){
   (state.dividends||[]).slice().sort((a,b)=>new Date(a.date)-new Date(b.date)).forEach(d=>{
     const fc=d.currency==='AUD'?_frankingCredit(d.amount,d.franked):0;
     lines.push(`${d.date} * Dividend ${d.ticker}${d.note?('  ; '+d.note):''}`);
-    if(fc>0) lines.push(`    ; franked ${d.franked}%, franking credit ${fc.toFixed(2)} AUD (estimate at 30% rate)`);
+    if(fc>0) lines.push(`    Assets:Franking Credit    ${fc.toFixed(2)} AUD  ; franked ${d.franked}% (estimate at 30% company rate)`);
     lines.push(`    Assets:Cash:${d.currency}    ${d.amount.toFixed(2)} ${d.currency}`);
-    lines.push(`    Income:Dividends:${d.ticker}    ${(-d.amount).toFixed(2)} ${d.currency}`);
+    lines.push(`    Income:Dividends:${d.ticker}    ${(-(d.amount+fc)).toFixed(2)} ${d.currency}`);
     lines.push('');
   });
   const blob=new Blob([lines.join('\n')],{type:'text/plain'});
